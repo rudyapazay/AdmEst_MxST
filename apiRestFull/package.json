@@ -4,13 +4,16 @@
   "description": "Rest Full para administracion de expedientes de estudiantes",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Rudy Apaza",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "mongoose": "^5.5.0",
+    "mongoose": "^5.5.0"
+  },
+  "devDependencies": {
     "nodemon": "^1.18.11"
   }
 }
