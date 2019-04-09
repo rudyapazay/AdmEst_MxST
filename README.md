@@ -7,3 +7,5 @@ Software desarrollado a medida escalable con Node.js Express.js MongoDB y Angula
 Desarrollado por:
 
 Rudy Abad Apaza Yanqui
+email: rudyapazay@gmail.com
+984119398
