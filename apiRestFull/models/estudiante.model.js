@@ -9,7 +9,13 @@ var EstudianteSchema = Schema({
     nombre:String,
     apellidos:String,
     estudios:[],
-    familia: {type:Schema.ObjectId, ref:'Familia'}
+    familia: {type:Schema.ObjectId, ref:'Familia'},
+    certificado:String,
+    partida_nacimiento:String,
+    ficha_matricula:String,
+    sis:String,
+    otros:String,
+    observaciones
 });
 
 module.export = mongoose.Schema('Estudiante', EstudianteSchema);

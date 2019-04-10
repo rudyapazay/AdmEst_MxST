@@ -8,9 +8,30 @@ var FamiliaSchema = Schema({
     codigo:String,
     nombre:String,
     direccion:String,
-    observaciones:String,
 
-    
+    madre:{
+        dni:String,
+        nombre:String,
+        apellido:String,
+        celular:String,
+        direccion:String
+    },
+    padre:{
+        dni:String,
+        nombre:String,
+        apellido:String,
+        celular:String,
+        direccion:String
+    },
+    apoderado:{
+        dni:String,
+        nombre:String,
+        apellido:String,
+        celular:String,
+        direccion:String
+    },
+    observaciones:String,
+    estado:String
 });
 
 module.exports = mongoose.model('Familia', FamiliaSchema);

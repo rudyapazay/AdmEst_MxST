@@ -1,12 +1,16 @@
 'use strict'
 
 var express = require('express');
+var bodyParser = require('body-parser');
 
 var app = express();
 
 const familia_router = require('./routers/familia.router');
 const estudiante_router = require('./routers/estudiante.route');
-const responsable_router = require('./routers/responsable.route');
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 
 //configuracion global de paginas
 app.use((req,res,next)=>{
@@ -21,8 +25,5 @@ app.use((req,res,next)=>{
 
 app.use('/api/',familia_router);
 app.use('/api/', estudiante_router);
-app.use('/api/',responsable_router);
-
-
 
 module.exports = app;
