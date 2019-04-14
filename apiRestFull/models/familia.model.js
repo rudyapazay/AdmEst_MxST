@@ -12,24 +12,24 @@ var FamiliaSchema = Schema({
     madre:{
         dni:String,
         nombre:String,
-        apellido:String,
+        apellidos:String,
         celular:String,
         direccion:String
     },
     padre:{
         dni:String,
         nombre:String,
-        apellido:String,
-        celular:String,
-        direccion:String
+        apellidos:String,
+        celular:String
     },
     apoderado:{
         dni:String,
         nombre:String,
         apellido:String,
         celular:String,
-        direccion:String
+        relacion:String
     },
+    direccion:String,
     observaciones:String,
     estado:String
 });
