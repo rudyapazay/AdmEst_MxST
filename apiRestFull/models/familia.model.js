@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var FamiliaSchema = Schema({
     //el codigo se tiene que generar usando las primeras letras de los apellidos
     codigo:String,
-    nombre:String,
+    carpeta:String,
     direccion:String,
 
     madre:{

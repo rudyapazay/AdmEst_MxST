@@ -42,14 +42,14 @@ function saveFamilia(req,res){
     var params = req.body;
     // asignando valores a la carga
     
-    familia.nombre = params.nombre.toUpperCase();
+    familia.carpeta = params.carpeta.toUpperCase();
     familia.direccion = params.direccion; 
     familia.estado = params.estado;
     familia.observaciones = params.observaciones; 
     
     // generando codigo de familia
     //var codigo = familia.nombre.charCodeAt(0)*2;
-    var cadFamilia =  familia.nombre.toUpperCase();
+    var cadFamilia =  familia.carpeta.toUpperCase();
     var codigo = 0, i=1;
     while(cadFamilia.charCodeAt(i)){
         codigo += cadFamilia.charCodeAt(i)/(i*i);
@@ -58,14 +58,15 @@ function saveFamilia(req,res){
     codigo=Math.trunc(codigo*100);
     codigo -= 10000;
     
-    FamiliaMdl.countDocuments({nombre:familia.nombre},(err,count)=>{
+    FamiliaMdl.countDocuments({carpeta:familia.carpeta},(err,count)=>{
         if(codigo < 1000)
             var codFamilia = cadFamilia.substr(0,1) + '-0'+codigo+'-'+count;
         else
             var codFamilia = cadFamilia.substr(0,1) + '-'+codigo+'-'+count;
 
         familia.codigo =  codFamilia;
-
+        //guardando la familia en la base de datos
+        
         familia.save((err, familiaStored)=>{
             if(err){
                 res.status('500').send({message:'Error al generar la familia'});
