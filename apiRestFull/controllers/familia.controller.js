@@ -63,7 +63,8 @@ function saveFamilia(req,res){
             var codFamilia = cadFamilia.substr(0,1) + '-0'+codigo+'-'+count;
         else
             var codFamilia = cadFamilia.substr(0,1) + '-'+codigo+'-'+count;
-
+        
+        //verificar si el codigo no existe 
         familia.codigo =  codFamilia;
         //guardando la familia en la base de datos
         

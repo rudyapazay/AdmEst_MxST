@@ -7,5 +7,7 @@ import { Component } from "@angular/core";
 })
 
 export class BuildingComponent {
+    titulo="En construccion";
+    subtitulo="Mejorando la administracion de estudiantes";
 
 }

@@ -4,15 +4,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BuildingComponent } from './building/building.component';
+import { FamiliaModule } from './familia/familia.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BuildingComponent
+    BuildingComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FamiliaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
