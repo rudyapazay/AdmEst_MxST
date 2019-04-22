@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient  } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 //import 'rxjs/add/operator/map';
 //import { Observable } from 'rxjs/Observable';
@@ -13,19 +14,24 @@ import { HttpClient  } from '@angular/common/http';
 
 
 export class FamiliaService {
-  private _http:HttpClient;
+  
   constructor(
-    //error esta creacion del _http
-    //private _http:HttpClient
+    //cabecera http
+    private _http:HttpClient
   ) { 
     
   }
 
-  ///mostrar familias
-  getFamilias(familiaId=null){
+  ///mostrar familias, 
+  // nota: El parse a JSON es automatico
+  getFamilias(familiaId=null):Observable<any>{
     return this._http.get("http://localhost:3700/api/familias");
-    //return this._http.get()
-    //return '[{message:"probando"}]';
+  
   }
-  /**/
+  
+  // guardar familia 
+
+
+
+  
 }

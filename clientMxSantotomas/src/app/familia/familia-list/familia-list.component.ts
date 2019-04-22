@@ -11,14 +11,14 @@ import { FamiliaService } from 'src/app/services/familia.service';
 export class FamiliaListComponent implements OnInit {
 
   public titulo:String;
-  public title:"prueba";
+  public title:String;
   //clase inicial de la familia
   public familias:FamliaMdl;
   
   constructor(
     private _familiaService:FamiliaService
   ) {
-    this.titulo = "Pruebas de Componente";
+    this.titulo = "Registro de familias";
   }
 
   ngOnInit() {
@@ -27,7 +27,16 @@ export class FamiliaListComponent implements OnInit {
 
 /** */
   verFamilias(){
-    this._familiaService.getFamilias();
+    this._familiaService.getFamilias().subscribe(
+      result=>{
+        // cuando trae de la base de datos trae con su indice
+        this.familias = result.familias;
+        
+      },
+      error=>{
+        console.log("error en la peticion");
+      }
+    );
   }
   /**/
 }

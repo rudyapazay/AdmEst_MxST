@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FamiliaListComponent } from './familia-list/familia-list.component';
 
 const routes: Routes = [
-  {path:'familia', component:FamiliaListComponent}
+  {path:'familias', component:FamiliaListComponent}
 ];
 
 @NgModule({
