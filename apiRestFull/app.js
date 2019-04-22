@@ -8,7 +8,7 @@ var app = express();
 const familia_router = require('./routers/familia.router');
 const estudiante_router = require('./routers/estudiante.route');
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 

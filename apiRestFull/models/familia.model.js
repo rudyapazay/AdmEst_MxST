@@ -19,13 +19,15 @@ var FamiliaSchema = Schema({
         dni:String,
         nombre:String,
         apellidos:String,
-        celular:String
+        celular:String,
+        direccion:String
     },
     apoderado:{
         dni:String,
         nombre:String,
-        apellido:String,
+        apellidos:String,
         celular:String,
+        direccion:String,
         relacion:String
     },
     direccion:String,

@@ -1,4 +1,4 @@
-export class FamliaMdl {
+export class FamiliaMdl {
     constructor(
         public codigo:String,
         public carpeta:String,
@@ -14,13 +14,15 @@ export class FamliaMdl {
             dni:String,
             nombre:String,
             apellidos:String,
-            celular:String
+            celular:String,
+            direccion:String
         },
         public apoderado:{
             dni:String,
             nombre:String,
-            apellido:String,
+            apellidos:String,
             celular:String,
+            direccion:string,
             relacion:String
         },
         public direccion:String,

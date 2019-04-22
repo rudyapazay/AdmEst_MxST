@@ -41,7 +41,8 @@ function saveFamilia(req,res){
     var familia = new FamiliaMdl();
     var params = req.body;
     // asignando valores a la carga
-    
+    //console.log(req.body);
+
     familia.carpeta = params.carpeta.toUpperCase();
     familia.direccion = params.direccion; 
     familia.estado = params.estado;

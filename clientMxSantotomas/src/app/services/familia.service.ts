@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient  } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { Observable, observable} from 'rxjs';
+import { GLOBAL } from './global';
 
-//import 'rxjs/add/operator/map';
-//import { Observable } from 'rxjs/Observable';
+
+import {FamiliaMdl} from '../models/famlia-mdl';
 
 @Injectable({
   providedIn: 'root'
@@ -14,23 +15,31 @@ import { Observable } from 'rxjs';
 
 
 export class FamiliaService {
-  
+  public url:string;
+
   constructor(
     //cabecera http
     private _http:HttpClient
   ) { 
-    
+    this.url = GLOBAL.url;
   }
 
   ///mostrar familias, 
   // nota: El parse a JSON es automatico
-  getFamilias(familiaId=null):Observable<any>{
-    return this._http.get("http://localhost:3700/api/familias");
+  getFamilias():Observable<any>{
+    return this._http.get(this.url+"familias");
   
   }
   
-  // guardar familia 
-
+  // agregando una nueva familia
+  addFamilia(familia:any):Observable<any>{
+    let json = JSON.stringify(familia);
+    let params = json;
+ 
+    //Se esta usando apliacion json
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this._http.post(this.url+'familia',params,{headers:headers});
+  }
 
 
   

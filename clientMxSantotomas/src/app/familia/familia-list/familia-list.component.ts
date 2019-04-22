@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FamliaMdl } from 'src/app/models/famlia-mdl';
+import { FamiliaMdl } from 'src/app/models/famlia-mdl';
 import { FamiliaService } from 'src/app/services/familia.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class FamiliaListComponent implements OnInit {
   public titulo:String;
   public title:String;
   //clase inicial de la familia
-  public familias:FamliaMdl;
+  public familias:FamiliaMdl;
   
   constructor(
     private _familiaService:FamiliaService
