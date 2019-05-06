@@ -11,10 +11,17 @@
       <td> {{familia.codigo}} </td>
       <td> {{familia.carpeta}} </td>
       <td> {{familia.direccion}} </td>
+      
       <td *ngIf="familia.padre" > {{familia.padre.nombre}} {{familia.padre.apellidos}} </td>
       <td *ngIf="familia.padre" > {{familia.padre.celular}} </td>
+      <td *ngIf="!familia.padre"> Sin Registro </td>
+      <td *ngIf="!familia.padre">  -- </td>
+      
       <td *ngIf="familia.madre" > {{familia.madre.nombre}} {{familia.madre.apellidos}} </td>
-      <td *ngIf="familia.padre" > {{familia.madre.celular}} </td>
+      <td *ngIf="familia.madre" > {{familia.madre.celular}} </td>
+      <td *ngIf="!familia.madre"> Sin Registro </td>
+      <td *ngIf="!familia.madre"> --</td>
+
     </tr>
   </tbody>
 </table>

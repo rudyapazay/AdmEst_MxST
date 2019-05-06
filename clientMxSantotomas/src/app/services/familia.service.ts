@@ -25,7 +25,7 @@ export class FamiliaService {
   }
 
   ///mostrar familias, 
-  // nota: El parse a JSON es automatico
+  // nota: El parseo a JSON es automatico
   getFamilias():Observable<any>{
     return this._http.get(this.url+"familias");
   
@@ -38,9 +38,44 @@ export class FamiliaService {
  
     //Se esta usando apliacion json
     let headers = new HttpHeaders().set('Content-Type','application/json');
+    
     return this._http.post(this.url+'familia',params,{headers:headers});
   }
 
+  // sacar una familia
+  getFamilia(id):Observable<any>{
+    return this._http.get(this.url+"familia/"+id);
+  }
+
+  addMadre(id, madre:any){
+    let json = JSON.stringify(madre);
+    let params = json;
+
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+
+    return this._http.put(this.url+'familia/madre/'+id,params,{headers:headers});
+    
+  }
+
+  addPadre(id, padre:any){
+    let json = JSON.stringify(padre);
+    let params = json;
+
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+
+    return this._http.put(this.url+'familia/padre/'+id,params,{headers:headers});
+    
+  }
+
+  addApoderado(id, padre:any){
+    let json = JSON.stringify(padre);
+    let params = json;
+
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+
+    return this._http.put(this.url+'familia/apoderado/'+id,params,{headers:headers});
+    
+  }
 
   
 }

@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { BuildingComponent } from './building/building.component';
 import { FamiliaModule } from './familia/familia.module';
 import { RegistrarModule } from './registrar/registrar.module';
+import { EstudianteModule } from './estudiante/estudiante.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RegistrarModule } from './registrar/registrar.module';
     // modulos propios 
     AppRoutingModule,
     RegistrarModule,
-    FamiliaModule
+    FamiliaModule,
+    EstudianteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

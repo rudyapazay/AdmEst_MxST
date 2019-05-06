@@ -1,5 +1,6 @@
 export class FamiliaMdl {
     constructor(
+        public _id:string,
         public codigo:String,
         public carpeta:String,
     
@@ -8,14 +9,16 @@ export class FamiliaMdl {
             nombre:String,
             apellidos:String,
             celular:String,
-            direccion:String
+            direccion:String,
+            nota:string
         },
         public padre:{
             dni:String,
             nombre:String,
             apellidos:String,
             celular:String,
-            direccion:String
+            direccion:String,
+            nota:string
         },
         public apoderado:{
             dni:String,
@@ -23,7 +26,8 @@ export class FamiliaMdl {
             apellidos:String,
             celular:String,
             direccion:string,
-            relacion:String
+            relacion:String,
+            nota:string
         },
         public direccion:String,
         public observaciones:String,

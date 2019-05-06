@@ -17,7 +17,8 @@ import { FinalizarComponent } from './finalizar/finalizar.component';
     RegMadreComponent, 
     RegPadreComponent, 
     RegApoderadoComponent, 
-    RegEstudianteComponent, ResumenComponent, FinalizarComponent],
+    RegEstudianteComponent, ResumenComponent, FinalizarComponent
+  ],
   
   imports: [
     CommonModule,
