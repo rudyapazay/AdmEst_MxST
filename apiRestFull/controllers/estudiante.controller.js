@@ -37,6 +37,9 @@ function saveEstudiante(req,res){
     estudiante.matricula = params.matricula;
     estudiante.observaciones = params.observaciones;
 
+    if(estudiante.matricula = 'traslado'){
+        estudiante.traslado_anterior = "true";
+    }
     estudiante.imagen = null;
 
     switch (params.grado) {

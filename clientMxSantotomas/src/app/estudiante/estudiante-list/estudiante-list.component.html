@@ -1,3 +1,16 @@
-<p>
-  estudiante-list works!
-</p>
+<h3 class="title">
+  Estudiantes
+</h3>
+<table class="table is-striped is-fullwidth is-hoverable">
+  <tbody>
+    <tr *ngFor = "let estudiante of estudiantes">
+      <td> {{estudiante.dni}} </td>
+      <td> {{estudiante.apellidos}} </td>
+      <td> {{estudiante.nombre}} </td>
+      
+      <td *ngIf='estudiante.referencia'> tercero - {{estudiante.referencia['tercero'].seccion}} </td>
+      
+
+    </tr>
+  </tbody>
+</table>
