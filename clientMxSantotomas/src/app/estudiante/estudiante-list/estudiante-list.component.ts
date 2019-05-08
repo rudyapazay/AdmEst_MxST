@@ -11,8 +11,10 @@ import { EstudianteRegMdl } from 'src/app/models/estudiante-reg-mdl';
 })
 export class EstudianteListComponent implements OnInit {
 
-  Estudiantes = EstudianteRegMdl;
+  //Estudiantes = EstudianteRegMdl;
   public estudiantes:any;
+  public grado:string;
+
   constructor(
     private _estudianteService:EstudianteService
   ) { }
@@ -23,7 +25,6 @@ export class EstudianteListComponent implements OnInit {
       result=>{
         //console.log(resul
         this.estudiantes = result.estudiantes;
-        console.log(this.estudiantes[6].referencia['tercero'].seccion);
       },
       err=>{
         console.log(err);

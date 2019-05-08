@@ -19,6 +19,23 @@ function getEstudiantes(req,res){
     });
 }
 
+function getEstudiantesByFamilia(req, res){
+    var familia_id =req.params.id;
+    EstudianteMdl.find({familia:familia_id},(err,estudiantes)=>{
+        if(err){
+            res.status(500).send("Error en la perticion");
+        }
+        else{
+            if(!estudiantes){
+                res.status(404).send('No existe estudiantes en la familia');
+            }
+            else{
+                res.status(200).send({estudiantes});
+            }
+        }
+    });
+}
+
 function saveEstudiante(req,res){
     var estudiante = new EstudianteMdl();
     var params = req.body;
@@ -26,7 +43,8 @@ function saveEstudiante(req,res){
     estudiante.dni = params.dni;
     estudiante.apellidos = params.apellidos;
     estudiante.nombre = params.nombre;
-
+    estudiante.sexo = params.sexo;
+    //id de la familia
     estudiante.familia = params.familia;
 
     estudiante.traslado_anterior = params.traslado_anterior;
@@ -36,6 +54,9 @@ function saveEstudiante(req,res){
     estudiante.estado = params.estado;
     estudiante.matricula = params.matricula;
     estudiante.observaciones = params.observaciones;
+    
+    estudiante.grado_actual = params.grado;
+
 
     if(estudiante.matricula = 'traslado'){
         estudiante.traslado_anterior = "true";
@@ -116,5 +137,6 @@ function getEstudiante(req,res){
 module.exports ={
     getEstudiantes,
     getEstudiante,
-    saveEstudiante
+    saveEstudiante,
+    getEstudiantesByFamilia
 }

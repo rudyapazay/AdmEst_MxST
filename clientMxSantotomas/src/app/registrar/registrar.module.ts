@@ -10,6 +10,8 @@ import { RegEstudianteComponent } from './reg-estudiante/reg-estudiante.componen
 import { FormsModule } from '@angular/forms';
 import { ResumenComponent } from './resumen/resumen.component';
 import { FinalizarComponent } from './finalizar/finalizar.component';
+import { FamiliaService } from '../services/familia.service';
+import { EstudianteService } from '../services/estudiante.service';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,11 @@ import { FinalizarComponent } from './finalizar/finalizar.component';
     //registrar formsModule en cada submodulo para su produccion
     FormsModule,
     RegistrarRoutingModule
+  ],
+  providers:[
+    FamiliaService,
+    EstudianteService
   ]
+  
 })
 export class RegistrarModule { }

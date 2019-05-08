@@ -5,13 +5,15 @@ import { RegPadreComponent } from './reg-padre/reg-padre.component';
 import { RegMadreComponent } from './reg-madre/reg-madre.component';
 import { RegApoderadoComponent } from './reg-apoderado/reg-apoderado.component';
 import { RegEstudianteComponent } from './reg-estudiante/reg-estudiante.component';
+import { FinalizarComponent } from './finalizar/finalizar.component';
 
 const routes: Routes = [
   {path:'registrar/familia',component:RegFamiliaComponent},
   {path:'registrar/padre/:id',component:RegPadreComponent},
   {path:'registrar/madre/:id',component:RegMadreComponent},
   {path:'registrar/apoderado/:id',component:RegApoderadoComponent},
-  {path:'registrar/estudiante/:id',component:RegEstudianteComponent}
+  {path:'registrar/estudiante/:id',component:RegEstudianteComponent},
+  {path:'registrar/finalizar/:id',component:FinalizarComponent},
 ];
 
 @NgModule({

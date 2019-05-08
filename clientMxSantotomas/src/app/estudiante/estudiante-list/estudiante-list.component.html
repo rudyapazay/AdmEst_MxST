@@ -7,8 +7,13 @@
       <td> {{estudiante.dni}} </td>
       <td> {{estudiante.apellidos}} </td>
       <td> {{estudiante.nombre}} </td>
+      <td> {{estudiante.sexo}} </td>
       
-      <td *ngIf='estudiante.referencia'> tercero - {{estudiante.referencia['tercero'].seccion}} </td>
+      <td *ngIf='estudiante.grado_actual == "primero"'> Primero - {{estudiante.referencia['primero'].seccion}} </td>
+      <td *ngIf='estudiante.grado_actual == "segundo"'> Segundo - {{estudiante.referencia['segundo'].seccion}} </td>
+      <td *ngIf='estudiante.grado_actual == "tercero"'> Tercero - {{estudiante.referencia['tercero'].seccion}} </td>
+      <td *ngIf='estudiante.grado_actual == "cuarto"'> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </td>
+      <td *ngIf='estudiante.grado_actual == "quinto"'> Quinto - {{estudiante.referencia['quinto'].seccion}} </td>
       
 
     </tr>

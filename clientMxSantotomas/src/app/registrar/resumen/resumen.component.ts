@@ -14,6 +14,7 @@ export class ResumenComponent implements OnInit {
   public titulo:String;
   public familia_id:String;
   public familia:FamiliaMdl;
+  
 
   constructor(
     private _route:ActivatedRoute

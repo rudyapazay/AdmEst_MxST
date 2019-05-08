@@ -7,6 +7,7 @@ var EstudianteSchema = Schema({
     dni:String,
     apellidos:String,
     nombre:String,
+    sexo:String,
 
     //Cuando llegue CIST se registrara los estudios de los estudiantes
     referencia:{
@@ -50,8 +51,11 @@ var EstudianteSchema = Schema({
     // Vinculacion con una familia
     familia: {type:Schema.ObjectId, ref:'Familia'},
        
+
     // Bandera para corregir despues mediante terminal
     traslado_anterior:Boolean,
+    //flag para grado actual
+    grado_actual:String,
 
     //Dependiendo del tiempo se puede implementar para digitalizar toda la informacion
     partida_nacimiento:Boolean,

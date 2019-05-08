@@ -1,12 +1,240 @@
-<p>
-  reg-estudiante works!
-</p>
-
+<h2 class="title">
+  {{titulo}}
+ </h2>
+ 
+ 
 <div class="columns">
-    <div class="column is-7">
-      <p>formulario</p>
+    <div class="column is-1">
+
     </div>
-    <div class="column is-5">
-      <h3> Resumen </h3>
-    </div>
+   <div class="column is-6">
+ 
+     <form  #EstudianteForm ="ngForm"   (ngSubmit)="regEstudiante()">
+       
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">DNI: </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" id="dni"  required
+                [(ngModel)] ="estudiante.dni" name="dni" #dni="ngModel" >
+              </div>
+            </div>
+          </div>
+        </div>
+
+       <div class="field is-horizontal">
+         <div class="field-label ">
+           <label class="label">Apellidos: </label>
+         </div>
+         <div class="field-body">
+           <div class="field">
+             <div class="control">
+               <input class="input" type="text" id="apellidos"  required
+               [(ngModel)] ="estudiante.apellidos" name="apellidos" #apellidos="ngModel" >
+             </div>
+           </div>
+         </div>
+       </div>
+ 
+
+       <div class="field is-horizontal">
+         <div class="field-label ">
+           <label class="label"> Nombre(s):</label>
+         </div>
+         <div class="field-body">
+           <div class="field">
+             <div class="control">
+               <input class="input" type="text" id="nombre" required
+               [(ngModel)]="estudiante.nombre" name="nombre" #nombre="ngModel">
+             </div>
+           </div>
+         </div>
+       </div>
+       
+       <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Sexo: </label>
+           </div>
+           <div class="field-body">
+             <div class="field">
+               <div class="control">
+                 <label class="radio">
+                   <input type="radio" [(ngModel)]="estudiante.sexo" name="sexo" 
+                   #sexo ="ngModel" value="masculino" >  
+                   Masculino
+                 </label>
+                 <label class="radio">
+                   <input type="radio" [(ngModel)]="estudiante.sexo" name="sexo" 
+                    #sexo ="ngModel" value="femenino"> 
+                   Femenino
+                 </label>
+               </div>
+             </div>
+           </div>
+         </div>
+        
+
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Grado</label>
+           </div>
+           <div class="field-body">
+             <div class="field">
+               <div class="control">
+                 <label class="radio">
+                   <input type="radio" [(ngModel)]="estudiante.grado" name="grado" 
+                   #grado="ngModel" value="primero" >  
+                   1ro
+                 </label>
+                 <label class="radio">
+                   <input type="radio" [(ngModel)]="estudiante.grado" name="grado" 
+                   #grado="ngModel" value="segundo" >  
+                   2do
+                 </label>
+                 <label class="radio">
+                   <input type="radio" [(ngModel)]="estudiante.grado" name="grado" 
+                   #grado="ngModel" value="tercero" >  
+                   3ro
+                 </label>
+                 <label class="radio">
+                   <input type="radio" [(ngModel)]="estudiante.grado" name="grado" 
+                   #grado="ngModel" value="cuarto" >  
+                   4to
+                 </label>
+                 <label class="radio">
+                   <input type="radio" [(ngModel)]="estudiante.grado" name="grado" 
+                   #grado="ngModel" value="quinto" >  
+                   5to
+                 </label>
+               </div>
+             </div>
+           </div>
+        </div>
+        
+        
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Seccion</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <label class="radio">
+                    <input type="radio" [(ngModel)]="estudiante.seccion" name="seccion" 
+                    #seccion="ngModel" value="A" >  
+                    A
+                  </label>
+                  <label class="radio">
+                    <input type="radio" [(ngModel)]="estudiante.seccion" name="seccion" 
+                    #seccion="ngModel" value="B" >  
+                    B
+                  </label>
+                  <label class="radio">
+                    <input type="radio" [(ngModel)]="estudiante.seccion" name="seccion" 
+                    #seccion="ngModel" value="C" >  
+                    C
+                  </label>
+                  <label class="radio">
+                    <input type="radio" [(ngModel)]="estudiante.seccion" name="seccion" 
+                    #seccion="ngModel" value="D" >  
+                    D
+                  </label>
+                  <label class="radio">
+                    <input type="radio" [(ngModel)]="estudiante.seccion" name="seccion" 
+                    #seccion="ngModel" value="E" >  
+                    E
+                  </label>
+                  <label class="radio">
+                    <input type="radio" [(ngModel)]="estudiante.seccion" name="seccion" 
+                    #seccion="ngModel" value="F" >  
+                    F
+                  </label>
+                  <label class="radio">
+                    <input type="radio" [(ngModel)]="estudiante.seccion" name="seccion" 
+                    #seccion="ngModel" value="G" >  
+                    G
+                  </label>
+                  <label class="radio">
+                    <input type="radio" [(ngModel)]="estudiante.seccion" name="seccion" 
+                    #seccion="ngModel" value="H" >  
+                    H
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+         <div class="field is-horizontal">
+           <div class="field-label ">
+             <label class="label">Matricula</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <label class="radio">
+                    <input type="radio" [(ngModel)]="estudiante.matricula" name="matricula" 
+                    #matricula="ngModel" value="ratificado" >  
+                    Ratificado
+                  </label>
+                  <label class="radio">
+                    <input type="radio" [(ngModel)]="estudiante.matricula" name="matricula" #estado="ngModel" value="traslado"> 
+                    Traslado
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+       
+     
+       <div class="field is-horizontal">
+         <div class="field-label ">
+           <label class="label"> Registrar(+) </label>
+         </div>
+         <div class="field-body">
+           <div class="field">
+             <div class="control">
+              <label class="radio">
+                <input type="radio" [(ngModel)]="ruta_registro" name="ruta_registro" 
+                  value="finalizar"> 
+                Finalizar
+              </label>
+              <label class="radio">
+                <input type="radio" [(ngModel)]="ruta_registro" name="ruta_registro" 
+                value="estudiante" >  
+                Estudiante
+              </label>
+             </div>
+           </div>
+         </div>
+       </div>
+       
+       <!-- Boton de registrar-->
+       <div class="field is-horizontal">
+         <div class="field-label">
+           <!-- Left empty for spacing -->
+         </div>
+         <div class="field-body">
+           <div class="field">
+             <div class="control">
+                 <button class="button is-primary" type="submit"   >
+                   >> Continuar
+                 </button>
+                 
+             </div>
+           </div>
+         </div>
+       </div>
+      
+       
+     </form>
+   </div>
+
+
+  <div class="column is-5">
+    <app-resumen> </app-resumen>
   </div>
+</div>
