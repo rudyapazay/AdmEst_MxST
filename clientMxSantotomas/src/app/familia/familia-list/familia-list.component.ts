@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FamiliaMdl } from 'src/app/models/famlia-mdl';
 import { FamiliaService } from 'src/app/services/familia.service';
+import { familiasDemo } from 'src/app/models/familia_demo';
 
 @Component({
   selector: 'app-familia-list',
@@ -11,14 +12,14 @@ import { FamiliaService } from 'src/app/services/familia.service';
 export class FamiliaListComponent implements OnInit {
 
   public titulo:String;
-  public title:String;
-  //clase inicial de la familia
+  public familia_buscar:string;
   public familias:FamiliaMdl;
-  
+
   constructor(
     private _familiaService:FamiliaService
   ) {
     this.titulo = "Registro de familias";
+    this.familia_buscar = "";
   }
 
   ngOnInit() {
@@ -39,4 +40,14 @@ export class FamiliaListComponent implements OnInit {
     );
   }
   /**/
+
+  buscarFamilia(){
+    if(this.familia_buscar.length < 2 ){
+      console.log("falta informacion");
+    }
+    else{
+      console.log("realizar consulta al servidor");
+    }
+    
+  }
 }

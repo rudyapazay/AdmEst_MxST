@@ -3,13 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { FamiliaRoutingModule } from './familia-routing.module';
 import { FamiliaListComponent } from './familia-list/familia-list.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [ FamiliaListComponent],
+  declarations: [ 
+    FamiliaListComponent
+  ],
   imports: [
     CommonModule,
-    FamiliaRoutingModule
+    FamiliaRoutingModule,
+    FormsModule
   ]
 })
 export class FamiliaModule { }

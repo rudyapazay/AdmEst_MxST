@@ -33,6 +33,16 @@ var FamiliaSchema = Schema({
         relacion:String,
         nota:String
     },
+    //documentos que se tiene de los padres
+    documentos:{
+        cdnipadre:Boolean,
+        cdnimadre:Boolean,
+        cdniapoderado:Boolean,
+        djurada:Boolean
+    },
+    
+    faena:String,
+
     direccion:String,
     observaciones:String,
     estado:String

@@ -3,7 +3,7 @@
 var FamiliaMdl =  require('../models/familia.model');
  
 function getFamilias(req,res){
-    FamiliaMdl.find({},(err,familias)=>{
+    FamiliaMdl.find({}).sort({carpeta:+1}).exec((err,familias)=>{
         if(err){
             res.status(500).send({message:'error en la peticion'});
         }
@@ -148,8 +148,6 @@ function saveFamilia(req,res){
         });
     });
 
-        
-    
 }
 
 
@@ -276,6 +274,86 @@ function saveApoderado(req,res){
     }); 
 }
 
+function saveFamiliaDoc(req,res){
+    var familiaId = req.params.id;
+    var familiaDoc = req.body;
+    FamiliaMdl.findOne({_id:familiaId},(err,familia)=>{
+        if(err){
+            res.status(500).send('Error en la peticion');
+        }
+        else{
+            if(!familia){
+                res.status(404).send('La familia no existe');
+            }
+            else{
+                familia.documentos.cdnipadre = familiaDoc.cdnipadre;
+                familia.documentos.cdnimadre =familiaDoc.cdnimadre;
+                familia.documentos.cdniapoderado = familiaDoc.cdniapoderado;
+                familia.documentos.djurada = familiaDoc.djurada;
+                
+                FamiliaMdl.findByIdAndUpdate(familiaId,familia,{new:true},(err,familiaUpdate)=>{
+                    if(err){
+                        res.status(500).send('Error en la actualizacion');
+                    }
+                    else{
+                        if(!familiaUpdate){
+                            res.status(404).send('Familia no actulizada');
+                        }
+                        else{
+                            res.status(200).send(familiaUpdate);
+                        }
+                    }
+
+                });
+            }
+        }
+    });
+}
+
+// actualizacion de datos generales de familia
+function updateFamilia(req,res){
+    var familiaId = req.params.id;
+    var familiaUpdate = req.body;
+    
+    FamiliaMdl.findOne({_id:familiaId},(err,familia)=>{
+        if(err){
+            res.status(500).send('Error en la peticion');
+        }
+        else{
+            if(!familia){
+                res.status(404).send('La familia no existe');
+            }
+            else{
+                
+                familia.direccion = familiaUpdate.direccion;
+                familia.estado = familiaUpdate.estado;
+                familia.observaciones = familiaUpdate.observaciones;
+
+                FamiliaMdl.findByIdAndUpdate(familiaId,familia,{new:true},(err,familiaUpdate)=>{
+                    if(err){
+                        res.status(500).send('Error en la actualizacion');
+                    }
+                    else{
+                        if(!familiaUpdate){
+                            res.status(404).send('Familia no actulizada');
+                        }
+                        else{
+                            res.status(200).send(familiaUpdate);
+                        }
+                    }
+
+                });
+            }
+        }
+    });
+    
+}
+// eliminacion de una familia
+// se elimina familia, se elimina estudiantes
+function deleteFamilia(req,res){
+
+}
+
 
 module.exports={
     getFamilias,
@@ -283,5 +361,8 @@ module.exports={
     getFamilia,
     savePadre,
     saveMadre,
-    saveApoderado
+    saveApoderado,
+    saveFamiliaDoc,
+    updateFamilia,
+    deleteFamilia
 }

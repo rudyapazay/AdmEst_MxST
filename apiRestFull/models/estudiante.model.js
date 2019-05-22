@@ -9,61 +9,73 @@ var EstudianteSchema = Schema({
     nombre:String,
     sexo:String,
 
-    //Cuando llegue CIST se registrara los estudios de los estudiantes
+    //Referencias para los estudiantes
     referencia:{
         primero:{
             year:String,
             seccion:String,
+            puntos:String,
+            promedio:String,
             colegio:{type:Schema.ObjectId,ref:'IEducativa'},
-            certificado:String
+            certificado:Boolean
         },
         segundo:{
             year:String,
             seccion:String,
+            puntos:String,
+            promedio:String,
             colegio:{type:Schema.ObjectId,ref:'IEducativa'},
-            certificado:String
+            certificado:Boolean
         },
         tercero:{
             year:String,
             seccion:String,
+            puntos:String,
+            promedio:String,
             colegio:{type:Schema.ObjectId,ref:'IEducativa'},
-            certificado:String
+            certificado:Boolean
         },
         cuarto:{
             year:String,
             seccion:String,
+            puntos:String,
+            promedio:String,
             colegio:{type:Schema.ObjectId,ref:'IEducativa'},
-            certificado:String
+            certificado:Boolean
         },
         quinto:{
             year:String,
             seccion:String,
+            puntos:String,
+            promedio:String,
             colegio:{type:Schema.ObjectId,ref:'IEducativa'},
-            certificado:String
+            certificado:Boolean
         }
     },
+
     primaria:{
         promocion:String,
         escuela:{type:Schema.ObjectId,ref:'IEducativa'},
-        certificado:String
+        certificado:Boolean
     },
 
     // Vinculacion con una familia
     familia: {type:Schema.ObjectId, ref:'Familia'},
        
-
-    // Bandera para corregir despues mediante terminal
-    traslado_anterior:Boolean,
     //flag para grado actual
     grado_actual:String,
 
     //Dependiendo del tiempo se puede implementar para digitalizar toda la informacion
-    partida_nacimiento:Boolean,
-    ficha_matricula:Boolean,
-    sis:Boolean,
-    imagen:String,
-    estado: String, //  Activo || Retirado || trasladado || Concluido
-    matricula:String, //Situacion al 2019 Ratificado || traslado
+    documentos:{
+        copia_dni:Boolean,
+        partida_nacimiento:Boolean,
+        ficha_matricula:Boolean,
+        ficha_seguro:Boolean
+    },
+
+    seguro:String,  //sis || essalud
+    estado: String,  // Activo|| Retirado || trasladado || Concluido
+    matricula:String,  //Situacion al 2019 Ratificado || nuevo || Sin ratificar
     observaciones:String
 });
 
