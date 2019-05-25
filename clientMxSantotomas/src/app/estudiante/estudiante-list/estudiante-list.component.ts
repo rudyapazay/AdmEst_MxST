@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { EstudianteService } from 'src/app/services/estudiante.service';
-import { EstudianteRegMdl } from 'src/app/models/estudiante-reg-mdl';
 
 @Component({
   selector: 'app-estudiante-list',

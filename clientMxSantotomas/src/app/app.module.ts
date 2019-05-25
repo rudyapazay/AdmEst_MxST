@@ -12,10 +12,11 @@ import { FamiliaModule } from './familia/familia.module';
 import { RegistrarModule } from './registrar/registrar.module';
 import { EstudianteModule } from './estudiante/estudiante.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    BuildingComponent,
+    BuildingComponent
   ],
   imports: [
     BrowserModule,

@@ -3,14 +3,14 @@ export class FamiliaMdl {
         public _id:string,
         public codigo:String,
         public carpeta:String,
-    
+        
         public madre:{
             dni:String,
             nombre:String,
             apellidos:String,
             celular:String,
             direccion:String,
-            nota:string
+            nota:String
         },
         public padre:{
             dni:String,
@@ -18,17 +18,27 @@ export class FamiliaMdl {
             apellidos:String,
             celular:String,
             direccion:String,
-            nota:string
+            nota:String
         },
         public apoderado:{
             dni:String,
             nombre:String,
             apellidos:String,
             celular:String,
-            direccion:string,
+            direccion:String,
             relacion:String,
-            nota:string
+            nota:String
         },
+        //documentos que se tiene de los padres
+        public documentos:{
+            cdnipadre:Boolean,
+            cdnimadre:Boolean,
+            cdniapoderado:Boolean,
+            djurada:Boolean
+        },
+        
+        public faena:String,
+
         public direccion:String,
         public observaciones:String,
         public estado:String

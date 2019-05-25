@@ -73,10 +73,13 @@ var EstudianteSchema = Schema({
         ficha_seguro:Boolean
     },
 
+    IQCode:String,
+    fecha_nacimiento:String,
     seguro:String,  //sis || essalud
     estado: String,  // Activo|| Retirado || trasladado || Concluido
     matricula:String,  //Situacion al 2019 Ratificado || nuevo || Sin ratificar
     observaciones:String
+
 });
 
 module.exports = mongoose.model('Estudiante', EstudianteSchema);
