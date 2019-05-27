@@ -3,7 +3,7 @@
 var FamiliaMdl =  require('../models/familia.model');
  
 function getFamilias(req,res){
-    FamiliaMdl.find({}).sort({carpeta:+1}).exec((err,familias)=>{
+    FamiliaMdl.find({estado:'Activo'}).sort({carpeta:+1}).exec((err,familias)=>{
         if(err){
             res.status(500).send({message:'error en la peticion'});
         }
@@ -30,7 +30,7 @@ function getFamilia(req,res){
                 res.status(404).send('La familia no existe');
             }
             else{
-                //console.log(familia);
+                
                 //investigar como hacer populate
                 res.status(200).send({familia});
             }

@@ -21,11 +21,11 @@ export class ResumenComponent implements OnInit {
 
   ) { 
     //inicializacion del modelo
-    this.familia = new FamiliaMdl("","","",
+    /*this.familia = new FamiliaMdl("","","",
       {dni:"", nombre:"", apellidos:"", celular:"",direccion:"",nota:""},
       {dni:"", nombre:"", apellidos:"", celular:"",direccion:"",nota:""},
       {dni:"", nombre:"", apellidos:"", celular:"",direccion:"",relacion:"",nota:""},
-      "","","");
+      "","","");*/
   }
 
   ngOnInit() {

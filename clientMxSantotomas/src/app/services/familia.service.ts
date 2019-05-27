@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
-import { Observable, observable} from 'rxjs';
+import { Observable} from 'rxjs';
 import { GLOBAL } from './global';
-
-
-import {FamiliaMdl} from '../models/famlia-mdl';
 
 @Injectable({
   providedIn: 'root'
@@ -76,6 +73,5 @@ export class FamiliaService {
     return this._http.put(this.url+'familia/apoderado/'+id,params,{headers:headers});
     
   }
-
   
 }

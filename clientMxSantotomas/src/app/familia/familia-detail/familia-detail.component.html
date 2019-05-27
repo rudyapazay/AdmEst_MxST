@@ -1,0 +1,33 @@
+<p>
+  familia-detail works!
+</p>
+{{familia._id}}
+<p *ngIf = "familia.apoderado">{{familia.apoderado.nombre}}</p>
+<div class="columns">
+  <div *ngIf ="familia.padre"   class="column">
+    <div class="card">
+      <header class="card-header">
+        <div class="card-header-title">
+          Madre
+        </div>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          {{familia.padre.nombre}} 
+          <div class="card">
+            <div class="card-content">
+              {{familia.padre.apellidos}}
+            </div>
+          </div> 
+        </div>
+      </div>
+      <footer class="card-footer">
+          <a href="#" class="card-footer-item">Edit</a>
+          <a href="#" class="card-footer-item">Delete</a>
+      </footer>
+    </div>
+  </div>
+
+  <div *ngIf ="familia.madre"   class="column">auto</div>
+  <div *ngIf="familia.apoderado"class="column">auto</div>
+</div>

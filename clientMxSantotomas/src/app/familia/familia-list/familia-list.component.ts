@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FamiliaMdl } from 'src/app/models/famlia-mdl';
 import { FamiliaService } from 'src/app/services/familia.service';
-import { familiasDemo } from 'src/app/models/familia_demo';
+import { BuscarService } from 'src/app/services/buscar.service';
+
 
 @Component({
   selector: 'app-familia-list',
   templateUrl: './familia-list.component.html',
   styleUrls: ['./familia-list.component.css'],
-  providers:[FamiliaService]
+  providers:[FamiliaService,BuscarService]
 })
 export class FamiliaListComponent implements OnInit {
 
@@ -16,7 +17,8 @@ export class FamiliaListComponent implements OnInit {
   public familias:FamiliaMdl;
 
   constructor(
-    private _familiaService:FamiliaService
+    private _familiaService:FamiliaService,
+    private _buscarService: BuscarService
   ) {
     this.titulo = "Registro de familias";
     this.familia_buscar = "";
@@ -26,7 +28,7 @@ export class FamiliaListComponent implements OnInit {
     this.verFamilias();
   }
 
-/** */
+  // mostrado todas las familias del colegio
   verFamilias(){
     this._familiaService.getFamilias().subscribe(
       result=>{
@@ -39,14 +41,26 @@ export class FamiliaListComponent implements OnInit {
       }
     );
   }
-  /**/
 
-  buscarFamilia(){
-    if(this.familia_buscar.length < 2 ){
-      console.log("falta informacion");
+  //busqueda sensitiva
+  buscarFamilia(key){
+    //console.log(key.key);
+    if(this.familia_buscar.length > 2 ){
+      this._buscarService.buscarfamilia(this.familia_buscar).subscribe(
+        result =>{
+          this.familias = result.familias;
+        }
+      );
     }
-    else{
-      console.log("realizar consulta al servidor");
+    if(key.key == 'Backspace' && this.familia_buscar.length <=2 && this.familia_buscar.length == 0){
+      this._familiaService.getFamilias().subscribe(
+        result=>{
+          this.familias = result.familias;
+        },
+        error=>{
+          console.log("error en la peticion");
+        }
+      );
     }
     
   }

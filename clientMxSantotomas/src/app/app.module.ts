@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
- 
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +22,7 @@ import { EstudianteModule } from './estudiante/estudiante.module';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    AngularFontAwesomeModule,
     // modulos propios 
     AppRoutingModule,
     RegistrarModule,
