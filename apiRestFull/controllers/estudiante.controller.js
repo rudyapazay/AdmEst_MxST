@@ -13,7 +13,14 @@ function getEstudiantes(req,res){
                 res.status(404).send({message:'No existe estudintes'});
             }
             else{
-                res.status(200).send({estudiantes});
+                FamiliaMdl.populate(estudiantes,{path:"familia"},(err,estudiante)=>{
+                    if(err){
+                        res.status(500).send('Error en la peticion');
+                    }
+                    else{
+                        res.status(200).send({estudiantes});
+                    }
+                });
             }
         }
     });
@@ -21,7 +28,7 @@ function getEstudiantes(req,res){
 
 function getEstudiantesByFamilia(req, res){
     var familia_id =req.params.id;
-    EstudianteMdl.find({familia:familia_id},(err,estudiantes)=>{
+    EstudianteMdl.find({familia:familia_id}).sort({grado_actual:+1}).exec((err,estudiantes)=>{
         if(err){
             res.status(500).send("Error en la perticion");
         }

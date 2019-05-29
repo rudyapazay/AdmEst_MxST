@@ -1,0 +1,32 @@
+<div class="card">
+  <header class="card-header"> 
+    <div class="card-header-title">
+      Estudiante(s)
+    </div>
+  </header>
+  <div  class="card-content">
+    <div *ngFor=" let estudiante of estudiantes" class="card">
+      <header class="card-header"> 
+        <div *ngIf="estudiante.sexo == 'masculino'" class="card-header-title"> Hijo</div>
+        <div *ngIf="estudiante.sexo == 'femenino'" class="card-header-title"> Hija</div>
+      </header>
+      <div class="card-content">
+        <ul class="ul">
+          <li> DNI : {{estudiante.dni}} </li>
+          <li> Apellidos: {{estudiante.apellidos}} </li>
+          <li> Nombre(s): {{ estudiante.nombre }} </li>
+          <li *ngIf='estudiante.grado_actual == "primero"'> Primero - {{estudiante.referencia['primero'].seccion}} </li>
+          <li *ngIf='estudiante.grado_actual == "segundo"'> Segundo - {{estudiante.referencia['segundo'].seccion}} </li>
+          <li *ngIf='estudiante.grado_actual == "tercero"'> Tercero - {{estudiante.referencia['tercero'].seccion}} </li>
+          <li *ngIf='estudiante.grado_actual == "cuarto"'> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </li>
+          <li *ngIf='estudiante.grado_actual == "quinto"'> Quinto - {{estudiante.referencia['quinto'].seccion}} </li>
+        </ul>
+      </div>
+      <footer class="card-footer">
+        <a [routerLink] ="['/estudiante/', estudiante._id]" class="card-footer-item"> Detalles </a>
+        <a href="#" class="card-footer-item"> Editar </a>
+        <a href="#" class="card-footer-item"> Eliminar </a>
+      </footer>
+    </div>
+  </div>
+</div>

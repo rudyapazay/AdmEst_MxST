@@ -10,21 +10,17 @@ mongoose.connect('mongodb://localhost:27017/appAdmEstMxST',{useNewUrlParser: tru
         throw err;
     }
     else{
-        EstudianteMDL.find({}).limit(10).exec((err,estudiantes)=>{
+        EstudianteMDL.find({}).exec((err,estudiantes)=>{
             //console.log(err);
             //console.log(estudiantes._id);
             var i = 0;
             while(estudiantes[i]){
                 var estudiante = estudiantes[i];
-                var id= estudiante._id;
-                //console.log(estudiante);
+
+                //console.log(estudiante.nombre);
+                updateEst(estudiante);
+
                 
-                var code = estudiante._id + estudiante.dni+" "+estudiante.nombre+" "+estudiante.apellidos;
-                
-                qrcode.toDataURL(code,{errorCorrectionLevel:"H"},(err,cod)=>{
-                    console.log(cod);
-                });
-                console.log("sigueiente");
                 i++;
             }
                 
@@ -70,3 +66,13 @@ mongoose.connect('mongodb://localhost:27017/appAdmEstMxST',{useNewUrlParser: tru
     }
 });
 
+function updateEst(estudiante){
+    var code = estudiante._id + estudiante.dni+" "+estudiante.nombre+" "+estudiante.apellidos;
+                
+                qrcode.toDataURL(code,{errorCorrectionLevel:"H"},(err,cod)=>{
+                    estudiante.QRCode =  cod;
+                    EstudianteMDL.findOneAndUpdate({_id:estudiante._id},estudiante,{new:true},(err,estUpdate)=>{
+                        console.log("estudiante actulizado"+ estUpdate.nombre);
+                    });
+                });
+}

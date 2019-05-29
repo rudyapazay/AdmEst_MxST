@@ -13,7 +13,7 @@ import { EstudianteMdl } from 'src/app/models/estudiante-mdl';
 export class EstudianteListComponent implements OnInit {
 
   //Estudiantes = EstudianteRegMdl;
-  public estudiantes:EstudianteMdl;
+  public estudiantes :EstudianteMdl;
   public grado:string;
   public est_buscar:string;
 

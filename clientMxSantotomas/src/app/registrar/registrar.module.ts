@@ -27,10 +27,6 @@ import { EstudianteService } from '../services/estudiante.service';
     //registrar formsModule en cada submodulo para su produccion
     FormsModule,
     RegistrarRoutingModule
-  ],
-  providers:[
-    FamiliaService,
-    EstudianteService
   ]
   
 })

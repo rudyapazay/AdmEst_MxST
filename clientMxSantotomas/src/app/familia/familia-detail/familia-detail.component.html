@@ -1,33 +1,144 @@
-<p>
-  familia-detail works!
-</p>
-{{familia._id}}
-<p *ngIf = "familia.apoderado">{{familia.apoderado.nombre}}</p>
+
+<h2 class="title"> {{ familia.carpeta }}  ::  {{familia.codigo }}  </h2> 
+
 <div class="columns">
-  <div *ngIf ="familia.padre"   class="column">
+  <!--  resumen de la familia-->
+  <div class="column">
+      <div class="card">
+        <header class="card-header">
+          <div class="card-header-title">
+            Resumen
+          </div>
+        </header>
+        <div class="card-content">
+          <!-- Informarcion basica -->
+          <div class="card">
+            <header class="card-header">
+              <div class="card-header-title">
+                Informacion Basica
+              </div>
+            </header>
+            <div class="card-content">
+              <ul class="ul"> 
+                <li> Codigo   : {{familia.codigo }}</li>
+                <li> Carpeta  : {{familia.carpeta }}</li>
+                <li> Direccion : {{familia.direccion }}</li>
+                <li> Estado : {{familia.estado  }}</li>
+                <li> Observaciones :{{familia.observaciones}}</li>
+              </ul>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>      
+            </div>
+          </div>
+          <!-- documentos -->
+          <div  class="card">
+            <header class="card-header">
+              <div class="card-header-title">
+                Documentos
+              </div>
+            </header>
+            <div *ngIf="familia.documentos" class="card-content">
+              <ul>
+                <li *ngIf="familia.padre" > Copia DNI Padre : {{familia.documentos.cdnipadre}} </li>
+                <li *ngIf="familia.madre" > Copia DNI Madre : {{familia.documentos.cdnimadre}} </li>
+                <li *ngIf="familia.apoderador" > Copia DNI  Apoderado: {{familia.documentos.cdnimadre}} </li>
+                <li >Declaracion Jurada : {{familia.documentos.djurada}} /li>
+              </ul>
+            </div>
+            <div *ngIf="!familia.documentos" class="card-content">
+              <p class="danger">No se tiene documentos </p>
+            </div>
+            <div class="card-footer">
+              <a href="#" class="card-footer-item"> Agregar </a>
+            </div>
+          </div>
+          <!-- documentos -->
+        </div>
+      </div>
+  </div>
+
+  <!--  padre, madre apoderador -->
+  <div class="column">
     <div class="card">
-      <header class="card-header">
+      <header class="card-header"> 
         <div class="card-header-title">
-          Madre
+          Reponsables de la familia
         </div>
       </header>
       <div class="card-content">
-        <div class="content">
-          {{familia.padre.nombre}} 
-          <div class="card">
-            <div class="card-content">
-              {{familia.padre.apellidos}}
+        <!-- padre de familia -->
+        <div *ngIf="familia.padre"  class="card">
+          <header class="card-header"> 
+            <div class="card-header-title">
+              Papá 
             </div>
-          </div> 
+          </header>
+          <div class="card-content">
+            <ul class="ul">
+              <li> DNI : {{familia.padre.dni}} </li>
+              <li> Apellidos : {{familia.padre.apellidos}} </li>
+              <li> Nombre(s) : {{familia.padre.nombre}} </li>
+              <li> Celular : {{familia.padre.celular }} </li>
+              <li> Direccion : {{familia.padre.direccion }} </li>
+              <li> Observaciones : {{familia.padre.nota}} </li>
+            </ul>
+          </div>
         </div>
+        <!-- fin de padre -->
+
+        <!-- madre de familia -->
+        <div *ngIf="familia.madre" class="card">
+          <header class="card-header"> 
+            <div class="card-header-title">
+              Mamá 
+            </div>
+          </header>
+          <div class="card-content">
+            <ul class="ul">
+              <li> DNI : {{familia.madre.dni}} </li>
+              <li> Apellidos : {{familia.madre.apellidos}} </li>
+              <li> Nombre(s) : {{familia.madre.nombre}} </li>
+              <li> Celular : {{familia.madre.celular }} </li>
+              <li> Direccion : {{familia.madre.direccion }} </li>
+              <li> Observaciones : {{familia.madre.nota}} </li>
+            </ul>
+          </div>
+        </div>
+        <!-- fin de madre -->
+
+        <!-- padre de apoderado -->
+        <div *ngIf="familia.apoderado" class="card">
+            <header class="card-header"> 
+                <div class="card-header-title">
+                  apoderado 
+                </div>
+              </header>
+              <div class="card-content">
+                <ul class="ul">
+                  <li> DNI : {{familia.apoderado.dni}} </li>
+                  <li> Apellidos : {{familia.apoderado.apellidos}} </li>
+                  <li> Nombre(s) : {{familia.apoderado.nombre}} </li>
+                  <li> Celular : {{familia.apoderado.celular }} </li>
+                  <li> Direccion : {{familia.apoderado.direccion }} </li>
+                  <li> Relacion : {{familia.apoderado.relacion }} </li>
+                  <li> Observaciones : {{familia.apoderdo.nota}} </li>
+                </ul>
+              </div>
+        </div>
+        <!-- fin de apoderado-->
+  
+
       </div>
-      <footer class="card-footer">
-          <a href="#" class="card-footer-item">Edit</a>
-          <a href="#" class="card-footer-item">Delete</a>
-      </footer>
     </div>
   </div>
+  <!--fin de papa y mama-->
+  <!--  estudianates, hijos -->
+  <div class="column">
+    <app-estudiante-by-familia>
 
-  <div *ngIf ="familia.madre"   class="column">auto</div>
-  <div *ngIf="familia.apoderado"class="column">auto</div>
+    </app-estudiante-by-familia>
+  </div>
+  <!-- fin de estudiantes-->
 </div>

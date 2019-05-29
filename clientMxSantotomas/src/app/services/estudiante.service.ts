@@ -26,6 +26,10 @@ export class EstudianteService {
     return this._http.get(this.url+"estudiantes/familia/"+familia_id);
   }
 
+  //traer un solo estudiante por id
+  getEstudiante(estudiante_id:string):Observable<any>{
+    return this._http.get(this.url+"estudiante/"+estudiante_id);
+  }
   //agregar un estudiante
   addEstudiante(estudiante:any):Observable<any>{
     let json = JSON.stringify(estudiante);

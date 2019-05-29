@@ -73,7 +73,8 @@ var EstudianteSchema = Schema({
         ficha_seguro:Boolean
     },
 
-    IQCode:String,
+    QRCode:String,
+    permiso:String,
     fecha_nacimiento:String,
     seguro:String,  //sis || essalud
     estado: String,  // Activo|| Retirado || trasladado || Concluido

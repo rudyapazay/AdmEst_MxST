@@ -7,11 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { FamiliaUpdateComponent } from './familia-update/familia-update.component';
 import { FamiliaDetailComponent } from './familia-detail/familia-detail.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { EstudianteByFamiliaComponent } from './estudiante-by-familia/estudiante-by-familia.component';
 
 
 @NgModule({
   declarations: [ 
-    FamiliaListComponent, FamiliaUpdateComponent, FamiliaDetailComponent
+    FamiliaListComponent, FamiliaUpdateComponent, FamiliaDetailComponent, EstudianteByFamiliaComponent
   ],
   imports: [
     CommonModule,

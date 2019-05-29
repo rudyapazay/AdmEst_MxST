@@ -11,6 +11,8 @@ import { BuildingComponent } from './building/building.component';
 import { FamiliaModule } from './familia/familia.module';
 import { RegistrarModule } from './registrar/registrar.module';
 import { EstudianteModule } from './estudiante/estudiante.module';
+import { FamiliaService } from './services/familia.service';
+import { EstudianteService } from './services/estudiante.service';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { EstudianteModule } from './estudiante/estudiante.module';
     FamiliaModule,
     EstudianteModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [FamiliaService, EstudianteService],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
