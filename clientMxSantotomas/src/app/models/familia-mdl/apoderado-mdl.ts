@@ -1,4 +1,4 @@
-export class Apoderado {
+export class ApoderadoMdl {
     constructor(
         public dni:String,
         public nombre:String,

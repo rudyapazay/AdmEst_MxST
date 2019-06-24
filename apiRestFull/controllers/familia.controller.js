@@ -210,6 +210,7 @@ function saveMadre(req,res){
                 familia.madre.dni =  madreSave.dni;
                 familia.madre.nombre = madreSave.nombre;
                 familia.madre.apellidos = madreSave.apellidos;
+                familia.madre.direccion = madreSave.direccion;
                 familia.madre.celular = madreSave.celular;
                 familia.madre.nota = madreSave.nota; 
 

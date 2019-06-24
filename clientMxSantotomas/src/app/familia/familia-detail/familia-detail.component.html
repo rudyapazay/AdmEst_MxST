@@ -114,6 +114,12 @@
               <li> Observaciones : {{familia.madre.nota}} </li>
             </ul>
           </div>
+          <footer class="card-footer">
+            <a  class="card-footer-item"  
+                [routerLink] =  "['', {outlets: { 'popup':['madre','editar',familia._id] } }]" >
+                <fa name="edit" size='2x'></fa> Editar
+            </a>
+          </footer>
         </div>
         <!-- fin de madre -->
 
@@ -132,9 +138,15 @@
                   <li> Celular : {{familia.apoderado.celular }} </li>
                   <li> Direccion : {{familia.apoderado.direccion }} </li>
                   <li> Relacion : {{familia.apoderado.relacion }} </li>
-                  <li> Observaciones : {{familia.apoderdo.nota}} </li>
+                  <li> Observaciones : {{familia.apoderado.nota}} </li>
                 </ul>
               </div>
+              <footer class="card-footer">
+                <a  class="card-footer-item"  
+                    [routerLink] =  "['', {outlets: { 'popup':['apoderado','editar',familia._id] } }]" >
+                    <fa name="edit" size='2x'></fa> Editar
+                </a>
+              </footer>
         </div>
         <!-- fin de apoderado-->
   

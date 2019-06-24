@@ -1,20 +1,119 @@
-<p>
-  apoderado-update works!
-</p>
+<form #ApoderadoForm ="ngForm"   (ngSubmit)="updateApoderado()">
 
-<div class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Modal title</p>
-      <button class="delete" aria-label="close"></button>
-    </header>
-    <section class="modal-card-body">
-      <!-- Content ... -->
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
-      <button class="button">Cancel</button>
-    </footer>
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title"> Modificar Apoderado</p>
+        <button class="delete" aria-label="close" (click)="closepopup()"></button>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ... -->
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Dni: </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" id="dni"  required
+                [(ngModel)] ="apoderado.dni" name="dni" #dni="ngModel" >
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Apellidos: </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" id="apellidos"  required
+                [(ngModel)] ="apoderado.apellidos" name="apellidos" #apellidos="ngModel" >
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Nombres: </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" id="nombres"  required
+                [(ngModel)] ="apoderado.nombre" name="nombre" #nombre="ngModel" >
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Celular: </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" id="celular"  required
+                [(ngModel)] ="apoderado.celular" name="celular" #celular="ngModel" >
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Direccion: </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" id="direccion"  required
+                [(ngModel)] ="apoderado.direccion" name="direccion" #direccion="ngModel" >
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="field is-horizontal">
+            <div class="field-label ">
+              <label class="label">Relacion: </label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <input class="input" type="text" id="relacion"  required
+                  [(ngModel)] ="apoderado.relacion" name="relacion" #relacion="ngModel" >
+                </div>
+              </div>
+            </div>
+          </div>
+        
+        
+        <div class="field is-horizontal">
+            <div class="field-label ">
+              <label class="label">Nota:</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <textarea class="textarea" id="Nota" required 
+                    [(ngModel)]="apoderado.nota" name="nota" #nota="ngModel">
+                  </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" type="submit">Save changes</button>
+        <button class="button" (click)="closepopup()">Cancel</button>
+      </footer>
+    </div>
   </div>
-</div>
+
+</form>

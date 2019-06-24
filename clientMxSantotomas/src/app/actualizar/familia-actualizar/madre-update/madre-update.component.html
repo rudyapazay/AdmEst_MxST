@@ -1,19 +1,105 @@
-<p>
-  madre-update works!
-</p>
-<div class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Modal title</p>
-      <button class="delete" aria-label="close"></button>
-    </header>
-    <section class="modal-card-body">
-      <!-- Content ... -->
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
-      <button class="button">Cancel</button>
-    </footer>
+<form #MadreForm ="ngForm"   (ngSubmit)="updateMadre()">
+
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Modificar Madre</p>
+        <button class="delete" aria-label="close" (click)="closepopup()"></button>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ... -->
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Dni: </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" id="dni"  required
+                [(ngModel)] ="madre.dni" name="dni" #dni="ngModel" >
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Apellidos: </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" id="apellidos"  required
+                [(ngModel)] ="madre.apellidos" name="apellidos" #apellidos="ngModel" >
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Nombres: </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" id="nombres"  required
+                [(ngModel)] ="madre.nombre" name="nombre" #nombre="ngModel" >
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Celular: </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" id="celular"  required
+                [(ngModel)] ="madre.celular" name="celular" #celular="ngModel" >
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Direccion: </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" id="direccion"  required
+                [(ngModel)] ="madre.direccion" name="direccion" #direccion="ngModel" >
+              </div>
+            </div>
+          </div>
+        </div>
+              
+        <div class="field is-horizontal">
+            <div class="field-label ">
+              <label class="label">Nota:</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <textarea class="textarea" id="Nota" required 
+                    [(ngModel)]="madre.nota" name="nota" #nota="ngModel">
+                  </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" type="submit">Guardar cambios</button>
+        <button class="button">Cancel</button>
+      </footer>
+    </div>
   </div>
-</div>
+
+</form>
