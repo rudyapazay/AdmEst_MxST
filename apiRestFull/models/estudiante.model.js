@@ -67,6 +67,7 @@ var EstudianteSchema = Schema({
 
     //Dependiendo del tiempo se puede implementar para digitalizar toda la informacion
     documentos:{
+        folder:Boolean,
         copia_dni:Boolean,
         partida_nacimiento:Boolean,
         ficha_matricula:Boolean,
@@ -74,7 +75,7 @@ var EstudianteSchema = Schema({
     },
 
     QRCode:String,
-    permiso:String,
+    
     fecha_nacimiento:String,
     seguro:String,  //sis || essalud
     estado: String,  // Activo|| Retirado || trasladado || Concluido

@@ -24,8 +24,9 @@
   <tbody>
     <tr *ngFor = "let estudiante of estudiantes">
       <td> {{estudiante.familia.codigo }}</td>
-      <td> {{estudiante.apellidos}} </td>
-      <td> {{estudiante.nombre}} </td>
+      <td> {{estudiante.dni}} </td>
+      <td> {{estudiante.apellidos}}, {{estudiante.nombre}} </td>
+      
       <td> {{estudiante.sexo}} </td>
       
       <td *ngIf='estudiante.grado_actual == "primero"'> Primero - {{estudiante.referencia['primero'].seccion}} </td>
@@ -34,7 +35,7 @@
       <td *ngIf='estudiante.grado_actual == "cuarto"'> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </td>
       <td *ngIf='estudiante.grado_actual == "quinto"'> Quinto - {{estudiante.referencia['quinto'].seccion}} </td>
       
-      <td> <a [routerLink] =  "['/estudiante/',estudiante._id]" >
+      <td> <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','editar',estudiante._id] } }]" >
         <fa name="edit" size='2x'></fa></a> 
       </td>
       

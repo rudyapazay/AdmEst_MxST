@@ -1,7 +1,7 @@
 <h2 class="title"> Referencia de estudios en secundaria </h2>
 <div class="columns">
   <div *ngIf="estref.primero || estref.segundo || estref.tercero || estref.cuarto || estref.quinto" class="column "> 
-    <div  class="card">
+    <div  class="card card-max-width">
       <header class="card-header">
         <div class="card-header-title"> PRIMERO </div>
       </header>
@@ -9,7 +9,7 @@
       <div *ngIf="estref.primero" class="card-content"> 
         <ul> 
           <li> Seccion: {{estref.primero.seccion}} </li>
-          <li> Año:{{estref.primero.year }} </li>
+          <li> Año: {{estref.primero.year }} </li>
           <li> Puntos: {{estref.primero.puntos }} </li>
           <li> Promedio: {{estref.primero.promedio }} </li>
           <li *ngIf="estref.primero.colegio"> Colegio: {{ estref.primero.colegio.nombre}}</li>
@@ -25,7 +25,7 @@
 
   <!-- segundo de secundaria -->
   <div *ngIf="estref.segundo || estref.tercero || estref.cuarto || estref.quinto" class="column">
-      <div  class="card">
+      <div  class="card card-max-width">
           <header class="card-header">
             <div class="card-header-title"> SEGUNDO </div>
           </header>
@@ -33,7 +33,7 @@
           <div *ngIf="estref.segundo" class="card-content"> 
             <ul> 
               <li> Seccion: {{estref.segundo.seccion}} </li>
-              <li> Año:{{estref.segundo.year }} </li>
+              <li> Año: {{estref.segundo.year }} </li>
               <li> Puntos: {{estref.segundo.puntos }} </li>
               <li> Promedio: {{estref.segundo.promedio }} </li>
               <li *ngIf="estref.segundo.colegio"> Colegio: {{ estref.segundo.colegio.nombre}}</li>
@@ -48,15 +48,15 @@
   </div>
   <!-- tercero de secundaria -->
   <div *ngIf="estref.tercero || estref.cuarto || estref.quinto" class="column">
-      <div  class="card">
-          <header class="card-header">
+      <div  class="card card-max-width">
+          <header class="card-header ">
             <div class="card-header-title"> TERCERO </div>
           </header>
           <div *ngIf="!estref.tercero" class="card-content"> No se tine registro </div>
           <div *ngIf="estref.tercero" class="card-content"> 
             <ul> 
               <li> Seccion: {{estref.tercero.seccion}} </li>
-              <li> Año:{{estref.tercero.year }} </li>
+              <li> Año: {{estref.tercero.year }} </li>
               <li> Puntos: {{estref.tercero.puntos }} </li>
               <li> Promedio: {{estref.tercero.promedio }} </li>
               <li *ngIf="estref.tercero.colegio"> Colegio: {{ estref.terero.colegio.nombre}}</li>
@@ -71,7 +71,7 @@
   </div>
   <!-- Cuarto de secundaria -->
   <div *ngIf="estref.cuarto || estref.quinto" class="column">
-      <div  class="card">
+      <div  class="card card-max-width" >
           <header class="card-header">
             <div class="card-header-title"> CUARTO </div>
           </header>
@@ -79,13 +79,11 @@
           <div *ngIf="estref.cuarto" class="card-content"> 
             <ul> 
               <li> Seccion: {{estref.cuarto.seccion}} </li>
-              <li> Año:{{estref.cuarto.year }} </li>
+              <li> Año: {{estref.cuarto.year }} </li>
               <li> Puntos: {{estref.cuarto.puntos }} </li>
-              <li> Promedio: {{estref.cuarto.colegio }} </li>
-
               
-              <li *ngIf="estref.cuarto.colegio"> Colegio: {{ estref.primero.colegio.nombre}}</li>
-              <li *ngIf="estref.primero.colegio"> Codigo: {{ estref.primero.colegio.codigo}}</li>
+              <li *ngIf="estref.cuarto.colegio"> Colegio: {{ estref.cuarto.colegio.nombre}}</li>
+              <li *ngIf="estref.primero.colegio"> Codigo: {{ estref.cuarto.colegio.codigo}}</li>
             </ul>
           </div>
           
@@ -95,5 +93,27 @@
         </div>
   </div>
   <!-- quinto de secundaria -->
-  <div *ngIf="estref.quinto" class="column"> auto</div>
+  <div *ngIf="estref.quinto" class="column"> 
+    <div  class="card card-max-width" >
+      <header class="card-header">
+        <div class="card-header-title"> QUINTO </div>
+      </header>
+      <div *ngIf="!estref.quinto" class="card-content"> No se tiene registro </div>
+      <div *ngIf="estref.quinto" class="card-content"> 
+        <ul> 
+          <li> Seccion: {{estref.quinto.seccion}} </li>
+          <li> Año: {{estref.quinto.year }} </li>
+          <li> Puntos: {{estref.quinto.puntos }} </li>
+          <li> Promedio: {{estref.quinto.promedio }} </li>
+                  
+          <li *ngIf="estref.quinto.colegio"> Colegio: {{ estref.quinto.colegio.nombre}}</li>
+          <li *ngIf="estref.quinto.colegio"> Codigo: {{ estref.quinto.colegio.codigo}}</li>
+        </ul>
+      </div>
+      
+      <footer class="card-footer">
+        <a href="#" class="card-footer-item">Editar</a>  
+      </footer>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,85 @@
+<form  #familiaForm ="ngForm"   (ngSubmit)="onSubmit()">
+
+
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Actualizar familia</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ... -->
+        <div class="field is-horizontal">
+            <div class="field-label ">
+              <label class="label">Apellidos: </label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <input class="input" type="text" id="carpeta"  required
+                  [(ngModel)] ="familia.carpeta" name="carpeta" #carpeta="ngModel" >
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="field is-horizontal">
+            <div class="field-label ">
+              <label class="label"> Direccion:</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <input class="input" type="text" id="direccion" required
+                  [(ngModel)]="familia.direccion" name="direccion" #direccion="ngModel">
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="field is-horizontal">
+            <div class="field-label ">
+              <label class="label">Estado:</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <label class="radio">
+                    <input type="radio" [(ngModel)]="familia.estado" name="estado" 
+                      #estado="ngModel" value="Activo" >  
+                    Activo
+                  </label>
+                  <label class="radio">
+                    <input type="radio" [(ngModel)]="familia.estado" name="estado" #estado="ngModel" value="Inactivo"> 
+                    Inactivo
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="field is-horizontal">
+            <div class="field-label ">
+              <label class="label">Observacion:</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <textarea class="textarea" id="observaciones" required 
+                    [(ngModel)]="familia.observaciones" name="observaciones" #observaciones="ngModel">
+                  </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" type="submit" > Guardar Cambios </button>
+        <button class="button">Cancel</button>
+      </footer>
+    </div>
+  </div>
+
+</form>

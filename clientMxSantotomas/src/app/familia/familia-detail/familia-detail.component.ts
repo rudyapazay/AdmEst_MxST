@@ -16,7 +16,9 @@ export class FamiliaDetailComponent implements OnInit {
     private _router:Router,
     private _familiaService:FamiliaService,
     private _estudianteService:EstudianteService
-  ){ }
+  ){ 
+    
+  }
 
   ngOnInit() {
     this.getFamlia();

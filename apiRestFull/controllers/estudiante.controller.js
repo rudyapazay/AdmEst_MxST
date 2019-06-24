@@ -4,7 +4,7 @@ var EstudianteMdl = require('../models/estudiante.model');
 var FamiliaMdl =  require('../models/familia.model');
 
 function getEstudiantes(req,res){
-    EstudianteMdl.find({}).sort({apellidos:+1}).exec((err,estudiantes)=>{
+    EstudianteMdl.find({},{QRCode:0}).sort({apellidos:+1}).exec((err,estudiantes)=>{
         if(err){
             res.status(500).send({message:'error en la peticion'});
         }
@@ -26,9 +26,10 @@ function getEstudiantes(req,res){
     });
 }
 
+
 function getEstudiantesByFamilia(req, res){
     var familia_id =req.params.id;
-    EstudianteMdl.find({familia:familia_id}).sort({grado_actual:+1}).exec((err,estudiantes)=>{
+    EstudianteMdl.find({familia:familia_id},{QRCode:0}).sort({grado_actual:+1}).exec((err,estudiantes)=>{
         if(err){
             res.status(500).send("Error en la perticion");
         }
@@ -108,10 +109,11 @@ function saveEstudiante(req,res){
 }
 
 
+//considerar no hacer un populate para estudiantes
 function getEstudiante(req,res){
     var estudianteId =  req.params.id;
 
-    EstudianteMdl.findOne({_id:estudianteId},(err,estudiante)=>{
+    EstudianteMdl.findOne({_id:estudianteId}, {QRCode:0}).exec((err,estudiante)=>{
         if(err){
             res.status(500).send('Error en la peticion');
         }
@@ -136,59 +138,23 @@ function getEstudiante(req,res){
     });
 }
 
-function updateEstudiante(req,res){
-    var estudianteId=req.params.id;
-    var params = req.body;
 
-    EstudianteMdl.findOne({_id:estudianteId},(err,estudiante)=>{
+// actualizacion basica de estudiante
+function updateEstudianteBasica(req,res){
+    var estudianteId = req.params.id;
+    
+    EstudianteMdl.findOne({_id:estudianteId}, (err,estudiante)=>{
         if(err){
-            res.status(500).send('Error en la peticion');
+            res.status(500).send({message:'Error en la base de datos'});
         }else{
             if(!estudiante){
-                res.status(404).send('estudiante no existe');
+                res.status(404).send({message:'Estudiante no existe'});
             }else{
+                estudiante = req.body;
 
-                estudiante.dni = params.dni;
-                estudiante.apellidos = params.apellidos;
-                estudiante.nombre = params.nombre;
-                estudiante.sexo = params.sexo;
-                //id de la familia
-                estudiante.familia = params.familia;
-
-                estudiante.estado = params.estado;
-                estudiante.matricula = params.matricula;
-                estudiante.observaciones = params.observaciones;
-                
-                estudiante.grado_actual = params.grado;
-
-                estudiante.imagen = null;
-
-                switch (params.grado) {
-                    case 'primero':
-                        estudiante.referencia.primero.year = '2019';
-                        estudiante.referencia.primero.seccion = params.seccion;
-                        break;
-                    case 'segundo':
-                        estudiante.referencia.segundo.year = '2019';
-                        estudiante.referencia.segundo.seccion = params.seccion;
-                    break;
-                    case 'tercero':
-                        estudiante.referencia.tercero.year = '2019';
-                        estudiante.referencia.tercero.seccion = params.seccion;
-                    break;
-                    case 'cuarto':
-                        estudiante.referencia.cuarto.year = '2019';
-                        estudiante.referencia.cuarto.seccion = params.seccion;
-                    break;
-                    case 'quinto':
-                        estudiante.referencia.quinto.year = '2019';
-                        estudiante.referencia.quinto.seccion = params.seccion;
-                    break;
-                    
-                }
-                EstudianteMdl.findByIdAndUpdate(estudianteId,estudiante,{new:true},(err,estudianteUpdate)=>{
+                EstudianteMdl.findByIdAndUpdate(estudianteId, estudiante,{new:true},(err,estudianteUpdate)=>{
                     if(err){
-                        res.status(500).send({message:'Error en la actulizacion'});
+                        res.status(500).send({message:'error en la actualizacion'});
                     }else{
                         if(!estudianteUpdate){
                             res.status(404).send({message:'estudiante no existe'});
@@ -197,11 +163,11 @@ function updateEstudiante(req,res){
                         }
                     }
                 });
-
             }
         }
     });
 }
+
 
 
 // guardar y actulizar documentos
@@ -216,6 +182,7 @@ function saveDocumentos(req,res){
             if(!estudiante){
                 res.status(400).send({message:'Estudiante no existe'});
             }else{
+                estudiante.documentos.folder = params.folder;
                 estudiante.documentos.copia_dni = params.copia_dni;
                 estudiante.documentos.partida_nacimiento = params.partida_nacimiento;
                 estudiante.documentos.ficha_matricula = params.ficha_matricula;
@@ -236,6 +203,7 @@ function saveDocumentos(req,res){
         }
     });
 }
+
 function updateReferencia(req,res){
     var estudianteId = req.params.id;
     var grado =req.params.grado;
@@ -311,13 +279,74 @@ function updateReferencia(req,res){
     });
 
 }
+//funcion para sacar estudiantes por grado y seccion
+function getEstudiantesGradoSeccion(req,res){
+    var grado=req.params.grado;
+    var seccion  =  req.params.seccion;
+    let year  = 2019; 
+    var query ;
+    let $search = 'referencia.'+grado+'.year';
+    let $sseccion = 'referencia.'+grado+'.'+seccion;
+    // falta sacar el anio actual
+    switch (grado) {
+        case 'primero':
+            query = EstudianteMdl.find({'referencia.primero.year':year, 
+                'referencia.primero.seccion':seccion},{QRCode:0});
+            break;
+    
+        case 'segundo':
+            query = EstudianteMdl.find({'referencia.segundo.year':year, 
+                'referencia.segundo.seccion':seccion},{QRCode:0});
+            break;
+        case 'tercero':
+            query = EstudianteMdl.find({'referencia.tercero.year':year, 
+                'referencia.tercero.seccion':seccion},{QRCode:0});
+            break;
+        case 'cuarto':
+            query = EstudianteMdl.find({'referencia.cuarto.year':year, 
+                'referencia.cuarto.seccion':seccion},{QRCode:0});
+            break;
+        case 'quinto':
+            query = EstudianteMdl.find({'referencia.quinto.year':year, 
+                'referencia.quinto.seccion':seccion},{QRCode:0});
+            break;
+    }
+    
+    query.exec((err,estudiantes)=>{
+        if(err){
+            res.status(500).send({message:'error en la base de datos'});
+        }
+        else{
+            if(!estudiantes){
+                res.status(404).send({message:'no existe estudiantes del grado y seccion'});
+            }
+            else{
+                res.status(200).send({estudiantes});
+            }
+        }
+    });
+
+}
+
+//funcion para cambiar el grado del estudiante
+function cambiarGrado(req,res){
+    
+}
+//funcion para cambiar seccion de estudiante
+function cambiarSeccion(req,res){
+
+}
+
 
 module.exports ={
     getEstudiantes,
     getEstudiante,
     saveEstudiante,
     getEstudiantesByFamilia,
-    updateEstudiante,
+    //updateEstudiante,
     saveDocumentos,
-    updateReferencia
+    updateReferencia,
+    updateEstudianteBasica,
+    
+    getEstudiantesGradoSeccion
 }

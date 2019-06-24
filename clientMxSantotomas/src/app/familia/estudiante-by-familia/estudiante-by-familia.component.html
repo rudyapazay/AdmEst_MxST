@@ -23,9 +23,15 @@
         </ul>
       </div>
       <footer class="card-footer">
-        <a [routerLink] ="['/estudiante/', estudiante._id]" class="card-footer-item"> Detalles </a>
-        <a href="#" class="card-footer-item"> Editar </a>
-        <a href="#" class="card-footer-item"> Eliminar </a>
+        <a [routerLink] ="['/estudiante/', estudiante._id]" class="card-footer-item"> 
+          <fa name="search"  size="2x"> </fa> Detalles </a>
+        <a  class="card-footer-item"  
+         [routerLink] =  "['', {outlets: { 'popup':['estudiante','editar',estudiante._id] } }]" >
+          <fa name="edit" size='2x'></fa> Editar
+        </a> 
+        <a href="/" class="card-footer-item"> 
+          <fa name="trash" size="2x"></fa> Eliminar 
+        </a>
       </footer>
     </div>
   </div>

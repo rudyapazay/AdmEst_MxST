@@ -14,6 +14,9 @@ import { EstudianteModule } from './estudiante/estudiante.module';
 import { FamiliaService } from './services/familia.service';
 import { EstudianteService } from './services/estudiante.service';
 
+import { FamiliaActualizarModule } from './actualizar/familia-actualizar/familia-actualizar.module';
+import { EstudianteActualizarModule } from './actualizar/estudiante-actualizar/estudiante-actualizar.module';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { EstudianteService } from './services/estudiante.service';
     AppRoutingModule,
     RegistrarModule,
     FamiliaModule,
-    EstudianteModule
+    EstudianteModule,
+    FamiliaActualizarModule,
+    EstudianteActualizarModule
+    
   ],
   providers: [FamiliaService, EstudianteService],
   bootstrap: [AppComponent],

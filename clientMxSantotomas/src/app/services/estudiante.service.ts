@@ -41,5 +41,29 @@ export class EstudianteService {
     return this._http.post(this.url+'estudiante',params,{headers:headers});
   }
 
+  //actualizar un estudiante
+  updateEstudiante(estudiante_id:string,estudiante:any):Observable<any>{
+    let json = JSON.stringify(estudiante);
+    let params = json;
+    //se esta usando aplicacion json
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this._http.put(this.url+'estudiante/update/'+estudiante_id,params,{headers:headers});
+  }
+
+  //mostrar estudiantes por grado y seccion
+  getEstudianteGradoSeccion(grado:string, seccion:string):Observable<any>{
+    return this._http.get(this.url+'estudiantes/'+grado+'/'+seccion);
+  }
+
+  // agregar documentos a estudiantes
+  addDocumentos(id, documentos:any){
+    let json = JSON.stringify(documentos);
+    let params = json;
+
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+
+    return this._http.put(this.url+'estudiante/documentos/'+id,params,{headers:headers});
+    
+  }
 
 }

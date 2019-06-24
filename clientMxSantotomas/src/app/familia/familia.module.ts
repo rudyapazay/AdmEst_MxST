@@ -4,15 +4,17 @@ import { CommonModule } from '@angular/common';
 import { FamiliaRoutingModule } from './familia-routing.module';
 import { FamiliaListComponent } from './familia-list/familia-list.component';
 import { FormsModule } from '@angular/forms';
-import { FamiliaUpdateComponent } from './familia-update/familia-update.component';
-import { FamiliaDetailComponent } from './familia-detail/familia-detail.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
+import { FamiliaDetailComponent } from './familia-detail/familia-detail.component';
 import { EstudianteByFamiliaComponent } from './estudiante-by-familia/estudiante-by-familia.component';
 
 
 @NgModule({
   declarations: [ 
-    FamiliaListComponent, FamiliaUpdateComponent, FamiliaDetailComponent, EstudianteByFamiliaComponent
+    FamiliaListComponent,
+    FamiliaDetailComponent, 
+    EstudianteByFamiliaComponent
   ],
   imports: [
     CommonModule,

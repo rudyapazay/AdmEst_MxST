@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { EstudianteService } from 'src/app/services/estudiante.service';
 import { BuscarService } from 'src/app/services/buscar.service';
 import { EstudianteMdl } from 'src/app/models/estudiante-mdl';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-estudiante-list',
@@ -19,13 +20,23 @@ export class EstudianteListComponent implements OnInit {
 
   constructor(
     private _estudianteService:EstudianteService,
-    private _buscarService:BuscarService
+    private _buscarService:BuscarService,
+    private _router:Router
   ) { 
     this.est_buscar="";
+    this._router.events.subscribe((e:any)=>{
+      //console.log(e.url);
+      if(e.url == '/estudiantes'){
+        this.getEstudiantes();
+      }
+    });
   }
 
   ngOnInit() {
-  
+    this.getEstudiantes();
+  }
+
+  getEstudiantes(){
     this._estudianteService.getEstudiantes().subscribe(
       result=>{
         //console.log(resul

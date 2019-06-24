@@ -57,13 +57,14 @@ export class EstudianteMdl {
     },
 
     // Vinculacion con una familia
-    public  familia: string,
+    public  familia:string,
        
     //flag para grado actual
     public grado_actual:String,
 
     //Dependiendo del tiempo se puede implementar para digitalizar toda la informacion
     public  documentos:{
+        folder:boolean,
         copia_dni:Boolean,
         partida_nacimiento:Boolean,
         ficha_matricula:Boolean,
@@ -73,7 +74,7 @@ export class EstudianteMdl {
     public QRCode:String,
     public fecha_nacimiento:String,
     public seguro:String,  //sis || essalud
-    public estado: String,  // Activo|| Retirado || trasladado || Concluido
+    public estado: String,  // activo|| Retirado || trasladado || egresado
     public matricula:String,  //Situacion al 2019 Ratificado || nuevo || Sin ratificar
     public observaciones:String
     ){}

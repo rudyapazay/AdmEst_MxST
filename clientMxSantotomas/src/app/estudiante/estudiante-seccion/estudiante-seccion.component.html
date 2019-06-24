@@ -1,0 +1,33 @@
+
+<div class="tabs is-centered is-medium">
+  <ul>
+    <li class="is-active"><a>PRIMERO</a></li>
+    <li><a>SEGUNDO</a></li>
+    <li><a>TERCERO</a></li>
+    <li><a>CUARTO</a></li>
+    <li><a>QUINTO</a></li>
+  </ul>
+</div>
+
+<table class="table is-striped is-fullwidth is-hoverable">
+    <tbody>
+      <tr *ngFor = "let estudiante of estudiantes">
+        <td> {{estudiante.familia.codigo }}</td>
+        <td> {{estudiante.dni}} </td>
+        <td> {{estudiante.apellidos}}, {{estudiante.nombre}} </td>
+        
+        <td> {{estudiante.sexo}} </td>
+      
+        <td> <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','editar',estudiante._id] } }]" >
+          <fa name="edit" size='2x'></fa></a> 
+        </td>
+        
+        <td> <a [routerLink] =  "['/estudiante/',estudiante._id]" >
+          <fa name="user" size='2x'></fa></a> 
+        </td>
+        <td> <a [routerLink] =  "['/familia/',estudiante.familia._id]" >
+          <fa name="users" size='2x'></fa></a> 
+        </td>
+      </tr>
+    </tbody>
+  </table>

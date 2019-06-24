@@ -41,7 +41,14 @@ function getEstudiantes(req,res){
                     res.status(500).send({message:'no existe estudiante'});
             }
             else{
-                res.status(200).send({estudiantes});
+                FamiliaMdl.populate(estudiantes,{path:"familia"},(err,estudiantes)=>{
+                    if(err){
+                        res.status(500).send('Error en la peticion');
+                    }
+                    else{
+                        res.status(200).send({estudiantes});
+                    }
+                });
             }
         }
     });

@@ -28,7 +28,10 @@
               </ul>
             </div>
             <div class="card-footer">
-              <a href="#" class="card-footer-item">Edit</a>
+               <a  class="card-footer-item"  
+                    [routerLink] =  "['', {outlets: { 'popup':['familia','editar',familia._id] } }]" >
+                    <fa name="edit" size='2x'></fa> Editar
+                </a> 
               <a href="#" class="card-footer-item">Delete</a>      
             </div>
           </div>
@@ -43,12 +46,12 @@
               <ul>
                 <li *ngIf="familia.padre" > Copia DNI Padre : {{familia.documentos.cdnipadre}} </li>
                 <li *ngIf="familia.madre" > Copia DNI Madre : {{familia.documentos.cdnimadre}} </li>
-                <li *ngIf="familia.apoderador" > Copia DNI  Apoderado: {{familia.documentos.cdnimadre}} </li>
+                <li *ngIf="familia.apoderado" > Copia DNI  Apoderado: {{familia.documentos.cdnimadre}} </li>
                 <li >Declaracion Jurada : {{familia.documentos.djurada}} /li>
               </ul>
             </div>
             <div *ngIf="!familia.documentos" class="card-content">
-              <p class="danger">No se tiene documentos </p>
+              <p class="notification is-danger">No se tiene documentos </p>
             </div>
             <div class="card-footer">
               <a href="#" class="card-footer-item"> Agregar </a>

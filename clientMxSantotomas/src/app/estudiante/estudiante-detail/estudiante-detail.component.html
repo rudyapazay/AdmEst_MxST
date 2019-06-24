@@ -1,9 +1,112 @@
 <h2 class="title"> {{estudiante.nombre }} {{estudiante.apellidos}} </h2>
 
 <div class="columns">
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title"> Familia </p>
+            </header>
+            <div class="card-content">
+                <ul class="list">
+                    <li class="list-item"><a [routerLink]="['/familia/',estudiante.familia._id]" class="buttom is-stripted">
+                        <fa name="users" size='2x'></fa>{{estudiante.familia.codigo}} </a> 
+                    </li>
+                    <li class="list-item"> PAPÁ: {{estudiante.familia.padre.nombre}} {{estudiante.familia.padre.apellidos}}  </li>
+                    <li class="list-item"> MAMÁ: {{estudiante.familia.madre.nombre}} {{estudiante.familia.madre.apellidos}}  </li>
+                </ul>
+            </div>
+        </div>
+            
+    </div>
+    <!-- informacion-->
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title"> Informacion </p>
+            </header>
+            <div class="card-content">
+                <ul class="list">
+                    <li class="list-item">DNI : {{estudiante.dni }} </li>
+                    <li class="list-item">Apellidos : {{estudiante.apellidos }} </li>
+                    <li class="list-item">Nombre : {{estudiante.nombre }} </li>
+                    <li class="list-item">Sexo : {{estudiante.sexo }} </li>
+                </ul>
+            </div>
+            <footer class="card-footer">
+                <a  class="card-footer-item"  
+                    [routerLink] =  "['', {outlets: { 'popup':['estudiante','editar',estudiante._id] } }]" >
+                    <fa name="edit" size='2x'></fa> Editar
+                </a>  
+              </footer>
+        </div>
+    </div>
+    <!-- Documentos -->
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title"> Documentos </p>
+            </header>
+            <div  class="card-content">
+                <ul *ngIf="estudiante.documentos" class="list">
+                    <li class="list-item" *ngIf ="estudiante.documentos.folder" > Folder  
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.folder" > 
+                        <p class="notification is-danger" > No cuenta con folder
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
 
+                    <li class="list-item" *ngIf ="estudiante.documentos.copia_dni" > Copia Dni  
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.copia_dni" > 
+                        <p class="notification is-danger" >falta Copia de Dni
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
+
+                    <li class="list-item" *ngIf ="estudiante.documentos.partida_nacimiento" > Partida de Nacimiento 
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.partida_nacimiento" > 
+                        <p class="notification is-danger" > Falta Partida de Nacimiento
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
+
+                    <li class="list-item" *ngIf ="estudiante.documentos.ficha_matricula" > Ficha de Nacimiento 
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.ficha_matricula" > 
+                        <p class="notification is-danger" > Falta Ficha de Nacimiento
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
+
+                    <li class="list-item" *ngIf ="estudiante.documentos.ficha_seguro" > Ficha de Seguro 
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.ficha_seguro" > 
+                        <p class="notification is-danger" > Falta Ficha de Seguro
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
+                </ul>
+                <p *ngIf="!estudiante.documentos  " class="notification is-danger">
+                    No cuenta con documentos
+                </p>
+            </div>
+            <footer class="card-footer">
+                <a  class="card-footer-item"  
+                    [routerLink] =  "['', {outlets: { 'popup':['estudiante','documentos',estudiante._id] } }]" >
+                    <fa name="edit" size='2x'></fa> Editar
+                </a>  
+            </footer>
+        </div>
+    </div>
+    
 </div>
-<img src={{estudiante.QRCode}} >
 
 
 <!-- Referencia de estudiantes -->

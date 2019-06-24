@@ -1,0 +1,61 @@
+<form  #DocumentosForm ="ngForm"   (ngSubmit)="updateEstudiante()">
+
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">{{estudiante.nombre}} {{estudiante.apellidos}}</p>
+        <button class="delete" aria-label="close" (click)="closepopup()" ></button>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ... -->  
+        <div class="field"> 
+            <div class="control">
+                <label class="checkbox" > Folder:   
+                    <input type="checkbox"  [(ngModel)]='documentos.folder' name="folder" #folder="ngModel" >    
+                </label>
+            </div>
+        </div>
+
+        <div class="field"> 
+          <div class="control">
+              <label class="checkbox" >Copia de DNI:   
+                  <input type="checkbox"  [(ngModel)]='documentos.copia_dni' name="copia_dni" #copia_dni="ngModel" >    
+              </label>
+          </div>
+        </div>
+
+        <div class="field"> 
+          <div class="control">
+              <label class="checkbox" >Partida de Nacimiento:   
+                  <input type="checkbox"  [(ngModel)]='documentos.partida_nacimiento' name="partida_nacimiento" #partida_nacimiento="ngModel" >    
+              </label>
+          </div>
+         </div>
+
+         <div class="field"> 
+            <div class="control">
+                <label class="checkbox" >Ficha de Matricula:   
+                    <input type="checkbox"  [(ngModel)]='documentos.ficha_matricula' 
+                    name="ficha_matricula" #ficha_matricula="ngModel" >    
+                </label>
+            </div>
+           </div>
+
+           <div class="field"> 
+              <div class="control">
+                  <label class="checkbox" >Ficha de Seguro:   
+                      <input type="checkbox"  [(ngModel)]='documentos.ficha_seguro' 
+                      name="ficha_seguro" #ficha_seguro="ngModel" >    
+                  </label>
+              </div>
+             </div>
+        
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-primary" type="submit"> Guardar</button>
+        <button class="button" (click)="closepopup()">Cancel</button>
+      </footer>
+    </div>
+  </div>
+</form>

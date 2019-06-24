@@ -21,7 +21,14 @@ export class EstudianteDetailComponent implements OnInit {
     private _route:ActivatedRoute,
     private _router:Router,
     private _estudianteService:EstudianteService
-  ) { }
+  ) { 
+    this._router.events.subscribe((e:any)=>{
+      //console.log(e.id);
+   
+        this.getEstudiante();
+
+    });
+  }
 
   ngOnInit() {
     this.getEstudiante();

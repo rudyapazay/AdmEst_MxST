@@ -13,13 +13,17 @@ estudiante_router.route('/estudiantes/familia/:id').get(estudiante_ctrl.getEstud
 estudiante_router.route('/estudiante').post(estudiante_ctrl.saveEstudiante);
 estudiante_router.route('/estudiante/:id').get(estudiante_ctrl.getEstudiante);
 
-//actuliazacion de informacion basica de los estudiantes
-estudiante_router.route('/estudiante/:id').put(estudiante_ctrl.updateEstudiante);
+//actuliazacion de informacion de los estudiantes
+//estudiante_router.route('/estudiante/:id').put(estudiante_ctrl.updateEstudiante);
+estudiante_router.route('/estudiante/update/:id').put(estudiante_ctrl.updateEstudianteBasica);
 
 //actuliazacion de los documentos
 estudiante_router.route('/estudiante/documentos/:id').put(estudiante_ctrl.saveDocumentos);
 
 //actulizacion de los grados
 estudiante_router.route('/estudiante/:grado/:id').put(estudiante_ctrl.updateReferencia);
+
+//sacar estudiantes por grado y seccion
+estudiante_router.route('/estudiantes/:grado/:seccion').get(estudiante_ctrl.getEstudiantesGradoSeccion);
 
 module.exports = estudiante_router;
