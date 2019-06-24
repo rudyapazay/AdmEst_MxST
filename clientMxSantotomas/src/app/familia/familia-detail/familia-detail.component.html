@@ -78,7 +78,7 @@
               Papá 
             </div>
           </header>
-          <div class="card-content">
+          <section class="card-content">
             <ul class="ul">
               <li> DNI : {{familia.padre.dni}} </li>
               <li> Apellidos : {{familia.padre.apellidos}} </li>
@@ -87,7 +87,13 @@
               <li> Direccion : {{familia.padre.direccion }} </li>
               <li> Observaciones : {{familia.padre.nota}} </li>
             </ul>
-          </div>
+          </section>
+          <footer class="card-footer">
+            <a  class="card-footer-item"  
+                [routerLink] =  "['', {outlets: { 'popup':['padre','editar',familia._id] } }]" >
+                <fa name="edit" size='2x'></fa> Editar
+            </a>
+          </footer>
         </div>
         <!-- fin de padre -->
 

@@ -2,21 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { FamiliaService } from 'src/app/services/familia.service';
 import { FamiliaMdl } from 'src/app/models/famlia-mdl';
+import { PadreMdl } from 'src/app/models/familia-mdl/padre-mdl';
 
 @Component({
-  selector: 'app-familia-update',
-  templateUrl: './familia-update.component.html',
-  styleUrls: ['./familia-update.component.css']
+  selector: 'app-padre-update',
+  templateUrl: './padre-update.component.html',
+  styleUrls: ['./padre-update.component.css']
 })
-export class FamiliaUpdateComponent implements OnInit {
-  public familia = FamiliaMdl;
-  public id :string = "";
+export class PadreUpdateComponent implements OnInit {
+  public id:string;
+  public familia=FamiliaMdl;
+  public padre:PadreMdl;
 
   constructor(
     private _route:ActivatedRoute,
     private _router:Router,
     private _familiaService:FamiliaService
-  ) { }
+  ) { 
+    this.padre = new PadreMdl('','','','','','');
+  }
 
   ngOnInit() {
     this.getFamilia();
@@ -24,15 +28,20 @@ export class FamiliaUpdateComponent implements OnInit {
 
   getFamilia(){
     this._route.params.forEach((params:Params)=>{
-      this.id= params['id'];
+      this.id = params['id'];
       this._familiaService.getFamilia(this.id).subscribe(
         result=>{
-          this.familia = result.familia;
+          this.familia =result.familia;
+          if(result.familia.padre){
+            this.padre =result.familia.padre;
+          }
+          console.log(this.padre);
         },
-        err=>{
-          console.log("error con el servidor");
+        err =>{
+          console.log('error con el servidor');
         }
       );
+      
     });
   }
 
@@ -40,14 +49,13 @@ export class FamiliaUpdateComponent implements OnInit {
     this._router.navigate([{outlets:{popup:null}}]);
   }
 
-  updateFamilia(){
-    this._familiaService.updateFamilia(this.id,this.familia).subscribe(
+  updatePadre(){
+    this._familiaService.addPadre(this.id, this.padre).subscribe(
       result=>{
-        //console.log(result);
         this._router.navigate([{outlets:{popup:null}}]);
       },
       err=>{
-        console.log("error en el servidor");
+        console.log('Error con el servidor');
       }
     );
   }

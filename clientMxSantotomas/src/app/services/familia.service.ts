@@ -64,7 +64,7 @@ export class FamiliaService {
     
   }
 
-  addApoderado(id, padre:any){
+  addApoderado(id, padre:any):Observable<any>{
     let json = JSON.stringify(padre);
     let params = json;
 
@@ -74,4 +74,11 @@ export class FamiliaService {
     
   }
   
+  updateFamilia(id, familia:any):Observable<any>{
+    let json = JSON.stringify(familia);
+    let params = json;
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this._http.put(this.url+'familia/'+id, params,{headers:headers});
+  }
+
 }

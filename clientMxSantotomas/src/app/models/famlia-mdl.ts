@@ -31,6 +31,7 @@ export class FamiliaMdl {
         },
         //documentos que se tiene de los padres
         public documentos:{
+            folder:Boolean,
             cdnipadre:Boolean,
             cdnimadre:Boolean,
             cdniapoderado:Boolean,

@@ -17,16 +17,18 @@ export class FamiliaDetailComponent implements OnInit {
     private _familiaService:FamiliaService,
     private _estudianteService:EstudianteService
   ){ 
-    
+    this._router.events.subscribe((e:any)=>{
+        this.getFamilia();
+   }); 
   }
 
   ngOnInit() {
-    this.getFamlia();
+    this.getFamilia();
   }
 
 
   //Sacando informacion de la familia
-  getFamlia(){
+  getFamilia(){
     this._route.params.forEach((params:Params)=>{
       let id = params['id'];
       this._familiaService.getFamilia(id).subscribe(

@@ -168,6 +168,7 @@ function savePadre(req,res){
                 familia.padre.dni =  padreSave.dni;
                 familia.padre.nombre = padreSave.nombre;
                 familia.padre.apellidos = padreSave.apellidos;
+                familia.padre.direccion = padreSave.direccion;
                 familia.padre.celular = padreSave.celular;
                 familia.padre.nota = padreSave.nota;
 
@@ -286,6 +287,7 @@ function saveFamiliaDoc(req,res){
                 res.status(404).send('La familia no existe');
             }
             else{
+                familia.documentos.folder = familiaDoc.folder;
                 familia.documentos.cdnipadre = familiaDoc.cdnipadre;
                 familia.documentos.cdnimadre =familiaDoc.cdnimadre;
                 familia.documentos.cdniapoderado = familiaDoc.cdniapoderado;
@@ -325,20 +327,17 @@ function updateFamilia(req,res){
             }
             else{
                 
-                familia.direccion = familiaUpdate.direccion;
-                familia.estado = familiaUpdate.estado;
-                familia.observaciones = familiaUpdate.observaciones;
 
-                FamiliaMdl.findByIdAndUpdate(familiaId,familia,{new:true},(err,familiaUpdate)=>{
+                FamiliaMdl.findByIdAndUpdate(familiaId,familiaUpdate,{new:true},(err,familiaStored)=>{
                     if(err){
                         res.status(500).send('Error en la actualizacion');
                     }
                     else{
-                        if(!familiaUpdate){
+                        if(!familiaStored){
                             res.status(404).send('Familia no actulizada');
                         }
                         else{
-                            res.status(200).send(familiaUpdate);
+                            res.status(200).send(familiaStored);
                         }
                     }
 
