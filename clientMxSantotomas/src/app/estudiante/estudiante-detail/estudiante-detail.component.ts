@@ -15,7 +15,8 @@ export class EstudianteDetailComponent implements OnInit {
   //componente  hijo
   @ViewChild(EstudianteReferenciaComponent) referencia:EstudianteReferenciaComponent;
 
-  public estudiante=EstudianteMdl;
+  public estudiante = EstudianteMdl;
+  public carne :any;
 
   constructor(
     private _route:ActivatedRoute,
@@ -44,6 +45,7 @@ export class EstudianteDetailComponent implements OnInit {
           this.estudiante = result.estudiante;
           //enviando referencia al componente
           this.referencia.estref = result.estudiante.referencia;
+         
           //console.log(result);
         },
         err=>{
@@ -53,4 +55,5 @@ export class EstudianteDetailComponent implements OnInit {
     });
   }
 
+  
 }

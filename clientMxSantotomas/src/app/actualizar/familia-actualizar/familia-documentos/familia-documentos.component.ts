@@ -11,7 +11,7 @@ import { FamiliaDocumentosMdl } from 'src/app/models/familia-mdl/familia-documen
 })
 export class FamiliaDocumentosComponent implements OnInit {
   public id:string;
-  public famila =FamiliaMdl;
+  public familia =FamiliaMdl;
   public documentos: FamiliaDocumentosMdl;
 
   constructor(
@@ -23,6 +23,7 @@ export class FamiliaDocumentosComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getFamilia();
   }
 
   getFamilia(){
@@ -30,7 +31,9 @@ export class FamiliaDocumentosComponent implements OnInit {
       this.id = params['id'];
       this._familiaService.getFamilia(this.id).subscribe(
         result=>{
-          this.famila = result.familia;
+          this.familia = result.familia;
+          
+
           if(result.familia.documentos){
             this.documentos = result.familia.documentos;
           }

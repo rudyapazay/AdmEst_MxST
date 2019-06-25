@@ -138,6 +138,36 @@ function getEstudiante(req,res){
     });
 }
 
+// informacion con QR code del estudiante
+function getEstudianteQRCode(req,res){
+    var estudianteId =  req.params.id;
+
+    EstudianteMdl.findOne({_id:estudianteId}).exec((err,estudiante)=>{
+        if(err){
+            res.status(500).send('Error en la peticion');
+        }
+        else{
+            if(!estudiante){
+                res.status(404).send('estudiante no existe');
+            }
+            else{
+                //console.log(familia);
+                //res.status(200).send({estudiante});
+                //populate para mostrar los padres mas
+                FamiliaMdl.populate(estudiante,{path:"familia"},(err,estudiante)=>{
+                    if(err){
+                        res.status(500).send('Error en la peticion');
+                    }
+                    else{
+                        res.status(200).send({estudiante});
+                    }
+                });
+            }
+        }
+    });
+}
+
+
 
 // actualizacion basica de estudiante
 function updateEstudianteBasica(req,res){
@@ -341,6 +371,7 @@ function cambiarSeccion(req,res){
 module.exports ={
     getEstudiantes,
     getEstudiante,
+    getEstudianteQRCode, //devolver con QRCode
     saveEstudiante,
     getEstudiantesByFamilia,
     //updateEstudiante,

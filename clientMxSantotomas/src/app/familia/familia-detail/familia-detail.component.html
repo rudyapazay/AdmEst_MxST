@@ -15,25 +15,26 @@
           <div class="card">
             <header class="card-header">
               <div class="card-header-title">
-                Informacion Basica
+                Información Basica
               </div>
             </header>
-            <div class="card-content">
-              <ul class="ul"> 
-                <li> Codigo   : {{familia.codigo }}</li>
-                <li> Carpeta  : {{familia.carpeta }}</li>
-                <li> Direccion : {{familia.direccion }}</li>
-                <li> Estado : {{familia.estado  }}</li>
-                <li> Observaciones :{{familia.observaciones}}</li>
+            <section class="card-content">
+              <ul class="list"> 
+                <li class="list-item"> Codigo   : {{familia.codigo }}</li>
+                <li class="list-item"> Carpeta  : {{familia.carpeta }}</li>
+                <li class="list-item"> Direccion : {{familia.direccion }}</li>
+                <li class="list-item"> Estado : {{familia.estado  }}</li>
+                <li class="list-item"> Observaciones :{{familia.observaciones}}</li>
               </ul>
-            </div>
-            <div class="card-footer">
+            </section>
+
+            <footer class="card-footer">
                <a  class="card-footer-item"  
                     [routerLink] =  "['', {outlets: { 'popup':['familia','editar',familia._id] } }]" >
                     <fa name="edit" size='2x'></fa> Editar
                 </a> 
               <a href="#" class="card-footer-item">Delete</a>      
-            </div>
+            </footer>
           </div>
           <!-- documentos -->
           <div  class="card">
@@ -43,18 +44,42 @@
               </div>
             </header>
             <div *ngIf="familia.documentos" class="card-content">
-              <ul>
-                <li *ngIf="familia.padre" > Copia DNI Padre : {{familia.documentos.cdnipadre}} </li>
-                <li *ngIf="familia.madre" > Copia DNI Madre : {{familia.documentos.cdnimadre}} </li>
-                <li *ngIf="familia.apoderado" > Copia DNI  Apoderado: {{familia.documentos.cdnimadre}} </li>
-                <li >Declaracion Jurada : {{familia.documentos.djurada}} /li>
+              <ul class="list">              
+                <li class="list-item" *ngIf="familia.documentos.folder" > Folder <fa name="check"></fa></li>
+                <li class="list-item" *ngIf="!familia.documentos.folder" >
+                  <p class="notification is-danger"> Falta folder <fa name="times"></fa> </p>
+                </li>
+
+                <li class="list-item" *ngIf="familia.documentos.cdnipadre" > Copia DNI Padre <fa name="check"></fa></li>
+                <li class="list-item" *ngIf="!familia.documentos.cdnipadre && familia.padre" > 
+                  <p class="notification is-danger"> Falta copia DNI del Padre <fa name="times"></fa></p>
+                </li>
+                
+                <li class="list-item" *ngIf="familia.documentos.cdnimadre" > Copia DNI Madre <fa name="check"></fa></li>
+                <li class="list-item" *ngIf="!familia.documentos.cdnimadre && familia.madre" > 
+                  <p class="notification is-danger"> Falta copia DNI de la Madre <fa name="times"></fa></p>
+                </li>
+            
+                <li class="list-item" *ngIf="familia.documentos.cdniapoderado" > Copia DNI  Apoderado <fa name="check"></fa></li>
+                <li class="list-item" *ngIf="!familia.documentos.cdniapoderado && familia.apoderado" > 
+                  <p class="notification is-danger"> Falta copia DNI del Apoderado <fa name="times"></fa> </p>
+                </li>
+
+                <li class="list-item" *ngIf="familia.documentos.djurada" >Declaracion Jurada <fa name="check"></fa> </li>
+                <li class="list-item" *ngIf="!familia.documentos.djurada" >
+                  <p class="notification is-danger">Falta declaracion Jurada <fa name="times"></fa></p>
+                </li>
               </ul>
             </div>
+
             <div *ngIf="!familia.documentos" class="card-content">
               <p class="notification is-danger">No se tiene documentos </p>
             </div>
             <div class="card-footer">
-              <a href="#" class="card-footer-item"> Agregar </a>
+              <a  class="card-footer-item"  
+                [routerLink] =  "['', {outlets: { 'popup':['familia','documentos',familia._id] }}]" >
+                <fa name="edit" size='2x'></fa> Editar
+              </a>
             </div>
           </div>
           <!-- documentos -->
@@ -153,19 +178,19 @@
 
       </section>
       <footer class="card-footer">
-        <a class="card-footer-item" *ngIf="familia.padre"
+        <a class="card-footer-item" *ngIf="!familia.padre"
           [routerLink] =  "['', {outlets: { 'popup':['padre','editar',familia._id] }}]" >
-          <fa name="plus" size="2x"></fa> Padre
+          <fa name="plus" ></fa> Padre
         </a>
 
-        <a class="card-footer-item" *ngIf="familia.madre"
+        <a class="card-footer-item" *ngIf="!familia.madre"
           [routerLink] =  "['', {outlets: { 'popup':['madre','editar',familia._id] }}]" >
-          <fa name="plus" size="2x"></fa> Madre
+          <fa name="plus" ></fa> Madre
         </a>
 
-        <a class="card-footer-item" *ngIf="familia.apoderado"
+        <a class="card-footer-item" *ngIf="!familia.apoderado"
           [routerLink] =  "['', {outlets: { 'popup':['apoderado','editar',familia._id] }}]" >
-          <fa name="plus" size="2x"></fa> Madre
+          <fa name="plus" ></fa> Apoderado
         </a>
       </footer>
       

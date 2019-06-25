@@ -30,6 +30,11 @@ export class EstudianteService {
   getEstudiante(estudiante_id:string):Observable<any>{
     return this._http.get(this.url+"estudiante/"+estudiante_id);
   }
+
+  //traer un solo estudinate con su QRCode
+  getEstudianteQRCode(id:string):Observable<any>{
+    return this._http.get(this.url+"estudiante/QRCode/"+id);
+  }
   //agregar un estudiante
   addEstudiante(estudiante:any):Observable<any>{
     let json = JSON.stringify(estudiante);

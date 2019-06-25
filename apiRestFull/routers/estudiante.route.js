@@ -13,6 +13,9 @@ estudiante_router.route('/estudiantes/familia/:id').get(estudiante_ctrl.getEstud
 estudiante_router.route('/estudiante').post(estudiante_ctrl.saveEstudiante);
 estudiante_router.route('/estudiante/:id').get(estudiante_ctrl.getEstudiante);
 
+//devolver con QRCode estudiante
+estudiante_router.route('/estudiante/QRCode/:id').get(estudiante_ctrl.getEstudianteQRCode);
+
 //actuliazacion de informacion de los estudiantes
 //estudiante_router.route('/estudiante/:id').put(estudiante_ctrl.updateEstudiante);
 estudiante_router.route('/estudiante/update/:id').put(estudiante_ctrl.updateEstudianteBasica);

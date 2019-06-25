@@ -105,7 +105,27 @@
             </footer>
         </div>
     </div>
-    
+    <!-- documentos -->
+    <div class="column is-2">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    Acciones
+                </p>
+            </header>
+            <section class="card-content">
+                <div class="content">
+                    <div class="list">
+                        <a href="#" class="list-item button is-info"> Cambiar grado </a>
+                        <a href="#" class="list-item button is-info"> Cambiar seccion </a>
+                        <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','carne',estudiante._id] } }]"
+                            class="list-item button is-success"> Imprimir carné </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
 </div>
 
 

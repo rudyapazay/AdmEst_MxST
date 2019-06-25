@@ -5,9 +5,10 @@ import { EstudianteActualizarRoutingModule } from './estudiante-actualizar-routi
 import { EstudianteUpdateComponent } from './estudiante-update/estudiante-update.component';
 import {  FormsModule } from '@angular/forms';
 import { EstudianteDocumentosComponent } from './estudiante-documentos/estudiante-documentos.component';
+import { PrintCarneComponent } from './print-carne/print-carne.component';
 
 @NgModule({
-  declarations: [EstudianteUpdateComponent, EstudianteDocumentosComponent],
+  declarations: [EstudianteUpdateComponent, EstudianteDocumentosComponent, PrintCarneComponent],
   imports: [
     CommonModule,
     FormsModule,
