@@ -7,9 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { PadreUpdateComponent } from './padre-update/padre-update.component';
 import { MadreUpdateComponent } from './madre-update/madre-update.component';
 import { ApoderadoUpdateComponent } from './apoderado-update/apoderado-update.component';
+import { FamiliaDocumentosComponent } from './familia-documentos/familia-documentos.component';
 
 @NgModule({
-  declarations: [FamiliaUpdateComponent, PadreUpdateComponent, MadreUpdateComponent, ApoderadoUpdateComponent],
+  declarations: [FamiliaUpdateComponent, PadreUpdateComponent, MadreUpdateComponent, ApoderadoUpdateComponent, FamiliaDocumentosComponent],
   imports: [
     CommonModule,
     FormsModule,

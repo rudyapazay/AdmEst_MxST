@@ -81,4 +81,11 @@ export class FamiliaService {
     return this._http.put(this.url+'familia/'+id, params,{headers:headers});
   }
 
+  addDocumentos(id:any, documentos:any):Observable<any>{
+    let json = JSON.stringify(documentos);
+    let params = json;
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this._http.put(this.url+'familia/documentos/'+id,params,{headers:headers});
+  }
+
 }

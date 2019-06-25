@@ -1,0 +1,61 @@
+<form  #DocumentosForm ="ngForm"   (ngSubmit)="updateDocumentos()">
+
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">{{familia.carpeta}} :: {{familia.codigo}}</p>
+        <button class="delete" aria-label="close" (click)="closepopup()" ></button>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ... -->  
+        <div class="field"> 
+            <div class="control">
+                <label class="checkbox" > Folder:   
+                    <input type="checkbox"  [(ngModel)]='documentos.folder' name="folder" #folder="ngModel" >    
+                </label>
+            </div>
+        </div>
+
+        <div class="field" *ngIf="familia.padre"> 
+          <div class="control">
+              <label class="checkbox" >Copia de DNI del padre:   
+                  <input type="checkbox"  [(ngModel)]='documentos.cdnipadre' name="cdnipadre" #cdnipadre="ngModel" >    
+              </label>
+          </div>
+        </div>
+
+        <div class="field" *ngIf="familia.madre"> 
+          <div class="control">
+              <label class="checkbox" > Copia de DNI de la madre:   
+                  <input type="checkbox"  [(ngModel)]='documentos.cdnimadre' name="cdnimadre" #cdnimadre="ngModel" >    
+              </label>
+          </div>
+         </div>
+
+         <div class="field" *ngIf="familia.apoderado"> 
+            <div class="control">
+                <label class="checkbox" > Copia de DNI de apoderado:   
+                    <input type="checkbox"  [(ngModel)]='documentos.cdniapoderado' 
+                    name="cdniapoderado" #cdniapoderado="ngModel" >    
+                </label>
+            </div>
+           </div>
+
+           <div class="field"> 
+              <div class="control">
+                  <label class="checkbox" >Declaracion jurada:   
+                      <input type="checkbox"  [(ngModel)]='documentos.djurada' 
+                      name="djurada" #djurada="ngModel" >    
+                  </label>
+              </div>
+             </div>
+        
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-primary" type="submit"> Guardar</button>
+        <button class="button" (click)="closepopup()">Cancel</button>
+      </footer>
+    </div>
+  </div>
+</form>

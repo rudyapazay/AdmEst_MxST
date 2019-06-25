@@ -4,12 +4,14 @@ import { FamiliaUpdateComponent } from './familia-update/familia-update.componen
 import { PadreUpdateComponent } from './padre-update/padre-update.component';
 import { MadreUpdateComponent } from './madre-update/madre-update.component';
 import { ApoderadoUpdateComponent } from './apoderado-update/apoderado-update.component';
+import { FamiliaDocumentosComponent } from './familia-documentos/familia-documentos.component';
 
 const routes: Routes = [
   {path:"familia/editar/:id", component:FamiliaUpdateComponent, outlet:"popup"},
   {path:"padre/editar/:id",component:PadreUpdateComponent, outlet:"popup"},
   {path:"madre/editar/:id",component:MadreUpdateComponent, outlet:"popup"},
-  {path:"apoderado/editar/:id", component:ApoderadoUpdateComponent,outlet:"popup"}
+  {path:"apoderado/editar/:id", component:ApoderadoUpdateComponent,outlet:"popup"},
+  {path:"familia/documentos/:id", component:FamiliaDocumentosComponent, outlet:"popup"}
 ];
 
 @NgModule({

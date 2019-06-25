@@ -70,7 +70,7 @@
           Reponsables de la familia
         </div>
       </header>
-      <div class="card-content">
+      <section class="card-content">
         <!-- padre de familia -->
         <div *ngIf="familia.padre"  class="card">
           <header class="card-header"> 
@@ -90,7 +90,7 @@
           </section>
           <footer class="card-footer">
             <a  class="card-footer-item"  
-                [routerLink] =  "['', {outlets: { 'popup':['padre','editar',familia._id] } }]" >
+                [routerLink] =  "['', {outlets: { 'popup':['padre','editar',familia._id] }}]" >
                 <fa name="edit" size='2x'></fa> Editar
             </a>
           </footer>
@@ -151,7 +151,24 @@
         <!-- fin de apoderado-->
   
 
-      </div>
+      </section>
+      <footer class="card-footer">
+        <a class="card-footer-item" *ngIf="familia.padre"
+          [routerLink] =  "['', {outlets: { 'popup':['padre','editar',familia._id] }}]" >
+          <fa name="plus" size="2x"></fa> Padre
+        </a>
+
+        <a class="card-footer-item" *ngIf="familia.madre"
+          [routerLink] =  "['', {outlets: { 'popup':['madre','editar',familia._id] }}]" >
+          <fa name="plus" size="2x"></fa> Madre
+        </a>
+
+        <a class="card-footer-item" *ngIf="familia.apoderado"
+          [routerLink] =  "['', {outlets: { 'popup':['apoderado','editar',familia._id] }}]" >
+          <fa name="plus" size="2x"></fa> Madre
+        </a>
+      </footer>
+      
     </div>
   </div>
   <!--fin de papa y mama-->
