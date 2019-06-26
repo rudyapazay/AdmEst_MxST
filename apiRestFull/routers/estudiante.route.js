@@ -16,6 +16,9 @@ estudiante_router.route('/estudiante/:id').get(estudiante_ctrl.getEstudiante);
 //devolver con QRCode estudiante
 estudiante_router.route('/estudiante/QRCode/:id').get(estudiante_ctrl.getEstudianteQRCode);
 
+//actulizar el grado y seccion de los estudiantes
+estudiante_router.route('/estudiante/:id/:grado/:seccion').put(estudiante_ctrl.cambiarGradoSeccion);
+
 //actuliazacion de informacion de los estudiantes
 //estudiante_router.route('/estudiante/:id').put(estudiante_ctrl.updateEstudiante);
 estudiante_router.route('/estudiante/update/:id').put(estudiante_ctrl.updateEstudianteBasica);

@@ -71,4 +71,11 @@ export class EstudianteService {
     
   }
 
+  //los put necesariamente requieren un parametro y content-type
+  cambiarGradoSeccion(id,grado,seccion):Observable<any>{
+    var url = this.url+'estudiante/'+id+'/'+grado+'/'+seccion;
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this._http.put(url,{},{headers:headers});
+  }
+
 }

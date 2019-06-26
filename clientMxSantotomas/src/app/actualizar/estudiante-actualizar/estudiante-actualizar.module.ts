@@ -6,9 +6,10 @@ import { EstudianteUpdateComponent } from './estudiante-update/estudiante-update
 import {  FormsModule } from '@angular/forms';
 import { EstudianteDocumentosComponent } from './estudiante-documentos/estudiante-documentos.component';
 import { PrintCarneComponent } from './print-carne/print-carne.component';
+import { CambiarGradoSeccionComponent } from './cambiar-grado-seccion/cambiar-grado-seccion.component';
 
 @NgModule({
-  declarations: [EstudianteUpdateComponent, EstudianteDocumentosComponent, PrintCarneComponent],
+  declarations: [EstudianteUpdateComponent, EstudianteDocumentosComponent, PrintCarneComponent, CambiarGradoSeccionComponent],
   imports: [
     CommonModule,
     FormsModule,

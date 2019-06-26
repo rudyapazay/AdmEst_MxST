@@ -358,15 +358,93 @@ function getEstudiantesGradoSeccion(req,res){
 
 }
 
-//funcion para cambiar el grado del estudiante
-function cambiarGrado(req,res){
+//funcion para cambiar el grado y seccion del estudiantes
+function cambiarGradoSeccion(req,res){
+    var id = req.params.id;
+    var grado = req.params.grado;
+    var seccion = req.params.seccion;
+    var query;
+    var yearActual = '2019';
     
+    EstudianteMdl.findById(id,(err,estudiante)=>{
+        if(err){
+            res.status(500).send({message:'Error en la base de datos'});
+        }
+        else{
+            if(!estudiante){
+                res.status(404).send({message:'no existe el estudiante'});
+            }
+            //actulizacion del estudiante en grado y seccion
+            else{
+                if(estudiante.referencia.primero.year ==  yearActual){
+                    estudiante.referencia.primero.year = null;
+                    estudiante.referencia.primero.seccion = null;
+                    actulizarGradoSeccion(id, estudiante, grado,seccion,yearActual);
+                }
+                if(estudiante.referencia.segundo.year == yearActual ){
+                    estudiante.referencia.segundo.year = null;
+                    estudiante.referencia.segundo.seccion = null;
+                    actulizarGradoSeccion(id, estudiante, grado,seccion,yearActual);
+                }
+                if(estudiante.referencia.tercero.year == yearActual){
+                    estudiante.referencia.tercero.year = null;
+                    estudiante.referencia.tercero.seccion = null;
+                    actulizarGradoSeccion(id, estudiante, grado,seccion,yearActual);
+                }
+                if(estudiante.referencia.cuarto.year == yearActual){
+                    estudiante.referencia.cuarto.year = null;
+                    estudiante.referencia.cuarto.seccion = null;
+                    actulizarGradoSeccion(id, estudiante, grado,seccion,yearActual);
+                }
+                if(estudiante.referencia.quinto.year == yearActual){
+                    estudiante.referencia.quinto.year = null;
+                    estudiante.referencia.quinto.seccion = null;
+                    actulizarGradoSeccion(id, estudiante, grado,seccion,yearActual);
+                }
+                
+            }
+        }
+    });
 }
-//funcion para cambiar seccion de estudiante
-function cambiarSeccion(req,res){
 
+//actulizacion en la base de datos
+function actulizarGradoSeccion(id, estudiante, grado, seccion,yearActual){
+    
+    switch (grado) {
+        case 'primero':
+            estudiante.referencia.primero.year = yearActual;
+            estudiante.referencia.primero.seccion = seccion;
+            break;
+        case 'segundo':
+            estudiante.referencia.segundo.year = yearActual;
+            estudiante.referencia.segundo.seccion = seccion;
+            break;
+        case 'tercero':
+            estudiante.referencia.tercero.year = yearActual;
+            estudiante.referencia.tercero.seccion = seccion;
+            break;
+        case 'cuarto':
+            estudiante.referencia.cuarto.year = yearActual;
+            estudiante.referencia.cuarto.seccion = seccion;
+            break;
+        case 'quinto':
+            estudiante.referencia.quinto.year = yearActual;
+            estudiante.referencia.quinto.seccion = seccion;
+            break;
+    }
+
+    EstudianteMdl.findByIdAndUpdate(id, estudiante,{new:true},(err, estudianteUpdate)=>{
+        if(err){
+            res.status(500).send({message:'error al actualizar estudiante'});
+        }else{
+            if(!estudianteUpdate){
+                res.status(404).send({message:'no existe estudiante'});
+            }else{
+                res.status(200).send({estudianteUpdate});
+            }
+        }
+    });
 }
-
 
 module.exports ={
     getEstudiantes,
@@ -379,5 +457,6 @@ module.exports ={
     updateReferencia,
     updateEstudianteBasica,
     
-    getEstudiantesGradoSeccion
+    getEstudiantesGradoSeccion,
+    cambiarGradoSeccion
 }
