@@ -199,7 +199,6 @@ function updateEstudianteBasica(req,res){
 }
 
 
-
 // guardar y actulizar documentos
 function saveDocumentos(req,res){
     var estudianteId = req.params.id;
@@ -342,7 +341,7 @@ function getEstudiantesGradoSeccion(req,res){
             break;
     }
     
-    query.exec((err,estudiantes)=>{
+    query.sort({apellidos:+1}).exec((err,estudiantes)=>{
         if(err){
             res.status(500).send({message:'error en la base de datos'});
         }
@@ -351,7 +350,17 @@ function getEstudiantesGradoSeccion(req,res){
                 res.status(404).send({message:'no existe estudiantes del grado y seccion'});
             }
             else{
-                res.status(200).send({estudiantes});
+                //res.status(200).send({estudiantes});
+                // para mostrar el padre y la madre
+                FamiliaMdl.populate(estudiantes,{path:"familia"},(err,estudiantes)=>{
+                    if(err){
+                        res.status(500).send('Error en la peticion');
+                    }
+                    else{
+                        res.status(200).send({estudiantes});
+                    }
+                });
+
             }
         }
     });
@@ -379,27 +388,27 @@ function cambiarGradoSeccion(req,res){
                 if(estudiante.referencia.primero.year ==  yearActual){
                     estudiante.referencia.primero.year = null;
                     estudiante.referencia.primero.seccion = null;
-                    actulizarGradoSeccion(id, estudiante, grado,seccion,yearActual);
+                    actulizarGradoSeccion(res, id, estudiante, grado,seccion,yearActual);
                 }
                 if(estudiante.referencia.segundo.year == yearActual ){
                     estudiante.referencia.segundo.year = null;
                     estudiante.referencia.segundo.seccion = null;
-                    actulizarGradoSeccion(id, estudiante, grado,seccion,yearActual);
+                    actulizarGradoSeccion(res, id, estudiante, grado,seccion,yearActual);
                 }
                 if(estudiante.referencia.tercero.year == yearActual){
                     estudiante.referencia.tercero.year = null;
                     estudiante.referencia.tercero.seccion = null;
-                    actulizarGradoSeccion(id, estudiante, grado,seccion,yearActual);
+                    actulizarGradoSeccion(res, id, estudiante, grado,seccion,yearActual);
                 }
                 if(estudiante.referencia.cuarto.year == yearActual){
                     estudiante.referencia.cuarto.year = null;
                     estudiante.referencia.cuarto.seccion = null;
-                    actulizarGradoSeccion(id, estudiante, grado,seccion,yearActual);
+                    actulizarGradoSeccion(res, id, estudiante, grado,seccion,yearActual);
                 }
                 if(estudiante.referencia.quinto.year == yearActual){
                     estudiante.referencia.quinto.year = null;
                     estudiante.referencia.quinto.seccion = null;
-                    actulizarGradoSeccion(id, estudiante, grado,seccion,yearActual);
+                    actulizarGradoSeccion(res, id, estudiante, grado,seccion,yearActual);
                 }
                 
             }
@@ -408,7 +417,7 @@ function cambiarGradoSeccion(req,res){
 }
 
 //actulizacion en la base de datos
-function actulizarGradoSeccion(id, estudiante, grado, seccion,yearActual){
+function actulizarGradoSeccion(res, id, estudiante, grado, seccion,yearActual){
     
     switch (grado) {
         case 'primero':

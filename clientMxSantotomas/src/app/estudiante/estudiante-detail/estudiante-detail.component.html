@@ -116,8 +116,8 @@
             <section class="card-content">
                 <div class="content">
                     <div class="list">
-                        <a href="#" class="list-item button is-info"> Cambiar grado </a>
-                        <a href="#" class="list-item button is-info"> Cambiar seccion </a>
+                        <a [routerLink] =  "['', {outlets: { 'popup':['estudiante',estudiante._id, estudiante.nombre]}}]" 
+                            class="list-item button is-info"> Cambiar grado - sección </a>
                         <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','carne',estudiante._id] } }]"
                             class="list-item button is-success"> Imprimir carné </a>
                     </div>

@@ -9,15 +9,20 @@ import { EstudianteService } from 'src/app/services/estudiante.service';
 })
 export class CambiarGradoSeccionComponent implements OnInit {
   public id;
+  
   public nombre;
   public grado;
   public seccion;
+  public grados :Array<Object>=[ {'name':'primero'},{'name':'segundo'},{'name':'tercero'},{'name':'cuarto'}, {'name':'quinto'}];
+  public secciones:Array<Object>=[{'name':'A'},{'name':'B'},{'name':'C'},{'name':'D'},{'name':'E'},{'name':'F'},{'name':'G'},{'name':'H'}];
 
   constructor(
     private _route:ActivatedRoute,
     private _router:Router,
     private _estudianteService:EstudianteService
-  ){}
+  ){
+   
+  }
   //enviar id, grado y seccion a enviar
 
   ngOnInit() {
@@ -31,7 +36,9 @@ export class CambiarGradoSeccionComponent implements OnInit {
     this._router.navigate([{outlets:{popup:null}}]);  
   }
   
-  cambiar(){
+  cambiarGradoSeccion(){
+    //console.log(this.grado + this.seccion);
+    //console.log(this.grados);
     this._estudianteService.cambiarGradoSeccion(this.id,this.grado,this.seccion).subscribe(
       result=>{
         this._router.navigate([{outlets:{popup:null}}]);          

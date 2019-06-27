@@ -15,7 +15,10 @@
         <td> {{estudiante.familia.codigo }}</td>
         <td> {{estudiante.dni}} </td>
         <td> {{estudiante.apellidos}}, {{estudiante.nombre}} </td>
+        <td *ngIf ="estudiante.familia.padre"> {{estudiante.familia.padre.apellidos}}, {{estudiante.familia.padre.nombre}} </td>
+        <td *ngIf ="estudiante.familia.madre"> {{estudiante.familia.madre.apellidos}}, {{estudiante.familia.madre.nombre}} </td>
         
+      
         <td> {{estudiante.sexo}} </td>
       
         <td> <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','editar',estudiante._id] } }]" >

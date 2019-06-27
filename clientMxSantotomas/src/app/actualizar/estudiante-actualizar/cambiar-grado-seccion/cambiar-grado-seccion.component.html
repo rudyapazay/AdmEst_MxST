@@ -4,36 +4,54 @@
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Cambiar grado y seccion de {{nombre}}</p>
-      <button class="delete" aria-label="close"></button>
+      <button class="delete" aria-label="close" (click)="closepopup()"></button>
     </header>
     <section class="modal-card-body">
       <!-- Content ... -->
-      <div class="field">
-        <div class="control">
-          <div class="select is-primary">
-            <select>
-              <option>Primero</option>
-              <option>Segundo</option>
-              <option> Tercero </option>
-              <option> Cuarto </option>
-              <option> Quinto </option>
-            </select>
+      <div class="columns">
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Grado: </label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select [(ngModel)] = "grado">
+                      <option *ngFor="let grado of grados" [ngValue]="grado.name">{{grado.name|uppercase}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Sección: </label>
+            </div>
+            <div class="field-body">
+              <div class="field ">
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select [(ngModel)] = "seccion">
+                      <option *ngFor="let seccion of secciones" [ngValue]="seccion.name">{{seccion.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="field">
-        <div class="control">
-          <div class="select is-primary">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
-            </select>
-          </div>
-        </div>
-      </div>
+      
+      
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
+      <button class="button is-success" (click)="cambiarGradoSeccion()">Guardar Cambios</button>
       <button class="button">Cancel</button>
     </footer>
   </div>
