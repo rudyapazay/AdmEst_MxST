@@ -114,14 +114,14 @@
                 </p>
             </header>
             <section class="card-content">
-                <div class="content">
-                    <div class="list">
-                        <a [routerLink] =  "['', {outlets: { 'popup':['estudiante',estudiante._id, estudiante.nombre]}}]" 
-                            class="list-item button is-info"> Cambiar grado - sección </a>
-                        <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','carne',estudiante._id] } }]"
-                            class="list-item button is-success"> Imprimir carné </a>
-                    </div>
+                <div class="buttons">
+                    <a [routerLink] =  "['', {outlets: { 'popup':['estudiante',estudiante._id, estudiante.nombre]}}]" 
+                        class="button is-info is-fullwidth"> <fa name="cog"></fa>  Grado y Sección </a> 
+                    <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','carne',estudiante._id] } }]"
+                        class="button is-success is-fullwidth"> <fa name="print"></fa> Imprimir carné </a>
+                    
                 </div>
+                
             </section>
         </div>
 

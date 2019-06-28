@@ -29,11 +29,11 @@
       
       <td> {{estudiante.sexo}} </td>
       
-      <td *ngIf='estudiante.grado_actual == "primero"'> Primero - {{estudiante.referencia['primero'].seccion}} </td>
-      <td *ngIf='estudiante.grado_actual == "segundo"'> Segundo - {{estudiante.referencia['segundo'].seccion}} </td>
-      <td *ngIf='estudiante.grado_actual == "tercero"'> Tercero - {{estudiante.referencia['tercero'].seccion}} </td>
-      <td *ngIf='estudiante.grado_actual == "cuarto"'> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </td>
-      <td *ngIf='estudiante.grado_actual == "quinto"'> Quinto - {{estudiante.referencia['quinto'].seccion}} </td>
+      <td *ngIf='estudiante.referencia.primero && estudiante.referencia.primero.year == "2019"'> Primero - {{estudiante.referencia['primero'].seccion}} </td>
+      <td *ngIf='estudiante.referencia.segundo && estudiante.referencia.segundo.year == "2019"'> Segundo - {{estudiante.referencia['segundo'].seccion}} </td>
+      <td *ngIf='estudiante.referencia.tercero && estudiante.referencia.tercero.year == "2019"'> Tercero - {{estudiante.referencia['tercero'].seccion}} </td>
+      <td *ngIf='estudiante.referencia.cuarto && estudiante.referencia.cuarto.year == "2019"'> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </td>
+      <td *ngIf='estudiante.referencia.quinto && estudiante.referencia.quinto.year == "2019"'> Quinto - {{estudiante.referencia['quinto'].seccion}} </td>
       
       <td> <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','editar',estudiante._id] } }]" >
         <fa name="edit" size='2x'></fa></a> 

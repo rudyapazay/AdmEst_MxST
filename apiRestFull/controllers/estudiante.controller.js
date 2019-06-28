@@ -386,71 +386,84 @@ function cambiarGradoSeccion(req,res){
             //actulizacion del estudiante en grado y seccion
             else{
                 if(estudiante.referencia.primero.year ==  yearActual){
-                    estudiante.referencia.primero.year = null;
-                    estudiante.referencia.primero.seccion = null;
-                    actulizarGradoSeccion(res, id, estudiante, grado,seccion,yearActual);
+                    estudiante.referencia.primero = null;
+                    estudiante.referencia.segundo = null;
+                    estudiante.referencia.tercero = null;
+                    estudiante.referencia.cuarto= null;
+                    estudiante.referencia.quinto = null;
+
                 }
                 if(estudiante.referencia.segundo.year == yearActual ){
-                    estudiante.referencia.segundo.year = null;
-                    estudiante.referencia.segundo.seccion = null;
-                    actulizarGradoSeccion(res, id, estudiante, grado,seccion,yearActual);
+                    estudiante.referencia.segundo = null;
+                    estudiante.referencia.tercero = null;
+                    estudiante.referencia.cuarto= null;
+                    estudiante.referencia.quinto = null;
                 }
                 if(estudiante.referencia.tercero.year == yearActual){
-                    estudiante.referencia.tercero.year = null;
-                    estudiante.referencia.tercero.seccion = null;
-                    actulizarGradoSeccion(res, id, estudiante, grado,seccion,yearActual);
+                    estudiante.referencia.tercero = null;
+                    estudiante.referencia.cuarto= null;
+                    estudiante.referencia.quinto = null;
                 }
                 if(estudiante.referencia.cuarto.year == yearActual){
-                    estudiante.referencia.cuarto.year = null;
-                    estudiante.referencia.cuarto.seccion = null;
-                    actulizarGradoSeccion(res, id, estudiante, grado,seccion,yearActual);
+                    estudiante.referencia.cuarto= null;
+                    estudiante.referencia.quinto = null;
                 }
                 if(estudiante.referencia.quinto.year == yearActual){
-                    estudiante.referencia.quinto.year = null;
-                    estudiante.referencia.quinto.seccion = null;
-                    actulizarGradoSeccion(res, id, estudiante, grado,seccion,yearActual);
+                    estudiante.referencia.quinto = null;
+
                 }
+                
+                switch (grado) {
+                    case 'primero':
+                        estudiante.referencia.primero.year = yearActual;
+                        estudiante.referencia.primero.seccion = seccion;
+                        break;
+                    case 'segundo':
+                        estudiante.referencia.segundo.year = yearActual;
+                        estudiante.referencia.segundo.seccion = seccion;
+                        break;
+                    case 'tercero':
+                        estudiante.referencia.tercero.year = yearActual;
+                        estudiante.referencia.tercero.seccion = seccion;
+                        break;
+                    case 'cuarto':
+                        estudiante.referencia.cuarto.year = yearActual;
+                        estudiante.referencia.cuarto.seccion = seccion;
+                        break;
+                    case 'quinto':
+                        estudiante.referencia.quinto.year = yearActual;
+                        estudiante.referencia.quinto.seccion = seccion;
+                        break;
+                    default:
+                        res.status(500).send({message:'error en la peticion'});
+                        break;
+                }
+            
+                EstudianteMdl.findByIdAndUpdate(id, estudiante,{new:true},(err, estudianteUpdate)=>{
+                    if(err){
+                        res.status(500).send({message:'error al actualizar estudiante'});
+                    }else{
+                        if(!estudianteUpdate){
+                            res.status(404).send({message:'no existe estudiante'});
+                        }else{
+                            res.status(200).send({estudianteUpdate});
+                        }
+                    }
+                });
                 
             }
         }
     });
 }
 
-//actulizacion en la base de datos
-function actulizarGradoSeccion(res, id, estudiante, grado, seccion,yearActual){
-    
-    switch (grado) {
-        case 'primero':
-            estudiante.referencia.primero.year = yearActual;
-            estudiante.referencia.primero.seccion = seccion;
-            break;
-        case 'segundo':
-            estudiante.referencia.segundo.year = yearActual;
-            estudiante.referencia.segundo.seccion = seccion;
-            break;
-        case 'tercero':
-            estudiante.referencia.tercero.year = yearActual;
-            estudiante.referencia.tercero.seccion = seccion;
-            break;
-        case 'cuarto':
-            estudiante.referencia.cuarto.year = yearActual;
-            estudiante.referencia.cuarto.seccion = seccion;
-            break;
-        case 'quinto':
-            estudiante.referencia.quinto.year = yearActual;
-            estudiante.referencia.quinto.seccion = seccion;
-            break;
-    }
-
-    EstudianteMdl.findByIdAndUpdate(id, estudiante,{new:true},(err, estudianteUpdate)=>{
+//delete
+function delEstudiante(req,res){
+    var id = req.params.id;
+    EstudianteMdl.deleteOne({_id:id},(err)=>{
         if(err){
-            res.status(500).send({message:'error al actualizar estudiante'});
+            res.status(500).send({message:"error con la base de datos"});
         }else{
-            if(!estudianteUpdate){
-                res.status(404).send({message:'no existe estudiante'});
-            }else{
-                res.status(200).send({estudianteUpdate});
-            }
+            res.status(200).send({message:"Eliminacion correcta"});
         }
     });
 }
@@ -467,5 +480,8 @@ module.exports ={
     updateEstudianteBasica,
     
     getEstudiantesGradoSeccion,
-    cambiarGradoSeccion
+    cambiarGradoSeccion,
+
+    //eliminar
+    delEstudiante,
 }

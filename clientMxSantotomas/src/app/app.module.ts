@@ -16,6 +16,8 @@ import { EstudianteService } from './services/estudiante.service';
 
 import { FamiliaActualizarModule } from './actualizar/familia-actualizar/familia-actualizar.module';
 import { EstudianteActualizarModule } from './actualizar/estudiante-actualizar/estudiante-actualizar.module';
+import { EstudianteEliminarModule } from './eliminar/estudiante-eliminar/estudiante-eliminar.module';
+import { FamiliaEliminarModule } from './eliminar/familia-eliminar/familia-eliminar.module';
 
 
 @NgModule({
@@ -33,8 +35,13 @@ import { EstudianteActualizarModule } from './actualizar/estudiante-actualizar/e
     RegistrarModule,
     FamiliaModule,
     EstudianteModule,
+    
     FamiliaActualizarModule,
-    EstudianteActualizarModule
+    EstudianteActualizarModule,
+
+    EstudianteEliminarModule,
+    FamiliaEliminarModule
+    
     
   ],
   providers: [FamiliaService, EstudianteService],

@@ -78,8 +78,8 @@ var EstudianteSchema = Schema({
     
     fecha_nacimiento:String,
     seguro:String,  //sis || essalud
-    estado: String,  // Activo|| Retirado || trasladado || Concluido
-    matricula:String,  //Situacion al 2019 Ratificado || nuevo || Sin ratificar
+    estado: String,  // activo|| retirado || trasladado || concluido
+    matricula:String,  //Situacion al 2019 ratificado || nuevo || pendiente
     observaciones:String
 
 });

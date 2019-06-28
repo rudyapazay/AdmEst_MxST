@@ -78,4 +78,9 @@ export class EstudianteService {
     return this._http.put(url,{},{headers:headers});
   }
 
+  //eliminar un estudiante
+  deleteEstudiante(id):Observable<any>{
+    return this._http.delete(this.url +'estudiante/'+id);
+  }
+
 }

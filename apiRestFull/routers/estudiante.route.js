@@ -32,4 +32,7 @@ estudiante_router.route('/estudiante/:grado/:id').put(estudiante_ctrl.updateRefe
 //sacar estudiantes por grado y seccion
 estudiante_router.route('/estudiantes/:grado/:seccion').get(estudiante_ctrl.getEstudiantesGradoSeccion);
 
+//eliminar estudiante
+estudiante_router.route('/estudiante/:id').delete(estudiante_ctrl.delEstudiante);
+
 module.exports = estudiante_router;
