@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { EstudianteService } from 'src/app/services/estudiante.service';
 import { EstudianteMdl } from 'src/app/models/estudiante-mdl';
-import { EstBasicMdl } from 'src/app/models/estudiante-mdl/est-basic-mdl';
+
 
 @Component({
   selector: 'app-estudiante-update',

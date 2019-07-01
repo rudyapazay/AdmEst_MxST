@@ -88,4 +88,8 @@ export class FamiliaService {
     return this._http.put(this.url+'familia/documentos/'+id,params,{headers:headers});
   }
 
+  //Eliminar una familia
+  delFamilia(id:string):Observable<any>{
+    return this._http.delete(this.url+'familia/'+id);
+  }
 }

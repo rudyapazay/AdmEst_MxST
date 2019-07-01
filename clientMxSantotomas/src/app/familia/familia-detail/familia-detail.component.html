@@ -33,7 +33,10 @@
                     [routerLink] =  "['', {outlets: { 'popup':['familia','editar',familia._id] } }]" >
                     <fa name="edit" size='2x'></fa> Editar
                 </a> 
-              <a href="#" class="card-footer-item">Delete</a>      
+                <a  class="card-footer-item"  
+                    [routerLink] =  "['', {outlets: { 'popup':['familia','eliminar',familia._id, familia.carpeta ] } }]" >
+                    <fa name="trash" size='2x'></fa> Eliminar
+                </a>       
             </footer>
           </div>
           <!-- documentos -->

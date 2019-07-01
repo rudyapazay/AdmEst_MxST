@@ -1,7 +1,8 @@
 'use strict'
 
 var FamiliaMdl =  require('../models/familia.model');
- 
+var EstudianteMdl = require('../models/estudiante.model');
+
 function getFamilias(req,res){
     FamiliaMdl.find({estado:'Activo'}).sort({carpeta:+1}).exec((err,familias)=>{
         if(err){
@@ -351,7 +352,22 @@ function updateFamilia(req,res){
 // eliminacion de una familia
 // se elimina familia, se elimina estudiantes
 function deleteFamilia(req,res){
-
+    var id = req.params.id;
+    EstudianteMdl.deleteMany({familia:id},(err)=>{
+        if(err){
+            res.status(500).send('Error en la eliminacion');
+        }
+        else{
+            FamiliaMdl.deleteOne({_id:id},(err)=>{
+                if(err){
+                    res.status(500).send('Error en la eliminacion');
+                }
+                else{
+                    res.status(200).send('Familia eliminada');
+                }
+            });
+        }
+    });
 }
 
 
