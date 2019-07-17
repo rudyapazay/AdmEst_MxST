@@ -363,7 +363,7 @@ function deleteFamilia(req,res){
                     res.status(500).send('Error en la eliminacion');
                 }
                 else{
-                    res.status(200).send('Familia eliminada');
+                    res.status(200).send({message:'Familia eliminada'});
                 }
             });
         }

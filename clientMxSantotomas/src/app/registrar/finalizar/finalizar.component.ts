@@ -17,7 +17,9 @@ export class FinalizarComponent implements OnInit {
     private _router:Router,
     private _familia_service:FamiliaService,
     private _estudiante_service:EstudianteService
-  ) { }
+  ) { 
+
+  }
 
   ngOnInit() {
     this.getFamilia();

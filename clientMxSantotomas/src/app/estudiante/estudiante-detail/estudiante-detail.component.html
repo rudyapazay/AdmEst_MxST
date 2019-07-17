@@ -8,11 +8,11 @@
             </header>
             <div class="card-content">
                 <ul class="list">
-                    <li class="list-item"><a [routerLink]="['/familia/',estudiante.familia._id]" class="buttom is-stripted">
+                    <li *ngIf="estudiante.familia" class="list-item"><a [routerLink]="['/familia/',estudiante.familia._id]" class="buttom is-stripted">
                         <fa name="users" size='2x'></fa>{{estudiante.familia.codigo}} </a> 
                     </li>
-                    <li class="list-item"> PAPÁ: {{estudiante.familia.padre.nombre}} {{estudiante.familia.padre.apellidos}}  </li>
-                    <li class="list-item"> MAMÁ: {{estudiante.familia.madre.nombre}} {{estudiante.familia.madre.apellidos}}  </li>
+                    <li *ngIf="estudiante.familia" class="list-item"> PAPÁ: {{estudiante.familia.padre.nombre}} {{estudiante.familia.padre.apellidos}}  </li>
+                    <li *ngIf="estudiante.familia" class="list-item"> MAMÁ: {{estudiante.familia.madre.nombre}} {{estudiante.familia.madre.apellidos}}  </li>
                 </ul>
             </div>
         </div>

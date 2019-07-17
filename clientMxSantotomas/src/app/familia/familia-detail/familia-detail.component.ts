@@ -38,7 +38,7 @@ export class FamiliaDetailComponent implements OnInit {
         },
         err=>{  
           console.log('error en la peticion');
-          this._router.navigate(['/familias']);
+          this._router.navigate(['/familias/']);
         }
       );
     });

@@ -1,9 +1,8 @@
 'use strict'
 
-var mongoose =require('mongoose');
-var qrcode = require('qrcode');
-var EstudianteMDL = require('../models/estudiante.model');
+var mongoose = require('mongoose');
 
+var EstudianteMDL = require('../models/estudiante.model');
 
 mongoose.connect('mongodb://localhost:27017/appAdmEstMxST',{useNewUrlParser: true}, (err,res)=>{
     if(err){
@@ -28,11 +27,9 @@ mongoose.connect('mongodb://localhost:27017/appAdmEstMxST',{useNewUrlParser: tru
 });
 
 function updateEst(estudiante){
-    var code =  estudiante._id +" "+estudiante.nombre+" "+estudiante.apellidos;
-    qrcode.toDataURL(code,{errorCorrectionLevel:"H"},(err,cod)=>{
-        estudiante.QRCode =  cod;
-        EstudianteMDL.findOneAndUpdate({_id:estudiante._id},estudiante,{new:true},(err,estUpdate)=>{
-            console.log("estudiante actulizado -> "+ estUpdate.nombre);
-        });
-    });
+
+  estudiante.apellidos = estudiante.apellidos.toUpperCase();
+  EstudianteMDL.findOneAndUpdate({_id:estudiante._id},estudiante,{new:true},(err,estUpdate)=>{
+      console.log("estudiante actulizado -> "+ estUpdate.nombre);
+  });
 }

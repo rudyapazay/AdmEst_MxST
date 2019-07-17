@@ -71,12 +71,13 @@ var EstudianteSchema = Schema({
         copia_dni:Boolean,
         partida_nacimiento:Boolean,
         ficha_matricula:Boolean,
-        ficha_seguro:Boolean
+        ficha_seguro:Boolean,
+        certificado_primaria:Boolean
     },
 
     QRCode:String,
     
-    fecha_nacimiento:String,
+    fecha_nacimiento:Date,
     seguro:String,  //sis || essalud
     estado: String,  // activo|| retirado || trasladado || concluido
     matricula:String,  //Situacion al 2019 ratificado || nuevo || pendiente

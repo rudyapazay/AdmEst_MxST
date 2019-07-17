@@ -11,6 +11,7 @@ import { EstudianteMdl } from 'src/app/models/estudiante-mdl';
 export class EstudianteByFamiliaComponent implements OnInit {
 
   public estudiantes:EstudianteMdl;
+  public familia_id:string;
 
   constructor(
     private _route:ActivatedRoute,
@@ -32,6 +33,7 @@ export class EstudianteByFamiliaComponent implements OnInit {
   getEstudiantes(){
     this._route.params.forEach((params:Params)=>{
       let id=params.id;
+      this.familia_id = id;
       this._estudianteServ.getEstudiantesByFamilia(id).subscribe(
         result=>{
           this.estudiantes =result.estudiantes;

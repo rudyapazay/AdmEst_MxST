@@ -25,20 +25,33 @@
     <tr *ngFor = "let estudiante of estudiantes">
       <td> {{estudiante.familia.codigo }}</td>
       <td> {{estudiante.dni}} </td>
-      <td> {{estudiante.apellidos}}, {{estudiante.nombre}} </td>
-      
-      <td> {{estudiante.sexo}} </td>
-      
       <td *ngIf='estudiante.referencia.primero && estudiante.referencia.primero.year == "2019"'> Primero - {{estudiante.referencia['primero'].seccion}} </td>
       <td *ngIf='estudiante.referencia.segundo && estudiante.referencia.segundo.year == "2019"'> Segundo - {{estudiante.referencia['segundo'].seccion}} </td>
       <td *ngIf='estudiante.referencia.tercero && estudiante.referencia.tercero.year == "2019"'> Tercero - {{estudiante.referencia['tercero'].seccion}} </td>
       <td *ngIf='estudiante.referencia.cuarto && estudiante.referencia.cuarto.year == "2019"'> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </td>
       <td *ngIf='estudiante.referencia.quinto && estudiante.referencia.quinto.year == "2019"'> Quinto - {{estudiante.referencia['quinto'].seccion}} </td>
+      <td> {{estudiante.apellidos}}, {{estudiante.nombre}} </td>
+      
+      <td> {{estudiante.sexo}} </td>
+      
+      
       
       <td> <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','editar',estudiante._id] } }]" >
         <fa name="edit" size='2x'></fa></a> 
       </td>
-      
+      <td>
+        <a [routerLink] =  "['', {outlets: { 'popup':['estudiante',estudiante._id, estudiante.nombre]}}]" 
+          > <fa name="cog" size="2x"></fa>  </a> 
+      </td>
+      <td>
+        <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','carne',estudiante._id] } }]"
+          > <fa name="print" size="2x"></fa>  </a>
+      </td>
+      <td>
+       <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','eliminar',estudiante._id,estudiante.nombre]}}]"
+          > <fa name="trash" size='2x'></fa>  </a>
+      </td>
+           
       <td> <a [routerLink] =  "['/estudiante/',estudiante._id]" >
         <fa name="user" size='2x'></fa></a> 
       </td>
