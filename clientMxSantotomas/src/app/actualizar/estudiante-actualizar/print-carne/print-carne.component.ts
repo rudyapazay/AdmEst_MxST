@@ -33,6 +33,7 @@ export class PrintCarneComponent implements OnInit {
         #informacion { list-style-type: none; margin:0px; padding:0px; width:4cm; }
         .item{ font-size:8pt; font-weight:bold; }
         .data{font-size: 11pt; margin:0 0 2px 0;  font-family:Impact; font-weight:-100;}
+        .data-small{font-size: 10pt; margin:0 0 3px 0;  font-family:Impact; font-weight:-100;}
         .docu{font-size: 9pt; margin:0px 0 2px 0;  font-family:Calibri; font-weight:700; }
         #QRCode{ margin:0.1cm 0.1cm 0.1cm 3cm; height:4.8cm; width:auto; }
 
@@ -69,9 +70,15 @@ data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEBLAEsAAD/7gAOQWRvYmUAZAAAAAAA/+EQ7EV4a
               this.bodyCarne += '<div id="bloque">';
                 this.bodyCarne +='<ul id="informacion">';
                   this.bodyCarne += '<li class="item"> Apellidos: </li>';
-                  this.bodyCarne += '<li class="data">'+result.estudiante.apellidos.toUpperCase() +'</li>';
+                  if(result.estudiante.apellidos.length > 19)
+                    this.bodyCarne += '<li class="data-small">'+result.estudiante.apellidos.toUpperCase() +'</li>';
+                  else
+                    this.bodyCarne += '<li class="data">'+result.estudiante.apellidos.toUpperCase() +'</li>';
                   this.bodyCarne += '<li class="item"> Nombre(s):  </li>';
-                  this.bodyCarne += '<li class="data">'+result.estudiante.nombre.toUpperCase() +'</li>';  
+                  if(result.estudiante.nombre.length > 19)
+                    this.bodyCarne += '<li class="data-small">'+result.estudiante.nombre.toUpperCase() +'</li>';  
+                  else
+                    this.bodyCarne += '<li class="data">'+result.estudiante.nombre.toUpperCase() +'</li>';  
                   this.bodyCarne += '<li class="docu"> DNI: '+result.estudiante.dni +'</li>';
                   this.bodyCarne += '<li class="docu"> Carpeta: '+result.estudiante.familia.codigo +'</li>';
                   //mostrando el grado y seccion

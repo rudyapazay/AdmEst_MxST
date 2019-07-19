@@ -1,3 +1,0 @@
-expor class global{
-  
-}
