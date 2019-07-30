@@ -33,11 +33,9 @@
                     [routerLink] =  "['', {outlets: { 'popup':['familia','editar',familia._id] } }]" >
                     <fa name="edit" size='2x'></fa> Editar
                 </a> 
-                <a  class="card-footer-item"  
-                    [routerLink] =  "['', {outlets: { 'popup':['familia','eliminar',familia._id, familia.carpeta ] } }]" >
-                    <fa name="trash" size='2x'></fa> Eliminar
-                </a>       
+                 
             </footer>
+
           </div>
           <!-- documentos -->
           <div  class="card">
@@ -83,6 +81,10 @@
                 [routerLink] =  "['', {outlets: { 'popup':['familia','documentos',familia._id] }}]" >
                 <fa name="edit" size='2x'></fa> Editar
               </a>
+              <a  class="card-footer-item"  
+                    [routerLink] =  "['', {outlets: { 'popup':['familia','delete','documentos',familia._id] } }]" >
+                    <fa name="trash" size='2x'></fa> Eliminar
+              </a>
             </div>
           </div>
           <!-- documentos -->
@@ -121,6 +123,10 @@
                 [routerLink] =  "['', {outlets: { 'popup':['padre','editar',familia._id] }}]" >
                 <fa name="edit" size='2x'></fa> Editar
             </a>
+            <a  class="card-footer-item"  
+                    [routerLink] =  "['', {outlets: { 'popup':['familia','delete','padre',familia._id] } }]" >
+                    <fa name="trash" size='2x'></fa> Eliminar
+            </a>
           </footer>
         </div>
         <!-- fin de padre -->
@@ -146,6 +152,10 @@
             <a  class="card-footer-item"  
                 [routerLink] =  "['', {outlets: { 'popup':['madre','editar',familia._id] } }]" >
                 <fa name="edit" size='2x'></fa> Editar
+            </a>
+            <a  class="card-footer-item"  
+                    [routerLink] =  "['', {outlets: { 'popup':['familia','delete','madre',familia._id] } }]" >
+                    <fa name="trash" size='2x'></fa> Eliminar
             </a>
           </footer>
         </div>
@@ -173,6 +183,10 @@
                 <a  class="card-footer-item"  
                     [routerLink] =  "['', {outlets: { 'popup':['apoderado','editar',familia._id] } }]" >
                     <fa name="edit" size='2x'></fa> Editar
+                </a>
+                <a  class="card-footer-item"  
+                    [routerLink] =  "['', {outlets: { 'popup':['familia','delete','apoderado',familia._id] } }]" >
+                    <fa name="trash" size='2x'></fa> Eliminar
                 </a>
               </footer>
         </div>

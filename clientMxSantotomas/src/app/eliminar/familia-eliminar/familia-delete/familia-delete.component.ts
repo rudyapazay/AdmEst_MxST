@@ -18,6 +18,10 @@ export class FamiliaDeleteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this._route.params.forEach((params:Params)=>{
+      this.id = params['id'];
+      this.carpeta = params['carpeta'];
+    });
   }
 
   closepopup(){
@@ -25,15 +29,13 @@ export class FamiliaDeleteComponent implements OnInit {
   }
 
   eliminarFamilia(){
-    this._route.params.forEach((params:Params)=>{
-      this.id = params['id'];
-      this.carpeta = params['carpeta'];
+   
       //console.log(this.id + this.carpeta);    
       this._familiaService.delFamilia(this.id).subscribe(
         result=>{
-          this._router.navigate([{outlets:{popup:null}}]);
+          this._router.navigate([{outlets:{ popup:null}}]);
         }
       );
-    });
+    
   }
 }

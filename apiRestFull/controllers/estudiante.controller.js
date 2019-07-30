@@ -13,7 +13,7 @@ function getEstudiantes(req,res){
                 res.status(404).send({message:'No existe estudintes'});
             }
             else{
-                FamiliaMdl.populate(estudiantes,{path:"familia"},(err,estudiante)=>{
+                FamiliaMdl.populate(estudiantes,{path:"familia"},(err,estudiantes)=>{
                     if(err){
                         res.status(500).send('Error en la peticion');
                     }
@@ -312,10 +312,9 @@ function updateReferencia(req,res){
 function getEstudiantesGradoSeccion(req,res){
     var grado=req.params.grado;
     var seccion  =  req.params.seccion;
-    let year  = 2019; 
+    let year  = '2019'; 
     var query ;
-    let $search = 'referencia.'+grado+'.year';
-    let $sseccion = 'referencia.'+grado+'.'+seccion;
+
     // falta sacar el anio actual
     switch (grado) {
         case 'primero':
@@ -341,7 +340,7 @@ function getEstudiantesGradoSeccion(req,res){
             break;
     }
     
-    query.sort({apellidos:+1}).exec((err,estudiantes)=>{
+    query.sort({apellidos:+1, nombre:+1}).exec((err,estudiantes)=>{
         if(err){
             res.status(500).send({message:'error en la base de datos'});
         }

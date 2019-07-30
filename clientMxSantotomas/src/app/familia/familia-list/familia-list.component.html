@@ -42,8 +42,13 @@
       <td *ngIf="!familia.apoderado"> Sin Registro </td>
       <td *ngIf="!familia.apoderado"> --</td>
 
-      <td> <a [routerLink] =  "['/familia/',familia._id]" >
+      <td> <a [routerLink] =  "['/familia/', familia._id]" >
         <fa name="users" size='2x'></fa></a> 
+      </td>
+      <td>
+          <a  [routerLink] =  "['', {outlets: { 'popup':['familia','eliminar',familia._id, familia.carpeta ] } }]" >
+          <fa name="trash" size='2x'></fa> 
+        </a>
       </td>
     </tr>
   </tbody>

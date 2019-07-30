@@ -92,4 +92,20 @@ export class FamiliaService {
   delFamilia(id:string):Observable<any>{
     return this._http.delete(this.url+'familia/'+id);
   }
+
+  //eliminar padre
+  deletePadre(id:string):Observable<any>{
+    return this._http.delete(this.url+'familia/padre/'+id);
+  }
+  //eliminar madre
+  deleteMadre(id:string):Observable<any>{
+    return this._http.delete(this.url+'familia/madre/'+id);
+  }
+  //eliminar apoderado
+  deleteApoderado(id:string):Observable<any>{
+    return this._http.delete(this.url+'familia/apoderado/'+id);
+  }
+  deleteDocumentos(id:string):Observable<any>{
+    return this._http.delete(this.url+'familia/documentos/'+id);
+  }
 }

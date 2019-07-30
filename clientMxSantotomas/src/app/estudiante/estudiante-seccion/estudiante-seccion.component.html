@@ -1,13 +1,27 @@
 
-<div class="tabs is-centered is-medium">
+<div class="tabs is-toggle is-centered ">
   <ul>
-    <li class="is-active"><a>PRIMERO</a></li>
-    <li><a>SEGUNDO</a></li>
-    <li><a>TERCERO</a></li>
-    <li><a>CUARTO</a></li>
-    <li><a>QUINTO</a></li>
+    <li  class="{{is_active_grado('primero')}}"><a (click)="cambiarGrado('primero')" >PRIMERO</a></li>
+    <li class="{{is_active_grado('segundo')}}"><a (click)="cambiarGrado('segundo')">SEGUNDO</a></li>
+    <li class="{{is_active_grado('tercero')}}"><a (click)="cambiarGrado('tercero')">TERCERO</a></li>
+    <li class="{{is_active_grado('cuarto')}}"><a (click)="cambiarGrado('cuarto')">CUARTO</a></li>
+    <li class="{{is_active_grado('quinto')}}"><a (click)="cambiarGrado('quinto')">QUINTO</a></li>
   </ul>
 </div>
+
+<div class="tabs is-toggle is-centered ">
+  <ul>
+    <li class="{{is_active_seccion('A')}}"><a (click)="cambiarSeccion('A')" > A </a></li>
+    <li class="{{is_active_seccion('B')}}"><a (click)="cambiarSeccion('B')" > B </a></li>
+    <li class="{{is_active_seccion('C')}}"><a (click)="cambiarSeccion('C')" > C </a></li>
+    <li class="{{is_active_seccion('D')}}"><a (click)="cambiarSeccion('D')" > D </a></li>
+    <li class="{{is_active_seccion('E')}}"><a (click)="cambiarSeccion('E')" > E </a></li>
+    <li class="{{is_active_seccion('F')}}"><a (click)="cambiarSeccion('F')" > F </a></li>
+    <li class="{{is_active_seccion('G')}}"><a (click)="cambiarSeccion('G')" > G </a></li>
+    <li class="{{is_active_seccion('H')}}"><a (click)="cambiarSeccion('H')" > H </a></li>
+  </ul>
+</div>
+
 
 <table class="table is-striped is-fullwidth is-hoverable">
     <tbody>
@@ -15,22 +29,40 @@
         <td> {{estudiante.familia.codigo }}</td>
         <td> {{estudiante.dni}} </td>
         <td> {{estudiante.apellidos}}, {{estudiante.nombre}} </td>
-        <td *ngIf ="estudiante.familia.padre"> {{estudiante.familia.padre.apellidos}}, {{estudiante.familia.padre.nombre}} </td>
-        <td *ngIf ="estudiante.familia.madre"> {{estudiante.familia.madre.apellidos}}, {{estudiante.familia.madre.nombre}} </td>
+        <td>
+          <p *ngIf ="estudiante.familia.padre">  {{estudiante.familia.padre.apellidos}}, {{estudiante.familia.padre.nombre}}  </p>
+          <p *ngIf ="estudiante.familia.madre" > {{estudiante.familia.madre.apellidos}}, {{estudiante.familia.madre.nombre}} </p>
+          <p *ngIf ="estudiante.familia.apoderado" > {{estudiante.familia.apoderado.apellidos}}, {{estudiante.familia.apoderado.nombre}} </p>
+        </td>
         
       
         <td> {{estudiante.sexo}} </td>
-      
-        <td> <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','editar',estudiante._id] } }]" >
-          <fa name="edit" size='2x'></fa></a> 
-        </td>
-        
+
         <td> <a [routerLink] =  "['/estudiante/',estudiante._id]" >
           <fa name="user" size='2x'></fa></a> 
         </td>
         <td> <a [routerLink] =  "['/familia/',estudiante.familia._id]" >
           <fa name="users" size='2x'></fa></a> 
         </td>
+        <td>
+            <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','carne',estudiante._id] } }]"
+              > <fa name="print" size="2x"></fa>  </a>
+        </td>
+        <td> <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','editar',estudiante._id] } }]" >
+            <fa name="edit" size='2x'></fa></a> 
+          </td>
+        <td>
+          <a [routerLink] =  "['', {outlets: { 'popup':['estudiante',estudiante._id, estudiante.nombre]}}]" 
+            > <fa name="cog" size="2x"></fa></a> 
+        </td>
+        
+        <td>
+          <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','eliminar',estudiante._id,estudiante.nombre]}}]"
+            > <fa name="trash" size='2x'></fa>  </a>
+        </td>
+               
+          
+
       </tr>
     </tbody>
   </table>

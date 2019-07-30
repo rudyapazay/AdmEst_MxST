@@ -26,8 +26,12 @@ familia_router.route('/familia/apoderado/:id').put(familia_ctl.saveApoderado);
 //actualizando una familia
 familia_router.route('/familia/:id').put(familia_ctl.updateFamilia);
 
-//eliminando 
+//Eliminando los documentos
 familia_router.route('/familia/:id').delete(familia_ctl.deleteFamilia);
+familia_router.route('/familia/padre/:id').delete(familia_ctl.deletePadre);
+familia_router.route('/familia/madre/:id').delete(familia_ctl.deleteMadre);
+familia_router.route('/familia/apoderado/:id').delete(familia_ctl.deleteApoderado);
+familia_router.route('/familia/documentos/:id').delete(familia_ctl.deleteDocumentos);
 
 
 

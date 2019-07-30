@@ -44,7 +44,7 @@ export class EstudianteDetailComponent implements OnInit {
         result=>{
           this.estudiante = result.estudiante;
           //enviando referencia al componente
-          //this.referencia.estref = result.estudiante.referencia;
+          this.referencia.estref = result.estudiante.referencia;
          
           //console.log(result.estudiante);
         },

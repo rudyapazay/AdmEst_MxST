@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FamiliaMdl } from 'src/app/models/famlia-mdl';
 import { FamiliaService } from 'src/app/services/familia.service';
 import { BuscarService } from 'src/app/services/buscar.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,11 +18,15 @@ export class FamiliaListComponent implements OnInit {
   public familias:FamiliaMdl;
 
   constructor(
+    private _router:Router,
     private _familiaService:FamiliaService,
     private _buscarService: BuscarService
   ) {
     this.titulo = "Registro de familias";
     this.familia_buscar = "";
+    this._router.events.subscribe((e:any)=>{
+      this.verFamilias();
+    });
   }
 
   ngOnInit() {

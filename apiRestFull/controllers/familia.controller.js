@@ -369,16 +369,88 @@ function deleteFamilia(req,res){
         }
     });
 }
+//eliminar padre
+function deletePadre(req,res){
+    var id = req.params.id;
+    var familiaUpdate = {$unset:{padre:null}};
+    FamiliaMdl.findByIdAndUpdate(id, familiaUpdate,{new:true}, (err,familiaStored)=>{
+        if(err){
+            res.status(500).send('Error en la actualizacion');
+        }
+        else{
+            if(!familiaStored){
+                res.status(404).send('Familia no actulizada');
+            }
+            else{
+                res.status(200).send(familiaStored);
+            }
+        }
+    });
+    
+}
+//eliminar madre
+function deleteMadre(req,res){
+    var id = req.params.id;
+    var familiaUpdate = {$unset:{madre:null}};
+    FamiliaMdl.findByIdAndUpdate(id, familiaUpdate,{new:true}, (err,familiaStored)=>{
+        if(err){
+            res.status(500).send('Error en la actualizacion');
+        }
+        else{
+            if(!familiaStored){
+                res.status(404).send('Familia no actulizada');
+            }
+            else{
+                res.status(200).send(familiaStored);
+            }
+        }
+    });
+}
+//eliminar apoderado
+function deleteApoderado(req,res){
+    var id = req.params.id;
+    var familiaUpdate = {$unset:{apoderado:null}};
+    FamiliaMdl.findByIdAndUpdate(id, familiaUpdate,{new:true}, (err,familiaStored)=>{
+        if(err){
+            res.status(500).send('Error en la actualizacion');
+        }
+        else{
+            if(!familiaStored){
+                res.status(404).send('Familia no actulizada');
+            }
+            else{
+                res.status(200).send(familiaStored);
+            }
+        }
+    });
+}
 
+function deleteDocumentos(req,res){
+    var id = req.params.id;
+    var familiaUpdate = {$unset:{documentos:null}};
+    FamiliaMdl.findByIdAndUpdate(id, familiaUpdate,{new:true}, (err,familiaStored)=>{
+        if(err){
+            res.status(500).send('Error en la actualizacion');
+        }
+        else{
+            if(!familiaStored){
+                res.status(404).send('Familia no actulizada');
+            }
+            else{
+                res.status(200).send(familiaStored);
+            }
+        }
+    });
+    
+}
 
 module.exports={
     getFamilias,
     saveFamilia, 
     getFamilia,
-    savePadre,
-    saveMadre,
-    saveApoderado,
+    savePadre, saveMadre, saveApoderado,
     saveFamiliaDoc,
     updateFamilia,
-    deleteFamilia
+    deleteFamilia,
+    deletePadre, deleteMadre, deleteApoderado, deleteDocumentos
 }

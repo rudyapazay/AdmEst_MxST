@@ -36,9 +36,9 @@ var FamiliaSchema = Schema({
     //documentos que se tiene de los padres
     documentos:{
         folder:Boolean,
-        cdnipadre:Boolean,
-        cdnimadre:Boolean,
-        cdniapoderado:Boolean,
+        cdnipadre:Boolean,  //opcional   
+        cdnimadre:Boolean,  //opcional
+        cdniapoderado:Boolean, //opcional
         djurada:Boolean
     },
     

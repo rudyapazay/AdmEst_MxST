@@ -34,11 +34,10 @@ export class FamiliaDetailComponent implements OnInit {
       this._familiaService.getFamilia(id).subscribe(
         result=>{
           this.familia =result.familia;
-          
         },
         err=>{  
           console.log('error en la peticion');
-          this._router.navigate(['/familias/']);
+          //this._router.navigate(['/familias/']);
         }
       );
     });
