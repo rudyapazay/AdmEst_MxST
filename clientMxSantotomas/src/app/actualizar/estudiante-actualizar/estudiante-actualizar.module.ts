@@ -7,9 +7,10 @@ import {  FormsModule } from '@angular/forms';
 import { EstudianteDocumentosComponent } from './estudiante-documentos/estudiante-documentos.component';
 import { PrintCarneComponent } from './print-carne/print-carne.component';
 import { CambiarGradoSeccionComponent } from './cambiar-grado-seccion/cambiar-grado-seccion.component';
+import { EstudianteDocumentosTrasladoComponent } from './estudiante-documentos-traslado/estudiante-documentos-traslado.component';
 
 @NgModule({
-  declarations: [EstudianteUpdateComponent, EstudianteDocumentosComponent, PrintCarneComponent, CambiarGradoSeccionComponent],
+  declarations: [EstudianteUpdateComponent, EstudianteDocumentosComponent, PrintCarneComponent, CambiarGradoSeccionComponent, EstudianteDocumentosTrasladoComponent],
   imports: [
     CommonModule,
     FormsModule,

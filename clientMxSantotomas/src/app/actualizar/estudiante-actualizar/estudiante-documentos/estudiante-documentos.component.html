@@ -49,8 +49,17 @@
                       name="ficha_seguro" #ficha_seguro="ngModel" >    
                   </label>
               </div>
-             </div>
-        
+            </div>
+
+            <div class="field"> 
+              <div class="control">
+                  <label class="checkbox" >Certificado de primaria:   
+                      <input type="checkbox"  [(ngModel)]='documentos.certificado_primaria' 
+                      name="certificado_primaria" #certificado_primaria="ngModel" >    
+                  </label>
+              </div>
+            </div>
+
       </section>
       <footer class="modal-card-foot">
         <button class="button is-primary" type="submit"> Guardar</button>

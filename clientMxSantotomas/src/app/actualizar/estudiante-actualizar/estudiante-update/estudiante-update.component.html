@@ -22,6 +22,7 @@
             </div>
           </div>
         </div>
+        
         <div class="field is-horizontal">
           <div class="field-label ">
             <label class="label">Apellidos: </label>
@@ -54,52 +55,103 @@
         <div class="field is-horizontal">
           <div class="field-label ">
             <label class="label">Sexo: </label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <label class="radio">
-                    <input type="radio" [(ngModel)]="estudiante.sexo" name="sexo" 
-                    #sexo ="ngModel" value="masculino" >  
-                    Masculino
-                  </label>
-                  <label class="radio">
-                    <input type="radio" [(ngModel)]="estudiante.sexo" name="sexo" 
-                      #sexo ="ngModel" value="femenino"> 
-                      Femenino
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            
-            <div class="field is-horizontal">
-              <div class="field-label ">
-                <label class="label">Matricula</label>
-              </div>
-              <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <label class="radio">
-                    <input type="radio" [(ngModel)]="estudiante.matricula" name="matricula" 
-                    #matricula="ngModel" value="ratificado" >  
-                    Ratificado
-                  </label>
-                  <label class="radio">
-                    <input type="radio" [(ngModel)]="estudiante.matricula" name="matricula" #estado="ngModel" value="traslado"> 
-                    Traslado
-                  </label>
-                </div>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" [(ngModel)]="estudiante.sexo" name="sexo" 
+                  #sexo ="ngModel" value="masculino" >  
+                  Masculino
+                </label>
+                <label class="radio">
+                  <input type="radio" [(ngModel)]="estudiante.sexo" name="sexo" 
+                    #sexo ="ngModel" value="femenino"> 
+                    Femenino
+                </label>
               </div>
             </div>
           </div>
-          
-        </section>
-        <footer class="modal-card-foot">
-          <button class="button is-primary" type="submit"> Guardar</button>
-          <button class="button" (click)="closepopup()">Cancel</button>
-        </footer>
-      </div>
+        </div>
+            
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">seguro</label>
+          </div>
+
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" [(ngModel)]="estudiante.seguro" name="seguro" 
+                  #seguro="ngModel" value="SIS" >  
+                  S.I.S.
+                </label>
+                <label class="radio">
+                  <input type="radio" [(ngModel)]="estudiante.seguro" name="seguro" 
+                  #seguro="ngModel" value="ESSALUD" >  
+                  EsSalud
+                </label>
+                <label class="radio">
+                  <input type="radio" [(ngModel)]="estudiante.seguro" name="seguro" 
+                  #seguro="ngModel" value="falta" >  
+                  No tiene seguro
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">Matricula</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" [(ngModel)]="estudiante.matricula" name="matricula" 
+                  #matricula="ngModel" value="ratificado" >  
+                  Ratificado
+                </label>
+                <label class="radio">
+                  <input type="radio" [(ngModel)]="estudiante.matricula" name="matricula" 
+                  #matricula="ngModel" value="traslado"> 
+                  Traslado
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label">SIAGIE: </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" [(ngModel)]="estudiante.siagie" name="siagie" 
+                  #siagie ="ngModel" value="completo" >  
+                  Registrado
+                </label>
+                <label class="radio">
+                  <input type="radio" [(ngModel)]="estudiante.siagie" name="siagie" 
+                    #siagie ="ngModel" value="falta"> 
+                    Sin registrar
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+
+      <footer class="modal-card-foot">
+        <button class="button is-primary" type="submit"> Guardar</button>
+        <button class="button" (click)="closepopup()">Cancel</button>
+      </footer>
     </div>
+  </div>
 </form>

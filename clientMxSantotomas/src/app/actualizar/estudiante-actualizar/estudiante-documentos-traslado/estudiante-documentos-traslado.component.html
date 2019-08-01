@@ -1,0 +1,43 @@
+<form  #TrasladoForm ="ngForm"   (ngSubmit)="guardarDocumentos()">
+
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">{{estudiante.nombre}} {{estudiante.apellidos}}</p>
+        <button class="delete" aria-label="close" (click)="closepopup()" ></button>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ... -->
+        <div class="field"> 
+          <div class="control">
+              <label class="checkbox" > Certificado
+                  <input type="checkbox"  [(ngModel)]='traslado.certificado' name="certificado" #certificado="ngModel" >    
+              </label>
+          </div>
+        </div>
+        <div class="field"> 
+          <div class="control">
+              <label class="checkbox" > Resolución 
+                  <input type="checkbox"  [(ngModel)]='traslado.resolucion' name="resolucion" #resolucion="ngModel" >    
+              </label>
+          </div>
+        </div>
+        <div class="field"> 
+          <div class="control">
+              <label class="checkbox" > boleta_notas
+                  <input type="checkbox"  [(ngModel)]='traslado.boleta_notas' name="boleta_notas" #boleta_notas="ngModel" >    
+              </label>
+          </div>
+        </div>
+
+
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Guardar Cambios</button>
+        <button class="button" (click)="closepopup()" >Cancelar</button>
+      </footer>
+    </div>
+  </div>
+
+</form>

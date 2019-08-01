@@ -55,12 +55,14 @@ function saveEstudiante(req,res){
     //id de la familia
     estudiante.familia = params.familia;
 
-    estudiante.traslado_anterior = params.traslado_anterior;
+    //estudiante.traslado_anterior = params.traslado_anterior;
     //estudiante.partida_nacimiento =params.partida_nacimiento;
    // estudiante.ficha_matricula = params.ficha_matricula;
     //estudiante.sis = params.sis;
+    estudiante.seguro = params.seguro;
     estudiante.estado = params.estado;
     estudiante.matricula = params.matricula;
+    estudiante.siagie = params.siagie;
     estudiante.observaciones = params.observaciones;
     
     estudiante.grado_actual = params.grado;
@@ -182,6 +184,7 @@ function updateEstudianteBasica(req,res){
             }else{
                 estudiante = req.body;
 
+
                 EstudianteMdl.findByIdAndUpdate(estudianteId, estudiante,{new:true},(err,estudianteUpdate)=>{
                     if(err){
                         res.status(500).send({message:'error en la actualizacion'});
@@ -189,7 +192,25 @@ function updateEstudianteBasica(req,res){
                         if(!estudianteUpdate){
                             res.status(404).send({message:'estudiante no existe'});
                         }else{
-                            res.status(200).send({estudianteUpdate});
+                            if(estudianteUpdate.matricula == 'ratificado'){
+                                estudianteUpdate = {$unset:{'documentos.traslado':null}};
+                                EstudianteMdl.findByIdAndUpdate(estudianteId, estudianteUpdate,{new:true}, (err,estudianteStored)=>{
+                                    if(err){
+                                        res.status(500).send('Error en la actualizacion');
+                                    }
+                                    else{
+                                        if(!estudianteStored){
+                                            res.status(404).send('Familia no actulizada');
+                                        }
+                                        else{
+                                            res.status(200).send(estudianteStored);
+                                        }
+                                    }
+                                });
+                            }
+                            else{
+                                res.status(200).send(estudianteUpdate);
+                            } 
                         }
                     }
                 });
@@ -199,7 +220,7 @@ function updateEstudianteBasica(req,res){
 }
 
 
-// guardar y actulizar documentos
+// guardar y actulizar documentos generales
 function saveDocumentos(req,res){
     var estudianteId = req.params.id;
     var params = req.body;
@@ -216,7 +237,40 @@ function saveDocumentos(req,res){
                 estudiante.documentos.partida_nacimiento = params.partida_nacimiento;
                 estudiante.documentos.ficha_matricula = params.ficha_matricula;
                 estudiante.documentos.ficha_seguro = params.ficha_seguro;
+                estudiante.documentos.certificado_primaria = params.certificado_primaria;
 
+                EstudianteMdl.findByIdAndUpdate(estudianteId,estudiante,{new:true},(err,estudianteUpdate)=>{
+                    if(err){
+                        res.status(500).send({message:'Error en la actualizacion'});
+                    }else{
+                        if(!estudianteUpdate){
+                            res.status(404).send({message:'Estudiante no existe'});
+                        }else{
+                            res.status(200).send(estudianteUpdate);
+                        }
+                    }
+                });
+            }
+        }
+    });
+}
+
+//guardar y actualizar documentos de traslado
+function saveDocumentosTraslado(req,res){
+    var estudianteId = req.params.id;
+    var params = req.body;
+
+    EstudianteMdl.findOne({_id:estudianteId},(err,estudiante)=>{
+        if(err){
+            res.status(500).send({message:'Error en la actulizacion'})
+        }else{
+            if(!estudiante){
+                res.status(400).send({message:'Estudiante no existe'});
+            }else{
+                estudiante.documentos.traslado.certificado = params.certificado;
+                estudiante.documentos.traslado.resolucion = params.resolucion;
+                estudiante.documentos.traslado.boleta_notas = params.boleta_notas;
+                
                 EstudianteMdl.findByIdAndUpdate(estudianteId,estudiante,{new:true},(err,estudianteUpdate)=>{
                     if(err){
                         res.status(500).send({message:'Error en la actualizacion'});
@@ -455,7 +509,7 @@ function cambiarGradoSeccion(req,res){
     });
 }
 
-//delete
+//eliminar un estudiante
 function delEstudiante(req,res){
     var id = req.params.id;
     EstudianteMdl.deleteOne({_id:id},(err)=>{
@@ -467,6 +521,48 @@ function delEstudiante(req,res){
     });
 }
 
+// eliminar documentos 
+function deleteDocumentos(req, res){
+    var id = req.params.id;
+    var estudianteUpdate = {$unset:{
+                            'documentos.folder':null, 
+                            'documentos.copia_dni':null, 
+                            'documentos.partida_nacimiento':null, 
+                            'documentos.ficha_matricula':null,
+                            'documentos.ficha_seguro':null, 
+                            'documentos.certificado_primaria':null }};
+    EstudianteMdl.findByIdAndUpdate(id, estudianteUpdate,{new:true}, (err,estudianteStored)=>{
+        if(err){
+            res.status(500).send('Error en la actualizacion');
+        }
+        else{
+            if(!estudianteStored){
+                res.status(404).send('Familia no actulizada');
+            }
+            else{
+                res.status(200).send(estudianteStored);
+            }
+        }
+    }); 
+}
+//eliminar documentos de traslado
+function deleteDocumentosTraslado(req, res){
+    var id = req.params.id;
+    var estudianteUpdate = {$unset:{'documentos.traslado':null}};
+    EstudianteMdl.findByIdAndUpdate(id, estudianteUpdate,{new:true}, (err,estudianteStored)=>{
+        if(err){
+            res.status(500).send('Error en la actualizacion');
+        }
+        else{
+            if(!estudianteStored){
+                res.status(404).send('Familia no actulizada');
+            }
+            else{
+                res.status(200).send(estudianteStored);
+            }
+        }
+    }); 
+}
 module.exports ={
     getEstudiantes,
     getEstudiante,
@@ -474,7 +570,7 @@ module.exports ={
     saveEstudiante,
     getEstudiantesByFamilia,
     //updateEstudiante,
-    saveDocumentos,
+    saveDocumentos, saveDocumentosTraslado,
     updateReferencia,
     updateEstudianteBasica,
     
@@ -483,4 +579,5 @@ module.exports ={
 
     //eliminar
     delEstudiante,
+    deleteDocumentos, deleteDocumentosTraslado
 }

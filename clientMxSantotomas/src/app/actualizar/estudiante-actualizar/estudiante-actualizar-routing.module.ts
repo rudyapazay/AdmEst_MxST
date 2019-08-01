@@ -4,10 +4,12 @@ import { EstudianteUpdateComponent } from './estudiante-update/estudiante-update
 import { EstudianteDocumentosComponent } from './estudiante-documentos/estudiante-documentos.component';
 import { PrintCarneComponent } from './print-carne/print-carne.component';
 import { CambiarGradoSeccionComponent } from './cambiar-grado-seccion/cambiar-grado-seccion.component';
+import { EstudianteDocumentosTrasladoComponent } from './estudiante-documentos-traslado/estudiante-documentos-traslado.component';
 
 const routes: Routes = [
   {path:"estudiante/editar/:id", component:EstudianteUpdateComponent,outlet:"popup"},
   {path:"estudiante/documentos/:id", component:EstudianteDocumentosComponent,outlet:"popup"},
+  {path:"estudiante/documentos/traslado/:id", component:EstudianteDocumentosTrasladoComponent, outlet:"popup"},
   {path:"estudiante/carne/:id", component:PrintCarneComponent, outlet:"popup"},
   {path:"estudiante/:id/:nombre", component:CambiarGradoSeccionComponent, outlet:"popup"}
 ];

@@ -71,6 +71,16 @@ export class EstudianteService {
     
   }
 
+  //agregar documentos de traslado
+  addDocumentosTraslado(id, documentos:any){
+    let json = JSON.stringify(documentos);
+    let params = json;
+
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+
+    return this._http.put(this.url+'estudiante/traslado/'+id, params,{headers:headers});
+  }
+
   //los put necesariamente requieren un parametro y content-type
   cambiarGradoSeccion(id,grado,seccion):Observable<any>{
     var url = this.url+'estudiante/'+id+'/'+grado+'/'+seccion;
@@ -80,7 +90,17 @@ export class EstudianteService {
 
   //eliminar un estudiante
   deleteEstudiante(id):Observable<any>{
-    return this._http.delete(this.url +'estudiante/'+id);
+    return this._http.delete(this.url +'estudiante/delete/'+id);
+  }
+
+  //eliminar documentos de estudiante
+  deleteDocumentos(id):Observable<any>{
+    return this._http.delete(this.url+'estudiante/documentos/'+id);
+  }
+
+  //eliminar documentos de traslado
+  deleteDocumentosTraslado(id):Observable<any>{
+    return this._http.delete(this.url+'estudiante/documentostraslado/'+id);
   }
 
 }

@@ -55,16 +55,12 @@ var EstudianteSchema = Schema({
 
     primaria:{
         promocion:String,
-        escuela:{type:Schema.ObjectId,ref:'IEducativa'},
-        certificado:Boolean
+        escuela:{type:Schema.ObjectId,ref:'IEducativa'}
     },
 
     // Vinculacion con una familia
     familia: {type:Schema.ObjectId, ref:'Familia'},
        
-    //flag para grado actual
-    grado_actual:String,
-
     //Dependiendo del tiempo se puede implementar para digitalizar toda la informacion
     documentos:{
         folder:Boolean,
@@ -72,15 +68,22 @@ var EstudianteSchema = Schema({
         partida_nacimiento:Boolean,
         ficha_matricula:Boolean,
         ficha_seguro:Boolean,
-        certificado_primaria:Boolean
+        certificado_primaria:Boolean,
+        traslado:{
+            certificado:Boolean,
+            resolucion:Boolean,
+            boleta_notas:Boolean
+        }
     },
 
     QRCode:String,
+    imagen:String,
     
     fecha_nacimiento:Date,
-    seguro:String,  //sis || essalud
-    estado: String,  // activo|| retirado || trasladado || concluido
-    matricula:String,  //Situacion al 2019 ratificado || nuevo || pendiente
+    seguro:String,  //sis || essalud || no tiene
+    estado: String,  // activo || pendiente || retirado || traslado || concluido(solo promociones)  ** se cambia en cada año 
+    matricula:String,  //Situacion al 2019 ratificado || reciente   ** se cambiara en cada año
+    siagie:String,  // true - registrado Siagie|| false -falta registrar ** se cambiara en cada año 
     observaciones:String
 
 });

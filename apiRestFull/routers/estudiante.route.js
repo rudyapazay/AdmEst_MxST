@@ -25,14 +25,17 @@ estudiante_router.route('/estudiante/update/:id').put(estudiante_ctrl.updateEstu
 
 //actuliazacion de los documentos
 estudiante_router.route('/estudiante/documentos/:id').put(estudiante_ctrl.saveDocumentos);
+estudiante_router.route('/estudiante/traslado/:id').put(estudiante_ctrl.saveDocumentosTraslado);
 
-//actulizacion de los grados
+//actulizacion la informacion de cada grado
 estudiante_router.route('/estudiante/:grado/:id').put(estudiante_ctrl.updateReferencia);
 
 //sacar estudiantes por grado y seccion
 estudiante_router.route('/estudiantes/:grado/:seccion').get(estudiante_ctrl.getEstudiantesGradoSeccion);
 
 //eliminar estudiante
-estudiante_router.route('/estudiante/:id').delete(estudiante_ctrl.delEstudiante);
+estudiante_router.route('/estudiante/delete/:id').delete(estudiante_ctrl.delEstudiante);
+estudiante_router.route('/estudiante/documentos/:id').delete(estudiante_ctrl.deleteDocumentos);
+estudiante_router.route('/estudiante/documentostraslado/:id').delete(estudiante_ctrl.deleteDocumentosTraslado);
 
 module.exports = estudiante_router;

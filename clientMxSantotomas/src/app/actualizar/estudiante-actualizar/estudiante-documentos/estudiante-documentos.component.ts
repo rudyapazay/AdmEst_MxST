@@ -20,7 +20,7 @@ export class EstudianteDocumentosComponent implements OnInit {
     private _router:Router,
     private _estudianteService:EstudianteService
   ) { 
-    this.documentos = new EstudianteDocumentosMdl(false,false,false,false,false);
+    this.documentos = new EstudianteDocumentosMdl(false,false,false,false,false,false);
   }
 
   ngOnInit() {

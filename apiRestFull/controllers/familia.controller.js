@@ -172,6 +172,7 @@ function savePadre(req,res){
                 familia.padre.direccion = padreSave.direccion;
                 familia.padre.celular = padreSave.celular;
                 familia.padre.nota = padreSave.nota;
+                familia.documentos.cdnipadre = false;
 
                 FamiliaMdl.findByIdAndUpdate(familiaId,familia,{new:true},(err,familiaUpdate)=>{
                     if(err){
@@ -214,6 +215,7 @@ function saveMadre(req,res){
                 familia.madre.direccion = madreSave.direccion;
                 familia.madre.celular = madreSave.celular;
                 familia.madre.nota = madreSave.nota; 
+                familia.documentos.cdnimadre = false;
 
                 FamiliaMdl.findByIdAndUpdate(familiaId,familia,{new:true},(err,familiaUpdate)=>{
                     if(err){
@@ -256,6 +258,7 @@ function saveApoderado(req,res){
                 familia.apoderado.direccion = apoderadoSave.direccion;
                 familia.apoderado.relacion = apoderadoSave.relacion;
                 familia.apoderado.nota = apoderadoSave.nota;
+                familia.documentos.cdniapoderado = false;
 
                 FamiliaMdl.findByIdAndUpdate(familiaId,familia,{new:true},(err,familiaUpdate)=>{
                     if(err){
@@ -372,7 +375,7 @@ function deleteFamilia(req,res){
 //eliminar padre
 function deletePadre(req,res){
     var id = req.params.id;
-    var familiaUpdate = {$unset:{padre:null}};
+    var familiaUpdate = {$unset:{padre:null, 'documentos.cdnipadre':null}};
     FamiliaMdl.findByIdAndUpdate(id, familiaUpdate,{new:true}, (err,familiaStored)=>{
         if(err){
             res.status(500).send('Error en la actualizacion');
@@ -391,7 +394,7 @@ function deletePadre(req,res){
 //eliminar madre
 function deleteMadre(req,res){
     var id = req.params.id;
-    var familiaUpdate = {$unset:{madre:null}};
+    var familiaUpdate = {$unset:{madre:null, 'documentos.cdnimadre':null}};
     FamiliaMdl.findByIdAndUpdate(id, familiaUpdate,{new:true}, (err,familiaStored)=>{
         if(err){
             res.status(500).send('Error en la actualizacion');
@@ -409,7 +412,7 @@ function deleteMadre(req,res){
 //eliminar apoderado
 function deleteApoderado(req,res){
     var id = req.params.id;
-    var familiaUpdate = {$unset:{apoderado:null}};
+    var familiaUpdate = {$unset:{apoderado:null,'documentos.cdniapoderado':null}};
     FamiliaMdl.findByIdAndUpdate(id, familiaUpdate,{new:true}, (err,familiaStored)=>{
         if(err){
             res.status(500).send('Error en la actualizacion');
@@ -440,8 +443,7 @@ function deleteDocumentos(req,res){
                 res.status(200).send(familiaStored);
             }
         }
-    });
-    
+    }); 
 }
 
 module.exports={
