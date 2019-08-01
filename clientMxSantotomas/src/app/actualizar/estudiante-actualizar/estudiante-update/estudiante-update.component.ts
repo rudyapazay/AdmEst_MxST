@@ -27,7 +27,7 @@ export class EstudianteUpdateComponent implements OnInit {
   getEstudiante(){
     this._route.params.forEach((params:Params)=>{
       this.id = params.id;
-      console.log(this.estudiante);
+      //console.log(this.estudiante);
       
       this._estudianteService.getEstudiante(this.id).subscribe(
         result=>{
