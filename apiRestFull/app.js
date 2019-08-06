@@ -9,6 +9,7 @@ const familia_router = require('./routers/familia.router');
 const estudiante_router = require('./routers/estudiante.route');
 const buscarRtr = require('./routers/buscar.route');
 const ieducativaRtr = require('./routers/ieducativa.route');
+const asistenciaRtr = require('./routers/asistencia.route');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -29,5 +30,6 @@ app.use('/api/',familia_router);
 app.use('/api/', estudiante_router);
 app.use('/api/', buscarRtr);
 app.use('/api/',ieducativaRtr);
+app.use('/api/', asistenciaRtr);
 
 module.exports = app;
