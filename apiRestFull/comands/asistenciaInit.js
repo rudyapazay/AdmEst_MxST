@@ -3,6 +3,6 @@ var datas = new Date();
 
 var date2 = new Date(datas.getFullYear(), datas.getMonth(), datas.getDate());
 
-console.log(datas.getHours());
+console.log(datas.getHours() +''+ datas.getMinutes());
 
 console.log(date2.getHours());
