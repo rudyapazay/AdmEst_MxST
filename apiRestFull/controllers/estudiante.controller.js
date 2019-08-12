@@ -4,7 +4,7 @@ var EstudianteMdl = require('../models/estudiante.model');
 var FamiliaMdl =  require('../models/familia.model');
 
 function getEstudiantes(req,res){
-    EstudianteMdl.find({},{QRCode:0}).sort({apellidos:+1}).exec((err,estudiantes)=>{
+    EstudianteMdl.find({},{QRCode:0}).limit(20).sort({apellidos:+1}).exec((err,estudiantes)=>{
         if(err){
             res.status(500).send({message:'error en la peticion'});
         }
