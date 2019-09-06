@@ -29,11 +29,21 @@
         <td> {{estudiante.familia.codigo }}</td>
         <td> {{estudiante.dni}} </td>
         <td> {{estudiante.apellidos}}, {{estudiante.nombre}} </td>
+        <!--
         <td>
           <p *ngIf ="estudiante.familia.padre">  {{estudiante.familia.padre.apellidos}}, {{estudiante.familia.padre.nombre}}  </p>
           <p *ngIf ="estudiante.familia.madre" > {{estudiante.familia.madre.apellidos}}, {{estudiante.familia.madre.nombre}} </p>
           <p *ngIf ="estudiante.familia.apoderado" > {{estudiante.familia.apoderado.apellidos}}, {{estudiante.familia.apoderado.nombre}} </p>
         </td>
+        -->
+         
+        
+          <td *ngIf ="estudiante.familia.padre">  {{estudiante.familia.padre.apellidos}}, {{estudiante.familia.padre.nombre}}  </td>
+          <td *ngIf ="estudiante.familia.madre" > {{estudiante.familia.madre.apellidos}}, {{estudiante.familia.madre.nombre}} </td>
+          <td *ngIf ="estudiante.familia.apoderado" > {{estudiante.familia.apoderado.apellidos}}, {{estudiante.familia.apoderado.nombre}} </td>
+          <td *ngIf ="!estudiante.familia.padre">    </td>
+          <td *ngIf ="!estudiante.familia.madre">    </td>
+          <td *ngIf ="!estudiante.familia.apoderado">    </td>
         
       
         <td> {{estudiante.sexo}} </td>
