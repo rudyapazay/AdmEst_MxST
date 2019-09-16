@@ -22,25 +22,42 @@
 
 <table class="table is-striped is-fullwidth is-hoverable">
   <tbody>
-    <tr *ngFor = "let familia of familias">
-      <td> {{familia.codigo}} </td>
-      <td> {{familia.carpeta}} </td>
-      <td> {{familia.direccion}} </td>
+    <tr *ngFor = "let familia of familias; let i= index">
+      <td> {{i+1}}</td>
+      <td> 
+        <p class="nombre"> {{familia.codigo}} </p> <p class="datos"> {{familia.direccion}} </p>
+      </td>
       
-      <td *ngIf="familia.padre" > {{familia.padre.nombre}} {{familia.padre.apellidos}} </td>
-      <td *ngIf="familia.padre" > {{familia.padre.celular}} </td>
-      <td *ngIf="!familia.padre"> Sin Registro </td>
-      <td *ngIf="!familia.padre">  -- </td>
+      <td *ngIf="familia.padre" > 
+        <p class="nombre">{{familia.padre.nombre}} {{familia.padre.apellidos}} </p>
+        <p class="datos"> DNI: {{familia.padre.dni}} - CEL: {{familia.padre.celular}} </p> </td>
+      <td *ngIf="!familia.padre"> -- </td>
+
+      <td *ngIf="familia.madre" > 
+          <p class="nombre">{{familia.madre.nombre}} {{familia.madre.apellidos}} </p>
+          <p class="datos"> DNI: {{familia.madre.dni}} - CEL: {{familia.madre.celular}} </p> </td>
+      <td *ngIf="!familia.madre"> -- </td>
       
-      <td *ngIf="familia.madre" > {{familia.madre.nombre}} {{familia.madre.apellidos}} </td>
-      <td *ngIf="familia.madre" > {{familia.madre.celular}} </td>
-      <td *ngIf="!familia.madre"> Sin Registro </td>
-      <td *ngIf="!familia.madre"> --</td>
+      <td *ngIf="familia.apoderado" > 
+          <p>{{familia.apoderado.nombre}} {{familia.apoderado.apellidos}} </p>
+          <p> DNI: {{familia.apoderado.dni}} - CEL: {{familia.apoderado.celular}} </p> </td>
+      <td *ngIf="!familia.apoderado"> -- </td>
       
-      <td *ngIf="familia.apoderado" > {{familia.apoderado.nombre}} {{familia.apoderado.apellidos}} </td>
-      <td *ngIf="familia.apoderado" > {{familia.apoderado.celular}} </td>
-      <td *ngIf="!familia.apoderado"> Sin Registro </td>
-      <td *ngIf="!familia.apoderado"> --</td>
+          
+      <td *ngIf="familia.estudiantes" > 
+        <p *ngFor = "let estudiante of familia.estudiantes">
+          <span class="datos">( {{estudiante.dni}} ) </span>
+            {{ estudiante.nombre }}
+            {{ estudiante.apellidos }}
+          <span class="nombre" *ngIf='estudiante.referencia.primero && estudiante.referencia.primero.year == "2019"'>( Primero - {{estudiante.referencia['primero'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.segundo && estudiante.referencia.segundo.year == "2019"'>( Segundo - {{estudiante.referencia['segundo'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.tercero && estudiante.referencia.tercero.year == "2019"'>( Tercero - {{estudiante.referencia['tercero'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.cuarto && estudiante.referencia.cuarto.year == "2019"'>( Cuarto - {{estudiante.referencia['cuarto'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.quinto && estudiante.referencia.quinto.year == "2019"'>( Quinto - {{estudiante.referencia['quinto'].seccion}} )</span>
+          
+        </p>
+      </td>
+     
 
       <td> <a [routerLink] =  "['/familia/', familia._id]" >
         <fa name="users" size='2x'></fa></a> 

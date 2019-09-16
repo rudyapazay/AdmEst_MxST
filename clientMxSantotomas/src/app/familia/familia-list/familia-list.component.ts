@@ -39,6 +39,8 @@ export class FamiliaListComponent implements OnInit {
       result=>{
         // cuando trae de la base de datos trae con su indice
         this.familias = result.familias;
+
+        console.log(result.familias);
         
       },
       error=>{

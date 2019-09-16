@@ -44,6 +44,7 @@ var FamiliaSchema = Schema({
     
     faena:String,
 
+    estudiantes:[{type:Schema.ObjectId, ref:'Estudiante'}],
     direccion:String,
     observaciones:String,
     estado:String

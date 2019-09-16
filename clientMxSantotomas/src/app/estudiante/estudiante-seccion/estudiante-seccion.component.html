@@ -24,8 +24,17 @@
 
 
 <table class="table is-striped is-fullwidth is-hoverable">
+    <thead>
+      <td> N° </td>
+      <td>Codigo</td>
+      <td>DNI N°</td>
+      <td>Estudiante</td>
+      <td>Padre</td>
+      <td>Madre</td>
+    </thead>
     <tbody>
-      <tr *ngFor = "let estudiante of estudiantes">
+      <tr *ngFor = "let estudiante of estudiantes; let i=index">
+        <td>{{i+1}} </td>
         <td> {{estudiante.familia.codigo }}</td>
         <td> {{estudiante.dni}} </td>
         <td> {{estudiante.apellidos}}, {{estudiante.nombre}} </td>
