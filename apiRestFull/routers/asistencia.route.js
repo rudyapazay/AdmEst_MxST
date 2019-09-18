@@ -13,6 +13,9 @@ asistenciaRtr.route('/asistencia/registrar/almuerzo/:id').get(asistenciaCtrl.reg
 asistenciaRtr.route('/asistencia/registrar/retorno/:uniforme/:id').get(asistenciaCtrl.registrarAsistenciaRetorno);
 asistenciaRtr.route('/asistencia/registrar/salida/:id').get(asistenciaCtrl.registrarAsistenciaSalida);
 
+//registrode asistencia en XO
+asistenciaRtr.route('/asistencia/registrar/estudiante/:id').get(asistenciaCtrl.registrarAsistenciaXO);
+
 //reportes 
 asistenciaRtr.route('/asistencias/').get(asistenciaCtrl.getAsistencias);
 asistenciaRtr.route('/asistencias/estudiante/:id').get(asistenciaCtrl.getAsistenciaEstudiante);
