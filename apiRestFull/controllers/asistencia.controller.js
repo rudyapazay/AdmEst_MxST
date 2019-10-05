@@ -210,6 +210,7 @@ function getAsistenciaEstudiante(req,res){
 
 async function registrarAsistenciaXO (req,res){
   //var asistencia  = await AsistenciaMdl.find().limit(10);
+  /*
   var estudiantes =  await EstudianteMdl.find();
   var i = 0;
   while(estudiantes[i]){
@@ -220,8 +221,10 @@ async function registrarAsistenciaXO (req,res){
   }
   var ast = await AsistenciaMdl.find().limit(10);
   var id = req.params.id;
+  */
 
-  res.send( ast );
+
+  res.send( "OK" );
 }
 
 module.exports = {

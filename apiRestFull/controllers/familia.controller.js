@@ -4,7 +4,7 @@ var FamiliaMdl =  require('../models/familia.model');
 var EstudianteMdl = require('../models/estudiante.model');
 
 function getFamilias(req,res){
-    FamiliaMdl.find({estado:'Activo'}).populate({path:"estudiantes", select:'-QRCode'}).sort({carpeta:+1}).exec((err,familias)=>{
+    FamiliaMdl.find({estado:'Activo'}).populate({path:"estudiantes", select:'-QRCode'}).limit(10).sort({carpeta:+1}).exec((err,familias)=>{
         if(err){
             res.status(500).send({message:'error en la peticion'});
         }

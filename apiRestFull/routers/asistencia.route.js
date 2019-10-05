@@ -3,6 +3,7 @@
 var express = require('express');
 
 var asistenciaCtrl = require("../controllers/asistencia.controller");
+var astRegXOCtrl = require("../controllers/asistencia/AsitenciaRegXO");
 
 var asistenciaRtr = express.Router();
 //pruebas de la conexion
@@ -14,7 +15,7 @@ asistenciaRtr.route('/asistencia/registrar/retorno/:uniforme/:id').get(asistenci
 asistenciaRtr.route('/asistencia/registrar/salida/:id').get(asistenciaCtrl.registrarAsistenciaSalida);
 
 //registrode asistencia en XO
-asistenciaRtr.route('/asistencia/registrar/estudiante/:id').get(asistenciaCtrl.registrarAsistenciaXO);
+asistenciaRtr.route('/asistencia/registrar/estudiante/:id').get(astRegXOCtrl.registrarAsistenciaXO);
 
 //reportes 
 asistenciaRtr.route('/asistencias/').get(asistenciaCtrl.getAsistencias);

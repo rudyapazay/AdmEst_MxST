@@ -8,7 +8,9 @@ function getFamilias(req,res){
     data = data.toUpperCase();
 
     //primero buscamos por codigo
-    FamiliaMdl.find({$or:[{codigo:{$regex:'^'+data,$options:'i'}},{carpeta : {$regex:'^'+data,$options:'i'}}]}).sort({carpeta:+1}).exec((err,familias)=>{
+    FamiliaMdl.find({$or:[{codigo:{$regex:'^'+data,$options:'i'}},{carpeta : {$regex:'^'+data,$options:'i'}}]})
+            .populate({path:"estudiantes", select:'-QRCode'})
+            .sort({carpeta:+1}).exec((err,familias)=>{
         if(err){
             res.status(500).send({message:'error en la peticion'});
         }
