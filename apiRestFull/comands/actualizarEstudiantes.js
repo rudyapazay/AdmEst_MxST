@@ -28,7 +28,8 @@ mongoose.connect('mongodb://localhost:27017/appAdmEstMxST',{useNewUrlParser: tru
 
 function updateEst(estudiante){
 
-  estudiante.apellidos = estudiante.apellidos.toUpperCase();
+  //estudiante.apellidos = estudiante.apellidos.toUpperCase();
+  estudiante.estado = 'activo';
   EstudianteMDL.findOneAndUpdate({_id:estudiante._id},estudiante,{new:true},(err,estUpdate)=>{
       console.log("estudiante actulizado -> "+ estUpdate.nombre);
   });

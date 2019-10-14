@@ -3,15 +3,16 @@ var AsistenciaMdl = require('../../models/asistencias.model');
 
 async function registrarAsistenciaXO (req,res){
   var est_id = req.params.id;
-  var fecha = new Date(new Date().getFullYear() +'-'+ new Date().getMonth() +'-' +new Date().getDate());
+  var fecha = new Date(new Date().getFullYear() +'-'+ (new Date().getMonth()+1) +'-' + new Date().getDate());
   var hora = new Date();
   //buscar por fecha
   try{
-    var asistEst= await AsistenciaMdl.find({estudiante:est_id, fecha:ISODate(fecha)});
+    var asistEst= await AsistenciaMdl.findOne({estudiante:est_id, fecha:fecha});
     var asist_id = asistEst._id;
-
-    switch (hora.getHours) {
-      case '07':
+    console.log(hora.getHours());
+    console.log(hora.getMinutes());
+    switch (hora.getHours()) {
+      case 7:
         asistEst.entrada = new Date();
         asistEst.resumen.reporte = "P";
         await AsistenciaMdl.findOneAndUpdate({_id:asist_id}, asistEst);
@@ -19,14 +20,14 @@ async function registrarAsistenciaXO (req,res){
         
         break;
         
-        case '08':
+      case 8:
           asistEst.entrada = new Date();
-          if(hora.getMinutes <= '05'){
+          if(hora.getMinutes() <= 5){
             asistEst.resumen.reporte = "P" ;   
             await AsistenciaMdl.findOneAndUpdate({_id:asist_id}, asistEst);
             res.status(200).send('OK'); 
           }
-          else if(hora.getMinutes >='06' && hora.getMinutes <='30'){
+          else if(hora.getMinutes() >= 6 && hora.getMinutes() <= 30){
             asistEst.resumen.reporte = "T"; 
             await AsistenciaMdl.findOneAndUpdate({_id:asist_id}, asistEst);
             res.status(200).send('OK-T'); 
@@ -36,22 +37,23 @@ async function registrarAsistenciaXO (req,res){
           }
           break;
           
-        case '13':
+      case 13:
           asistEst.almuerzo.entrada = new Date();
-          if(hora.getMinutes <= '50'){
+          if(hora.getMinutes() <= 50){
             asistEst.almuerzo.estado = "P" ;
             await AsistenciaMdl.findOneAndUpdate({_id:asist_id}, asistEst);
             res.status(200).send('OK');
           }
           else{
+            asistEst.almuerzo.estado = "T";  
             await AsistenciaMdl.findOneAndUpdate({_id:asist_id}, asistEst);
-            asistEst.almuerzo.estado ="T" ;  
             res.status(200).send('OK-T');
           }
         break;
-      case '14':
+
+      case 14:
         asistEst.almuerzo.entrada = new Date();
-        if(hora.getMinutes <= '20'){
+        if(hora.getMinutes() <= 20){
           asistEst.almuerzo.estado ="T" ;
           await AsistenciaMdl.findOneAndUpdate({_id:asist_id}, asistEst);
           res.status(200).send('OK-T') ;
@@ -60,9 +62,15 @@ async function registrarAsistenciaXO (req,res){
           res.status(200).send('Psic.');
         }
         break;
-      case '16':
-        asistEst.salida = new date();
+
+      case 16:
+        asistEst.salida = new Date();
+        
+        var asistStored = await AsistenciaMdl.findOneAndUpdate({_id:asist_id}, asistEst);
+        console.log(asistStored);
         res.status(200).send('OK');
+        
+        break ;
 
       default:
         res.status(200).send('X');
@@ -70,7 +78,7 @@ async function registrarAsistenciaXO (req,res){
     }
        
   }catch(err){
-    res.status(200).send('X');
+    res.status(500).send('ERROR');
     console.log("error en la base de datos");
   }
 }

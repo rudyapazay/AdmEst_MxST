@@ -67,12 +67,11 @@ mongoose.connect('mongodb://localhost:27017/appAdmEstMxST',{useNewUrlParser: tru
 });
 
 function updateEst(estudiante){
-    var code = estudiante._id + estudiante.dni+" "+estudiante.nombre+" "+estudiante.apellidos;
+    //var code = estudiante._id + estudiante.dni+" "+estudiante.nombre+" "+estudiante.apellidos;
                 
-                qrcode.toDataURL(code,{errorCorrectionLevel:"H"},(err,cod)=>{
-                    estudiante.QRCode =  cod;
+      //          qrcode.toDataURL(code,{errorCorrectionLevel:"H"},(err,cod)=>{
+                    estudiante.estado =  'activo';
                     EstudianteMDL.findOneAndUpdate({_id:estudiante._id},estudiante,{new:true},(err,estUpdate)=>{
                         console.log("estudiante actulizado"+ estUpdate.nombre);
                     });
-                });
-}
+            }
