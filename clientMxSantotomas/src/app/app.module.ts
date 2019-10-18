@@ -18,6 +18,7 @@ import { FamiliaActualizarModule } from './actualizar/familia-actualizar/familia
 import { EstudianteActualizarModule } from './actualizar/estudiante-actualizar/estudiante-actualizar.module';
 import { EstudianteEliminarModule } from './eliminar/estudiante-eliminar/estudiante-eliminar.module';
 import { FamiliaEliminarModule } from './eliminar/familia-eliminar/familia-eliminar.module';
+import { AsistenciaModule } from './asistencia/asistencia.module';
 
 
 @NgModule({
@@ -40,7 +41,9 @@ import { FamiliaEliminarModule } from './eliminar/familia-eliminar/familia-elimi
     EstudianteActualizarModule,
 
     EstudianteEliminarModule,
-    FamiliaEliminarModule
+    FamiliaEliminarModule,
+
+    AsistenciaModule,
     
     
   ],

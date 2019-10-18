@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { AsistenciaRoutingModule } from './asistencia-routing.module';
 
+import { AsistenciaPrincipalComponent } from './asistencia-principal/asistencia-principal.component';
+
 @NgModule({
-  declarations: [],
+  declarations: [ AsistenciaPrincipalComponent],
   imports: [
     CommonModule,
     AsistenciaRoutingModule

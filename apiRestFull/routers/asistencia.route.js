@@ -5,7 +5,7 @@ var express = require('express');
 var asistenciaCtrl = require("../controllers/asistencia.controller");
 var astRegXOCtrl = require("../controllers/asistencia/AsitenciaRegXO");
 var astAdmCtrl = require("../controllers/asistencia/asistenciaAdm");
-var astRptCtrl = require("../controllers/asistencia/asistenciaRep");
+var astRptCtrl = require("../controllers/asistencia/asistenciaReporteDia");
 
 var asistenciaRtr = express.Router();
 //pruebas de la conexion
@@ -28,7 +28,9 @@ asistenciaRtr.route('/asistencia/admin/iniciar/').get(astAdmCtrl.iniciarDia);
 
 //reportes de asistencia
 //asistenciaRtr.route('/asistencia/reporte/dia/general').get(astRptCtrl.reportFaltaDia);
-asistenciaRtr.route('/asistencia/reporte/dia/general').get(astRptCtrl.reporteDiaGeneral);
-asistenciaRtr.route('/asistencia/reporte/dia/seccion').get(astRptCtrl.reporteDiaSeccion);
+
+asistenciaRtr.route('/asistencia/resumen/entrada/general').get(astRptCtrl.resumenEntradaGeneral);
+asistenciaRtr.route('/asistencia/reporte/entrada/general').get(astRptCtrl.reporteEntradaGeneral);
+asistenciaRtr.route('/asistencia/reporte/entrada/seccion/:grado/:seccion').get(astRptCtrl.reporteEntradaSeccion);
 
 module.exports = asistenciaRtr ;

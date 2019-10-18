@@ -1,0 +1,45 @@
+<h1 class="title has-text-primary"> REGISTRO DE ENTRADA </h1>
+<div class="columns">
+  <div class="column">
+    <article class="message is-success">
+        <div class="message-header">
+          <p >PRESENTE</p>
+        </div>
+        <div class="message-body">
+            <p class="is-size-1">{{astGeneral.presente}}</p>
+        </div>
+    </article>         
+  </div>
+
+  <div class="column">
+      <article class="message is-warning">
+          <div class="message-header">
+            <p >TARDE</p>
+          </div>
+          <div class="message-body">
+              <p class="is-size-1">{{astGeneral.tarde}}</p>
+          </div>
+      </article> 
+  </div>
+  <div class="column">
+      <article class="message is-danger">
+          <div class="message-header">
+            <p>FALTA</p>
+          </div>
+          <div class="message-body">
+              <p class="is-size-1"> {{astGeneral.falta}} </p>
+          </div>
+      </article> 
+  </div>
+  <div class="column">
+    <article class="message is-info">
+        <div class="message-header">
+          <p>ASISTENCIA AL</p>
+        </div>
+        <div class="message-body">
+            <p class="is-size-1"> {{ toFloat((astGeneral.presente+astGeneral.tarde)*10/111)  }} </p>
+        </div>
+    </article>
+  </div>
+
+</div>
