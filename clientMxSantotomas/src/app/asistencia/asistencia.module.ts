@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { AsistenciaRoutingModule } from './asistencia-routing.module';
 
 import { AsistenciaPrincipalComponent } from './asistencia-principal/asistencia-principal.component';
+import { AsistenciaReporteEntradaComponent } from './asistencia-reporte-entrada/asistencia-reporte-entrada.component';
 
 @NgModule({
-  declarations: [ AsistenciaPrincipalComponent],
+  declarations: [ AsistenciaPrincipalComponent, AsistenciaReporteEntradaComponent],
   imports: [
     CommonModule,
     AsistenciaRoutingModule

@@ -47,15 +47,40 @@ async function reporteEntradaGeneral(req, res){
     {$sort:{"_id.seccion":+1}}
   ]);
 
+  var preTercero = await AsistenciaMdl.aggregate([
+    {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},
+    {$match: {"fecha":fecha, "estudiante.referencia.tercero.year":year.toString()}},
+    {$group: {"_id": {"seccion": "$estudiante.referencia.tercero.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
+    {$sort:{"_id.seccion":+1}}
+  ]);
+
+  var preCuarto = await AsistenciaMdl.aggregate([
+    {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},
+    {$match: {"fecha":fecha, "estudiante.referencia.cuarto.year":year.toString()}},
+    {$group: {"_id": {"seccion": "$estudiante.referencia.cuarto.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
+    {$sort:{"_id.seccion":+1}}
+  ]);
+
+  var preQuinto = await AsistenciaMdl.aggregate([
+    {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},
+    {$match: {"fecha":fecha, "estudiante.referencia.quinto.year":year.toString()}},
+    {$group: {"_id": {"seccion": "$estudiante.referencia.quinto.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
+    {$sort:{"_id.seccion":+1}}
+  ]);
 
 
 var primero  = await gradoProc(prePrimero);
 var segundo = await gradoProc(preSegundo);
+var tercero = await gradoProc(preTercero);
+var cuarto = await gradoProc(preCuarto);
+var quinto = await gradoProc(preQuinto);
+
+
   //console.log(probando)
 
   //console.log(reporte);
- var reporte  = ii+'"primero":'+primero+cc +'"segundo":'+segundo+jj;
-  res.send(reporte);
+ var reporte  = ii+'"primero":'+primero+cc +'"segundo":'+segundo+cc+'"tercero":'+tercero+cc+'"cuarto":'+cuarto+cc+'"quinto":'+quinto+jj;
+  res.send(JSON.parse(reporte));
   
 }
 
@@ -64,10 +89,12 @@ async function gradoProc(grado){
   
   var ii  ="{", jj ="}",  cc = ",";
   var a , b, c, d, e, f, g ,h ;
-  var pp,tt,ff;
+  var pp = '"puntual":"0"'
+  var tt ='"tarde":"0"';
+  var ff = '"falta":"0"'
   var ee ='"evasion":"0"';
   var ll = '"licencia":"0"';
-  console.log(grado);
+  //console.log(grado);
 
   grado.forEach(clase => {
     switch (clase._id.seccion[0]) {

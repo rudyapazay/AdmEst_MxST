@@ -21,5 +21,8 @@ export class AsistenciaService {
      return this._http.get(this.url+'asistencia/resumen/entrada/general');
     
    }
+   entradaSeccionGeneral():Observable<any>{
+     return this._http.get(this.url+'asistencia/reporte/entrada/general');
+   }
 
 }
