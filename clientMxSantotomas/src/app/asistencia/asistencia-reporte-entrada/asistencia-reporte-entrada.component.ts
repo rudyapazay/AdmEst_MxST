@@ -31,4 +31,18 @@ export class AsistenciaReporteEntradaComponent implements OnInit {
     )
   }
 
+  isGrado(i){
+    switch (i) {
+      case 0:
+        return "PRIMERO";
+      case 1:
+        return "SEGUNDO";
+      case 2:
+        return "TERCERO";
+      case 3:
+        return "CUARTO";
+      case 4:
+        return "QUINTO"
+    }
+  }
 }

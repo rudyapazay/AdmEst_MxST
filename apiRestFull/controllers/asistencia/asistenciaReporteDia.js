@@ -25,8 +25,6 @@ async function resumenEntradaGeneral(req,res){
 }
 //generar el reporte general del dia
 async function reporteEntradaGeneral(req, res){
-
-  var ii  ="{", jj ="}",  cc = ",";
   
   
   var fecha = new Date(new Date().getFullYear() +'-'+ (new Date().getMonth()+1) +'-' + new Date().getDate());
@@ -79,14 +77,14 @@ var quinto = await gradoProc(preQuinto);
   //console.log(probando)
 
   //console.log(reporte);
- var reporte  = ii+'"primero":'+primero+cc +'"segundo":'+segundo+cc+'"tercero":'+tercero+cc+'"cuarto":'+cuarto+cc+'"quinto":'+quinto+jj;
-  res.send(JSON.parse(reporte));
+ var reporte  = '['+primero+','+segundo+','+tercero+','+cuarto+','+quinto+']';
+  res.send(reporte);
   
 }
 
 async function gradoProc(grado){
   
-  
+
   var ii  ="{", jj ="}",  cc = ",";
   var a , b, c, d, e, f, g ,h ;
   var pp = '"puntual":"0"'
@@ -117,7 +115,7 @@ async function gradoProc(grado){
             default:
               break;
           }
-          a ='"a":' +ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
+          a =ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
         break;
         case "B":
             switch (clase._id.asistencia) {
@@ -138,7 +136,7 @@ async function gradoProc(grado){
               default:
                 break;
             }
-            b ='"b":' +ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
+            b =ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
           break;
           case "C":
               switch (clase._id.asistencia) {
@@ -159,7 +157,7 @@ async function gradoProc(grado){
                 default:
                   break;
               }
-            c ='"c":' +ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
+            c =ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
           break;
           case "D":
               switch (clase._id.asistencia) {
@@ -180,7 +178,7 @@ async function gradoProc(grado){
                 default:
                   break;
               }
-            d ='"d":' +ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
+            d =ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
           break;
           case "E":
               switch (clase._id.asistencia) {
@@ -201,7 +199,7 @@ async function gradoProc(grado){
                 default:
                   break;
               }
-            e ='"e":' +ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
+            e =ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
           break;
           case "F":
               switch (clase._id.asistencia) {
@@ -222,7 +220,7 @@ async function gradoProc(grado){
                 default:
                   break;
               }
-            f ='"f":' +ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
+            f = ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
           break;
           case "G":
               switch (clase._id.asistencia) {
@@ -243,7 +241,7 @@ async function gradoProc(grado){
                 default:
                   break;
               }
-            g ='"g":' +ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
+            g = ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
           break;
           case "H":
               switch (clase._id.asistencia) {
@@ -264,7 +262,7 @@ async function gradoProc(grado){
                 default:
                   break;
               }
-            h ='"h":' +ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
+            h = ii+pp+cc+tt+cc+ff+cc+ee+cc+ll+jj;
           break;
     
       default:
@@ -273,7 +271,7 @@ async function gradoProc(grado){
     
   });
   
-  var reporte =ii+a+cc+b+cc+c+cc+d+cc+e+cc+f+cc+g+cc+h+jj;
+  var reporte ='['+a+cc+b+cc+c+cc+d+cc+e+cc+f+cc+g+cc+h+']';
   return reporte;
 }
 //general el reporte por seccion del dia
