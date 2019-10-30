@@ -274,10 +274,7 @@ async function gradoProc(grado){
   var reporte ='['+a+cc+b+cc+c+cc+d+cc+e+cc+f+cc+g+cc+h+']';
   return reporte;
 }
-//general el reporte por seccion del dia
-async function reporteEntradaSeccion(){
 
-}
 
 //generar el resumen del almuerzo
 async function resumenAlmuerzoGeneral(){
@@ -287,13 +284,11 @@ async function resumenAlmuerzoGeneral(){
 async function reporteAlmuerzoGeneral(){
 
 }
-async function reporteAlmuerzoSeccion(){
-  
-}
+
 
 module.exports ={
   reportFaltaDia,
   resumenEntradaGeneral,  resumenAlmuerzoGeneral,
-  reporteEntradaGeneral, reporteEntradaSeccion,
-  reporteAlmuerzoGeneral, reporteAlmuerzoSeccion
+  reporteEntradaGeneral, 
+  reporteAlmuerzoGeneral
 }

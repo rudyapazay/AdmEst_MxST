@@ -366,7 +366,7 @@ function updateReferencia(req,res){
 function getEstudiantesGradoSeccion(req,res){
     var grado=req.params.grado;
     var seccion  =  req.params.seccion;
-    let year  = '2019'; 
+    let year  = new Date().getFullYear(); 
     var query ;
 
     // falta sacar el anio actual
