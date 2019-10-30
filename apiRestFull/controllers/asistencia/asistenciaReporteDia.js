@@ -10,9 +10,6 @@ async  function reportFaltaDia(req, res){
 
 }
 
-//
-//var reporte = await AsistenciaMdl.aggregate([{$match:{}},{$group:{ "_id":{"fecha":"$fecha","estado":"$resumen.reporte"} , count:{$sum:1}}},
-// {"$sort":{"_id.fecha":-1, "_id.estado":-1}}]);
 //generar el resumen general del dia
 async function resumenEntradaGeneral(req,res){
   var fecha = new Date(new Date().getFullYear() +'-'+ (new Date().getMonth()+1) +'-' + new Date().getDate());
@@ -25,59 +22,56 @@ async function resumenEntradaGeneral(req,res){
 }
 //generar el reporte general del dia
 async function reporteEntradaGeneral(req, res){
-  
-  
   var fecha = new Date(new Date().getFullYear() +'-'+ (new Date().getMonth()+1) +'-' + new Date().getDate());
   var year  =new Date().getFullYear() ;
 
   var prePrimero = await AsistenciaMdl.aggregate([
+    {$match:{"fecha":fecha}},
     {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},
-    {$match: {"fecha":fecha, "estudiante.referencia.primero.year":year.toString()}},
+    {$match: {"estudiante.referencia.primero.year":year.toString()}},
     {$group: {"_id": {"seccion": "$estudiante.referencia.primero.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
     {$sort:{"_id.seccion":+1}}
   ]);
-  //console.log(prePrimero);
-
+  
   var preSegundo = await AsistenciaMdl.aggregate([
+    {$match:{"fecha":fecha}},
     {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},
-    {$match: {"fecha":fecha, "estudiante.referencia.segundo.year":year.toString()}},
+    {$match: {"estudiante.referencia.segundo.year":year.toString()}},
     {$group: {"_id": {"seccion": "$estudiante.referencia.segundo.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
     {$sort:{"_id.seccion":+1}}
   ]);
 
   var preTercero = await AsistenciaMdl.aggregate([
+    {$match:{"fecha":fecha}},
     {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},
-    {$match: {"fecha":fecha, "estudiante.referencia.tercero.year":year.toString()}},
+    {$match: {"estudiante.referencia.tercero.year":year.toString()}},
     {$group: {"_id": {"seccion": "$estudiante.referencia.tercero.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
     {$sort:{"_id.seccion":+1}}
   ]);
 
   var preCuarto = await AsistenciaMdl.aggregate([
+    {$match:{"fecha":fecha}},
     {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},
-    {$match: {"fecha":fecha, "estudiante.referencia.cuarto.year":year.toString()}},
+    {$match: {"estudiante.referencia.cuarto.year":year.toString()}},
     {$group: {"_id": {"seccion": "$estudiante.referencia.cuarto.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
     {$sort:{"_id.seccion":+1}}
   ]);
 
   var preQuinto = await AsistenciaMdl.aggregate([
+    {$match:{"fecha":fecha}},
     {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},
-    {$match: {"fecha":fecha, "estudiante.referencia.quinto.year":year.toString()}},
+    {$match: {"estudiante.referencia.quinto.year":year.toString()}},
     {$group: {"_id": {"seccion": "$estudiante.referencia.quinto.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
     {$sort:{"_id.seccion":+1}}
   ]);
 
 
-var primero  = await gradoProc(prePrimero);
-var segundo = await gradoProc(preSegundo);
-var tercero = await gradoProc(preTercero);
-var cuarto = await gradoProc(preCuarto);
-var quinto = await gradoProc(preQuinto);
-
-
-  //console.log(probando)
-
-  //console.log(reporte);
- var reporte  = '['+primero+','+segundo+','+tercero+','+cuarto+','+quinto+']';
+  var primero  = await gradoProc(prePrimero);
+  var segundo = await gradoProc(preSegundo);
+  var tercero = await gradoProc(preTercero);
+  var cuarto = await gradoProc(preCuarto);
+  var quinto = await gradoProc(preQuinto);
+  var reporte  = '['+primero+','+segundo+','+tercero+','+cuarto+','+quinto+']';
   res.send(reporte);
   
 }
