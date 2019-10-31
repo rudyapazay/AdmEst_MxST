@@ -1,3 +1,30 @@
-<p>
-  registrar-recibo works!
-</p>
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modificar padre</p>
+      <button class="delete" aria-label="close" (click)="closepopup()" ></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+      <div class="field is-horizontal">
+        <div class="field-label ">
+          <label class="label">Dni: </label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" type="text" id="dni"  required
+              [(ngModel)] ="padre.dni" name="dni" #dni="ngModel" >
+            </div>
+          </div>
+        </div>
+      </div>
+            
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" type="submit"> Guardar cambios</button>
+      <button class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
