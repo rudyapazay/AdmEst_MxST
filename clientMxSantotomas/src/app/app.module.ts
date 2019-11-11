@@ -19,6 +19,7 @@ import { EstudianteActualizarModule } from './actualizar/estudiante-actualizar/e
 import { EstudianteEliminarModule } from './eliminar/estudiante-eliminar/estudiante-eliminar.module';
 import { FamiliaEliminarModule } from './eliminar/familia-eliminar/familia-eliminar.module';
 import { AsistenciaModule } from './asistencia/asistencia.module';
+import { ReciboModule } from './recibo/recibo.module';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { AsistenciaModule } from './asistencia/asistencia.module';
 
     AsistenciaModule,
     
+    ReciboModule
     
   ],
   providers: [FamiliaService, EstudianteService],

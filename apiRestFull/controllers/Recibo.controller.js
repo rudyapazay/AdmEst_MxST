@@ -40,8 +40,16 @@ async function getRecibos(req,res){
 
 }
 
+async function getFamiliasFalta(req, res){
+  var familias = await FamiliaMdl.find({"recibos":{$size:0},"estudiantes":{$exists:true}, $where:'this.estudiantes.length >0', estado:"Activo"})
+    .populate({path:"estudiantes", select:['-QRCode','-documentos']}).sort({carpeta:+1});
+ 
+  res.send(familias);
+}
+
 module.exports ={
   saveRecibo,
-  getRecibos
+  getRecibos,
+  getFamiliasFalta
 
 }

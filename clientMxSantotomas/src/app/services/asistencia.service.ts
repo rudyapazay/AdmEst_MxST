@@ -25,4 +25,8 @@ export class AsistenciaService {
      return this._http.get(this.url+'asistencia/reporte/entrada/general');
    }
 
+  //('/asistencia/reporte/entrada/seccion/:grado/:seccion').get(astRptSecCtrl.reporteEntradaSeccion);
+   entradaGradoSeccion(grado:any, seccion:any):Observable<any>{
+    return this._http.get(this.url+'asistencia/reporte/entrada/seccion/'+grado+'/'+seccion);
+   }
 }

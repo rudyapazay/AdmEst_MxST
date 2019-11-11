@@ -39,25 +39,26 @@ async function registrarAsistenciaXO (req,res){
           
       case 13:
           asistEst.almuerzo.entrada = new Date();
-          if(hora.getMinutes() <= 50){
+          
             asistEst.almuerzo.estado = "P" ;
             await AsistenciaMdl.findOneAndUpdate({_id:asist_id}, asistEst);
             res.status(200).send('OK');
-          }
-          else{
-            asistEst.almuerzo.estado = "T";  
-            await AsistenciaMdl.findOneAndUpdate({_id:asist_id}, asistEst);
-            res.status(200).send('OK-T');
-          }
+          
         break;
 
       case 14:
         asistEst.almuerzo.entrada = new Date();
-        if(hora.getMinutes() <= 20){
-          asistEst.almuerzo.estado ="T" ;
+        if(hora.getMinutes() <= 5){
+          asistEst.almuerzo.estado ="P" ;
           await AsistenciaMdl.findOneAndUpdate({_id:asist_id}, asistEst);
-          res.status(200).send('OK-T') ;
+          res.status(200).send('OK') ;
         }
+	else if(hora.getMinutes() >= 6 && hora.getMinutes() <= 30){
+            asistEst.almuerzo.estado = "T";  
+            await AsistenciaMdl.findOneAndUpdate({_id:asist_id}, asistEst);
+            res.status(200).send('OK-T');
+          }
+
         else{
           res.status(200).send('Psic.');
         }

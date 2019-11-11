@@ -40,7 +40,7 @@ export class FamiliaListComponent implements OnInit {
         // cuando trae de la base de datos trae con su indice
         this.familias = result.familias;
 
-        console.log(result.familias);
+        //console.log(result.familias);
         
       },
       error=>{

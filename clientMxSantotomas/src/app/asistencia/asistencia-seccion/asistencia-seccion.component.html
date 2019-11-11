@@ -1,0 +1,49 @@
+<p>
+  asistencia-seccion works! 
+</p>
+
+<div class="columns">
+  <!--Temprano-->
+  <div class="column">
+    <table class="table">
+      <tbody>
+         
+        <tr *ngFor = "let estudiante of puntual; let i=index"  >
+          <ng-container *ngIf = "i%2==1">
+            <ng-container *ngFor = "let est of [puntual[i-1], puntual[i]]; let j=index">
+              <td > {{i+j}} </td>
+              <td> {{est.apellidos}}, {{est.nombre}} 
+              <p class="has-text-right ">{{est.entrada|date:"hh:mm:ss"}} </p></td>
+            </ng-container>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table>  
+  </div>
+
+  <div class="column">
+    <table class="table">
+      <tbody>
+        <tr *ngFor = "let estudiante of tarde; let i=index">
+          <td> {{i+1}}</td>
+          <td>{{estudiante.apellidos}}, {{estudiante.nombre}} 
+            <p class="has-text-right ">{{estudiante.entrada|date:"hh:mm:ss"}} </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>  
+  </div>
+
+  <div class="column">
+    <table class="table">
+      <tbody>
+        <tr *ngFor = "let estudiante of falta; let i=index">
+          <td> {{i+1}}</td>
+          <td>{{estudiante.apellidos}}, {{estudiante.nombre}} 
+            <p class="has-text-right ">{{estudiante.entrada|date:"hh:mm:ss"}} </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>  
+  </div>
+</div>

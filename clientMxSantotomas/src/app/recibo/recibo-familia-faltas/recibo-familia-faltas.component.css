@@ -1,0 +1,13 @@
+@media print{
+  .no-print-area{
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+    float: left;
+  }
+}
+
+
+.datos{
+  font-size: 10pt;
+}

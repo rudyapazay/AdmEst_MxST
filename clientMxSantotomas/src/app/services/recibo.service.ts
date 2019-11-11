@@ -24,4 +24,8 @@ export class ReciboService {
     return this._http.post(this.url+"recibo/registrar/"+familia,params,{headers:headers});
   }
 
+  getFamiliaFaltas():Observable<any>{
+    return this._http.get(this.url+"recibo/faltas/familias");
+  }
+
 }

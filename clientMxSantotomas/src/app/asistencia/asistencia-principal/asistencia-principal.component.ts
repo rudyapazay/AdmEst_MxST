@@ -14,6 +14,11 @@ export class AsistenciaPrincipalComponent implements OnInit {
     "falta":Number,
     "evasion":Number
   };
+  public fecha={
+    "dia": new Date().getDate(),
+    "mes": new Date().getMonth()+ 1,
+    "year":new Date().getFullYear()
+  }
 
   constructor(
     private _asistenciaService:AsistenciaService
