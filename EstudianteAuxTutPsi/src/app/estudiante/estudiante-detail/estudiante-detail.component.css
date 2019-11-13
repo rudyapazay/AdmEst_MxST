@@ -1,0 +1,11 @@
+ .is-danger {
+    padding: 5px;
+}
+
+.card-header{
+    background-color:rgb(200, 200, 200); 
+ }
+ 
+.list-item{
+    margin-top:4px;
+}

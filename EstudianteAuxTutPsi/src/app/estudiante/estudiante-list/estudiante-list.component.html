@@ -1,0 +1,46 @@
+<h3 class="title">
+  Estudiantes
+</h3>
+
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter">
+      <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label"> Buscar </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" [(ngModel)]="est_buscar" name="familia_buscar" 
+                (keyup)="buscarEstudiante($event)" >
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+
+<table class="table is-striped is-fullwidth is-hoverable">
+  <tbody>
+    <tr *ngFor = "let estudiante of estudiantes">
+      <td> {{estudiante.familia.codigo }}</td>
+      <td> {{estudiante.dni}} </td>
+      <td *ngIf='estudiante.referencia.primero && estudiante.referencia.primero.year == "2019"'> Primero - {{estudiante.referencia['primero'].seccion}} </td>
+      <td *ngIf='estudiante.referencia.segundo && estudiante.referencia.segundo.year == "2019"'> Segundo - {{estudiante.referencia['segundo'].seccion}} </td>
+      <td *ngIf='estudiante.referencia.tercero && estudiante.referencia.tercero.year == "2019"'> Tercero - {{estudiante.referencia['tercero'].seccion}} </td>
+      <td *ngIf='estudiante.referencia.cuarto && estudiante.referencia.cuarto.year == "2019"'> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </td>
+      <td *ngIf='estudiante.referencia.quinto && estudiante.referencia.quinto.year == "2019"'> Quinto - {{estudiante.referencia['quinto'].seccion}} </td>
+      <td> {{estudiante.apellidos}}, {{estudiante.nombre}} </td>
+      
+      <td> {{estudiante.sexo}} </td>
+         
+      <td> <a [routerLink] =  "['/estudiante/',estudiante._id]" >
+        <fa name="user" size='2x'></fa></a> 
+      </td>
+      <td> <a [routerLink] =  "['/familia/',estudiante.familia._id]" >
+        <fa name="users" size='2x'></fa></a> 
+      </td>
+      
+    </tr>
+  </tbody>
+</table>

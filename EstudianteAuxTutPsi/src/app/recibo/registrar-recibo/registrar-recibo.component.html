@@ -1,0 +1,53 @@
+<form #reciboForm ="ngForm"   (ngSubmit)="regRecibo()">
+
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Registrar Pagos :: Familia {{familia.carpeta}}</p>
+        <button class="delete" aria-label="close" (click)="closepopup()" ></button>
+      </header>
+      <section class="modal-card-body">
+        <!-- Content ... 
+        -->
+        <div class="field is-grouped is-grouped-multiline">
+          <div class="control">
+            <label class="label">Dia</label>
+              <input class="input" type="text" id="Dia"  required
+              [(ngModel)] ="recibo.dia" name="dia" #dia="ngModel" >
+          </div>
+          <div class="control">
+            <label class="label">Mes</label>
+              <input class="input" type="text" id="Mes"  required
+              [(ngModel)] ="recibo.mes" name="mes" #mes="ngModel" >
+          </div>
+          <div class="control">
+            <label class="label">Año</label>
+              <input class="input " type="text" id="Year"  required disabled
+              [(ngModel)] ="recibo.year" name="year" #year="ngModel"  >
+          </div>
+        </div>
+        <div class="field is-grouped is-grouped-multiline">
+          <div class="control ">
+            <label class="label">Recibo N° </label>
+              <input class="input" type="text" id="boleta"  required
+              [(ngModel)] ="recibo.boleta" name="boleta" #boleta="ngModel" >
+          </div>
+          <div class="control controla">
+            <label class="label">Monto</label>
+              <input class="input is-large is-danger" type="text" id="Monto"  required
+              [(ngModel)] ="recibo.monto" name="monto" #monto="ngModel" >
+          </div>
+        </div>
+        
+        <h5 class="title is-5"> Fecha: {{recibo.dia}}/{{recibo.mes}}/{{recibo.year}} - Recibo N° {{recibo.boleta}}</h5>
+        <h3 class="title has-text-primary"> Monto Total: {{recibo.monto }}</h3>
+        
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success" type="submit"> Guardar </button>
+        <button class="button" (click)="closepopup()">Cancel</button>
+      </footer>
+    </div>
+  </div>
+</form>

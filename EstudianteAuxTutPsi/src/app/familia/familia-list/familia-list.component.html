@@ -1,0 +1,79 @@
+
+<h1 class="title">
+  {{titulo}}
+</h1>
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter">
+      <div class="field is-horizontal">
+          <div class="field-label ">
+            <label class="label"> Buscar </label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <div class="control">
+                <input class="input" type="text" [(ngModel)]="familia_buscar" name="familia_buscar" 
+                (keyup)="buscarFamilia($event)" >
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
+
+<table class="table is-striped is-fullwidth is-hoverable">
+  <thead> 
+    <tr>
+      <th>N°</th>
+      <th>Codigo</th>
+      <th>Padre</th>
+      <th>Madre</th>
+      <th>Apoderado</th>
+      <th> Estudiantes </th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let familia of familias; let i= index">
+      <td> {{i+1}}</td>
+      <td> 
+        <p class="nombre"> {{familia.codigo}} </p> <p class="datos"> {{familia.direccion}} </p>
+      </td>
+      
+      <td *ngIf="familia.padre" > 
+        <p class="nombre"> {{familia.padre.apellidos}}, {{familia.padre.nombre}} </p>
+        <p class="datos"> DNI: {{familia.padre.dni}} - CEL: {{familia.padre.celular}} </p> </td>
+      <td *ngIf="!familia.padre"> -- </td>
+
+      <td *ngIf="familia.madre" > 
+          <p class="nombre"> {{familia.madre.apellidos}}, {{familia.madre.nombre}} </p>
+          <p class="datos"> DNI: {{familia.madre.dni}} - CEL: {{familia.madre.celular}} </p> </td>
+      <td *ngIf="!familia.madre"> -- </td>
+      
+      <td *ngIf="familia.apoderado" > 
+          <p>{{familia.apoderado.apellidos}}, {{familia.apoderado.nombre}}  </p>
+          <p> DNI: {{familia.apoderado.dni}} - CEL: {{familia.apoderado.celular}} </p> </td>
+      <td *ngIf="!familia.apoderado"> -- </td>
+      
+          
+      <td *ngIf="familia.estudiantes" > 
+        <p *ngFor = "let estudiante of familia.estudiantes">
+          <span class="datos">( {{estudiante.dni}} ) </span>
+            {{ estudiante.nombre }}
+            {{ estudiante.apellidos }}
+          <span class="nombre" *ngIf='estudiante.referencia.primero && estudiante.referencia.primero.year == "2019"'>( Primero - {{estudiante.referencia['primero'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.segundo && estudiante.referencia.segundo.year == "2019"'>( Segundo - {{estudiante.referencia['segundo'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.tercero && estudiante.referencia.tercero.year == "2019"'>( Tercero - {{estudiante.referencia['tercero'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.cuarto && estudiante.referencia.cuarto.year == "2019"'>( Cuarto - {{estudiante.referencia['cuarto'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.quinto && estudiante.referencia.quinto.year == "2019"'>( Quinto - {{estudiante.referencia['quinto'].seccion}} )</span>
+          
+        </p>
+      </td>
+     
+    
+      <td> <a [routerLink] =  "['/familia/', familia._id]" >
+        <fa name="users" size='2x'></fa></a> 
+      </td>
+      
+    </tr>
+  </tbody>
+</table>

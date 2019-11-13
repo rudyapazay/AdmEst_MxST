@@ -1,0 +1,35 @@
+<div class="card">
+  <header class="card-header"> 
+    <div class="card-header-title">
+      Estudiante(s)
+    </div>
+  </header>
+  <div  class="card-content">
+    <div *ngFor=" let estudiante of estudiantes" class="card">
+      <header class="card-header"> 
+        <div *ngIf="estudiante.sexo == 'masculino'" class="card-header-title"> Hijo</div>
+        <div *ngIf="estudiante.sexo == 'femenino'" class="card-header-title"> Hija</div>
+      </header>
+      <div class="card-content">
+        <ul class="ul">
+          <li> DNI : {{estudiante.dni}} </li>
+          <li> Apellidos: {{estudiante.apellidos}} </li>
+          <li> Nombre(s): {{ estudiante.nombre }} </li>
+          <li *ngIf='estudiante.referencia.primero && estudiante.referencia.primero.year == "2019"'> Primero - {{estudiante.referencia['primero'].seccion}} </li>
+          <li *ngIf='estudiante.referencia.segundo && estudiante.referencia.segundo.year == "2019"'> Segundo - {{estudiante.referencia['segundo'].seccion}} </li>
+          <li *ngIf='estudiante.referencia.tercero && estudiante.referencia.tercero.year == "2019"'> Tercero - {{estudiante.referencia['tercero'].seccion}} </li>
+          <li *ngIf='estudiante.referencia.cuarto && estudiante.referencia.cuarto.year == "2019"'> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </li>
+          <li *ngIf='estudiante.referencia.quinto && estudiante.referencia.quinto.year == "2019"'> Quinto - {{estudiante.referencia['quinto'].seccion}} </li>
+        </ul>
+      </div>
+      <footer class="card-footer">
+        <a [routerLink] ="['/estudiante/', estudiante._id]" class="card-footer-item"> 
+          <fa name="search"  size="2x"> </fa> Detalles </a>
+        
+      </footer>
+    </div>
+  </div>
+  <footer class="card-footer">
+   
+  </footer>
+</div>

@@ -1,0 +1,122 @@
+<h2 class="title">
+ {{titulo}}
+</h2>
+
+
+<div class="columns">
+  <div class="column is-half is-offset-one-quarter">
+
+    <form  #familiaForm ="ngForm"   (ngSubmit)="onSubmit()">
+      
+      <div class="field is-horizontal">
+        <div class="field-label ">
+          <label class="label">Apellidos: </label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" type="text" id="carpeta"  required
+              [(ngModel)] ="familia.carpeta" name="carpeta" #carpeta="ngModel" >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field is-horizontal">
+        <div class="field-label ">
+          <label class="label"> Direccion:</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <input class="input" type="text" id="direccion" required
+              [(ngModel)]="familia.direccion" name="direccion" #direccion="ngModel">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="field is-horizontal">
+        <div class="field-label ">
+          <label class="label">Estado:</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <label class="radio">
+                <input type="radio" [(ngModel)]="familia.estado" name="estado" 
+                  #estado="ngModel" value="Activo" >  
+                Activo
+              </label>
+              <label class="radio">
+                <input type="radio" [(ngModel)]="familia.estado" name="estado" #estado="ngModel" value="Inactivo"> 
+                Inactivo
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="field is-horizontal">
+        <div class="field-label ">
+          <label class="label">Observacion:</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <textarea class="textarea" id="observaciones" required 
+                [(ngModel)]="familia.observaciones" name="observaciones" #observaciones="ngModel">
+              </textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="field is-horizontal">
+        <div class="field-label ">
+          <label class="label"> + Registrar: </label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+              <label class="radio">
+                <input type="radio" [(ngModel)]="ruta_registro" name="ruta_registro" 
+                   value="madre"> 
+                Madre
+              </label>
+              <label class="radio">
+                <input type="radio" [(ngModel)]="ruta_registro" name="ruta_registro" 
+                value="padre" >  
+                Padre
+              </label>
+              <label class="radio">
+                <input type="radio" [(ngModel)]="ruta_registro" name="ruta_registro" 
+                   value="apoderado"> 
+                Apoderado
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Boton de registrar-->
+      <div class="field is-horizontal">
+        <div class="field-label">
+          <!-- Left empty for spacing -->
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <div class="control">
+                <button class="button is-primary" type="submit"   >
+                  >> Continuar
+                </button>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+     
+      
+    </form>
+  </div>
+</div>

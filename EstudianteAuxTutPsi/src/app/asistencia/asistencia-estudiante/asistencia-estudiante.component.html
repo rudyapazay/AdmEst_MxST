@@ -24,9 +24,9 @@
           <tr *ngFor = "let asistencia of asistencias; let i= index">
             <td>{{i+1}} </td>
             <td>{{asistencia.fecha|date:'MMM - dd ' }} </td>
-            <td *ngIf = "asistencia.entrada">{{asistencia.entrada |date:'hh:mm:ss'}}</td>
+            <td *ngIf = "asistencia.entrada">{{asistencia.entrada |date:'hh:mm:ss '}}</td>
             <td *ngIf = "!asistencia.entrada"> -- </td>
-            <td *ngIf ="asistencia.almuerzo && asistencia.almuerzo.entrada">{{asistencia.almuerzo.entrada|date:'hh:mm:ss'}}</td>
+            <td *ngIf ="asistencia.almuerzo && asistencia.almuerzo.entrada">{{asistencia.almuerzo.entrada|date:'hh:mm:ss '}}</td>
             <td *ngIf ="!asistencia.almuerzo  || !asistencia.almuerzo.entrada"> -- </td>
             <td > {{asistencia.resumen.reporte}}</td>
           </tr>

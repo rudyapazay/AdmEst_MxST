@@ -1,0 +1,85 @@
+<h2 class="title">
+  Registro exitoso de familia {{familia.carpeta}} : {{familia.codigo}}
+</h2>
+
+<div class="columns">
+  <div class="column is-4">
+    <div class="card" >
+        <header class="card-header"> 
+          <h3 class="card-header-title" > Madre</h3>
+        </header>
+        
+        <div class="card-content" *ngIf="!familia.madre">
+          <h3 class="sub-title"> No existe registro </h3>
+        </div>
+        <div class="card-content" *ngIf="familia.madre">
+            <ul class="list">
+              <li class="list-item">DNI N°: {{familia.madre.dni}} </li>
+              <li class="list-item">Apellidos: {{familia.madre.apellidos}} </li>
+              <li class="list-item">Nombre(s): {{familia.madre.nombre}} </li>
+              <li class="list-item">Celular: {{familia.madre.celular}} </li>
+            </ul>
+        </div>
+      </div>     
+  </div>
+
+  <div class="column is-4">
+    <div class="card" >
+        <header class="card-header"> 
+          <h3 class="card-header-title" > Padre </h3>
+        </header>
+        
+        <div class="card-content" *ngIf="!familia.padre">
+          <h3 class="sub-title"> No existe registro </h3>
+        </div>
+        <div class="card-content" *ngIf="familia.padre">
+            <ul class="list">
+              <li class="list-item">DNI N°: {{familia.padre.dni}} </li>
+              <li class="list-item">Apellidos: {{familia.padre.apellidos}} </li>
+              <li class="list-item">Nombre(s): {{familia.padre.nombre}} </li>
+              <li class="list-item">Celular: {{familia.padre.celular}} </li>
+            </ul>
+        </div>
+      </div>     
+  </div>
+  <div class="column is-4">
+    <div class="card" >
+        <header class="card-header"> 
+          <h3 class="card-header-title" > Apoderado</h3>
+        </header>
+        
+        <div class="card-content" *ngIf="!familia.apoderado">
+          <h3 class="sub-title"> No existe registro </h3>
+        </div>
+        <div class="card-content" *ngIf="familia.apoderado">
+            <ul class="list">
+              <li class="list-item">DNI N°: {{familia.apoderado.dni}} </li>
+              <li class="list-item">Apellidos: {{familia.apoderado.apellidos}} </li>
+              <li class="list-item">Nombre(s): {{familia.apoderado.nombre}} </li>
+              <li class="list-item">Celular: {{familia.apoderado.celular}} </li>
+            </ul>
+        </div>
+      </div>     
+  </div>
+  
+</div> <!-- Cierre de columns-->
+
+<h4 class="subtitle">  Hijos(as) </h4>
+<table class="table is-striped is-fullwidth is-hoverable">
+    <tbody>
+      <tr *ngFor = "let estudiante of estudiantes">
+        <td> {{estudiante.dni}} </td>
+        <td> {{estudiante.apellidos}} </td>
+        <td> {{estudiante.nombre}} </td>
+        <td> {{estudiante.sexo}} </td>
+        
+        <td *ngIf='estudiante.grado_actual == "primero"'> Primero - {{estudiante.referencia['primero'].seccion}} </td>
+        <td *ngIf='estudiante.grado_actual == "segundo"'> Segundo - {{estudiante.referencia['segundo'].seccion}} </td>
+        <td *ngIf='estudiante.grado_actual == "tercero"'> Tercero - {{estudiante.referencia['tercero'].seccion}} </td>
+        <td *ngIf='estudiante.grado_actual == "cuarto"'> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </td>
+        <td *ngIf='estudiante.grado_actual == "quinto"'> Quinto - {{estudiante.referencia['quinto'].seccion}} </td>
+        
+  
+      </tr>
+    </tbody>
+  </table>

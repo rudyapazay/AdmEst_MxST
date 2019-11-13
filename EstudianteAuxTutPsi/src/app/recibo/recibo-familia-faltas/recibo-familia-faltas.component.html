@@ -1,0 +1,65 @@
+<h3 class="title">
+  Falta pagos de AMAPAFA
+</h3>
+
+<table class="table is-striped is-fullwidth is-hoverable">
+  <thead> 
+      <tr>
+        <th>N°</th>
+        <th class="no-print-area">Codigo</th>
+        <th>Padre</th>
+        <th>Madre</th>
+        <th>Apoderado</th>
+        <th> Estudiantes </th>
+        <th  class="no-print-area" colspan="2">Acciones</th>
+      </tr>
+    </thead>
+  <tbody>
+    <tr *ngFor = "let familia of familias; let i= index">
+      <td> {{i+1}}</td>
+      <td class="no-print-area"> 
+        <p class="nombre"> {{familia.codigo}} </p> <p class="datos"> {{familia.direccion}} </p>
+      </td>
+      
+      <td *ngIf="familia.padre" > 
+        <p class="nombre"> {{familia.padre.apellidos}}, {{familia.padre.nombre}} </p>
+        <p class="datos"> DNI: {{familia.padre.dni}} - CEL: {{familia.padre.celular}} </p> </td>
+      <td *ngIf="!familia.padre"> -- </td>
+
+      <td *ngIf="familia.madre" > 
+          <p class="nombre"> {{familia.madre.apellidos}}, {{familia.madre.nombre}} </p>
+          <p class="datos"> DNI: {{familia.madre.dni}} - CEL: {{familia.madre.celular}} </p> </td>
+      <td *ngIf="!familia.madre"> -- </td>
+      
+      <td *ngIf="familia.apoderado" > 
+          <p>{{familia.apoderado.apellidos}}, {{familia.apoderado.nombre}}  </p>
+          <p> DNI: {{familia.apoderado.dni}} - CEL: {{familia.apoderado.celular}} </p> </td>
+      <td *ngIf="!familia.apoderado"> -- </td>
+      
+          
+      <td *ngIf="familia.estudiantes" > 
+        <p *ngFor = "let estudiante of familia.estudiantes">
+          <span class="datos">( {{estudiante.dni}} ) </span>
+            {{ estudiante.nombre }}
+            {{ estudiante.apellidos }}
+          <span class="nombre" *ngIf='estudiante.referencia.primero && estudiante.referencia.primero.year == "2019"'>( Primero - {{estudiante.referencia['primero'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.segundo && estudiante.referencia.segundo.year == "2019"'>( Segundo - {{estudiante.referencia['segundo'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.tercero && estudiante.referencia.tercero.year == "2019"'>( Tercero - {{estudiante.referencia['tercero'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.cuarto && estudiante.referencia.cuarto.year == "2019"'>( Cuarto - {{estudiante.referencia['cuarto'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.quinto && estudiante.referencia.quinto.year == "2019"'>( Quinto - {{estudiante.referencia['quinto'].seccion}} )</span>
+          
+        </p>
+      </td>
+     
+      <td class="no-print-area" >
+        <a [routerLink] =  "['', {outlets: { 'popup':['recibo','registrar',familia._id, familia.carpeta ] } }]" >
+          <fa name="dollar" size='2x'></fa> 
+        </a>
+      </td>
+      <td class="no-print-area"> <a [routerLink] =  "['/familia/', familia._id]" >
+        <fa name="users" size='2x'></fa></a> 
+      </td>
+     
+    </tr>
+  </tbody>
+</table>

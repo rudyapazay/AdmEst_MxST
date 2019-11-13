@@ -1,0 +1,14 @@
+table tr, table td, table th  {
+  border: 1px solid black;
+}
+
+
+.is-hoverable{
+  background-color: #ddd;
+}
+.nombre{
+  font-weight: bolder;
+}
+.datos{
+  font-size: 10pt;
+}

@@ -35,7 +35,7 @@ export class AsistenciaEstudianteComponent implements OnInit {
           this.estudiante.id = result[0].estudiante._id;
           this.estudiante.apellidos = result[0].estudiante.apellidos;
           this.estudiante.nombre = result[0].estudiante.nombre;
-          console.log(result);
+          //console.log(result);
         },
         err=>{
           console.log("error en el servidor");

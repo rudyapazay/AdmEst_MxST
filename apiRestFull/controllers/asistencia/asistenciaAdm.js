@@ -12,7 +12,7 @@ async function iniciarDia (req, res){
     //console.log(fechaActual);
     //console.log(asistenciaTotal.length);
     if(asistenciaTotal.length != '0'){
-      res.status(200).send({message:"Día iniciado correctamente"});
+      res.status(200).send({message:"Registrado a los estudiantes Correctamente "});
     }else{
       for (estudiante of estudiantes) {
         var asistencia = new AsistenciaMdl();
@@ -22,7 +22,7 @@ async function iniciarDia (req, res){
         asistencia.almuerzo.estado = 'F' ;
         await asistencia.save();
       }
-      res.status(200).send("Correct para " + await EstudianteMdl.count() + " estudiantes");
+      res.status(200).send({message:"Correct para " + await EstudianteMdl.count() + " estudiantes"});
     }
   }catch(err){
     console.log(err);

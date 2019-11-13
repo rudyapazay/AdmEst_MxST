@@ -1,0 +1,67 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<nav class="navbar is-fixed-top no-print-area " role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="#">
+      Adm EstFam
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu ">
+    <div class="navbar-start">
+      <a [routerLink]="['/']" class="navbar-item">
+        Inicio
+      </a>
+
+      <a [routerLink]="['/familias']" class="navbar-item">
+        Familias
+      </a>
+
+      <a [routerLink]="['/estudiantes/primero/A']" class="navbar-item">
+        Estudiantes
+      </a>
+      
+      
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Entrada
+        </a>
+        <div class="navbar-dropdown">
+          <a  [routerLink]="['/asistencia']"  class="navbar-item">
+            Principal
+          </a>
+          
+          <a [routerLink]="['/asistencia/seccion/primero/A']" class="navbar-item">
+            Seccion
+          </a>
+        </div>
+      </div>      
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a [routerLink]="['/estudiantes/']" class="button is-light">
+            Buscar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<section class="section">
+  <div class="container has-text-centered ">
+    <router-outlet></router-outlet>
+    <router-outlet name="popup"></router-outlet>
+  </div>
+</section>
+

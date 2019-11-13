@@ -1,0 +1,36 @@
+<div class="columns" *ngFor = "let grado of reporte; let i=index">
+  <div class="column is-full">
+      <h3 class="subtitle is-3 is-centered" > {{isGrado(i)}}</h3>
+ 
+    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" >   
+      <thead>
+        <tr>
+          <th> SECCIÓN </th>
+          <th> <p class="notification is-info is-size-4 has-text-centered has-text-weight-bold"> A </p> </th>
+          <th> <p class="notification is-info is-size-4 has-text-centered has-text-weight-bold"> B </p> </th>
+          <th> <p class="notification is-info is-size-4 has-text-centered has-text-weight-bold"> C </p> </th>
+          <th> <p class="notification is-info is-size-4 has-text-centered has-text-weight-bold"> D </p> </th>
+          <th> <p class="notification is-info is-size-4 has-text-centered has-text-weight-bold"> E </p> </th>
+          <th> <p class="notification is-info is-size-4 has-text-centered has-text-weight-bold"> F </p> </th>
+          <th> <p class="notification is-info is-size-4 has-text-centered has-text-weight-bold"> G </p> </th>
+          <th> <p class="notification is-info is-size-4 has-text-centered has-text-weight-bold"> H </p> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <p class="notification is-success is-size-5 has-text-centered "> Puntal </p>
+            <p class="notification is-warning is-size-5 has-text-centered "> Tarde </p>
+            <p class="notification is-danger is-size-5 has-text-centered "> Falta </p>
+          </td>
+          <td *ngFor ="let seccion of grado">
+            <p class="notification is-success is-size-5 has-text-centered has-text-weight-bold"> {{seccion.puntual}}</p>
+            <p class="notification is-warning is-size-5 has-text-centered has-text-weight-bold"> {{seccion.tarde}}</p>
+            <p class="notification is-danger is-size-5 has-text-centered has-text-weight-bold"> {{seccion.falta}}</p>
+            
+          </td> 
+        </tr>
+      </tbody>  
+    </table>
+  </div>
+</div>

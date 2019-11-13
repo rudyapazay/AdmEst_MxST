@@ -1,0 +1,200 @@
+<h2 class="title has-text-link"> <fa name="user" > </fa> {{estudiante.nombre }} {{estudiante.apellidos}} </h2>
+
+<div class="columns">
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title"> Familia </p>
+            </header>
+            <div class="card-content">
+                <ul class="list">
+                    <li *ngIf="estudiante.familia" class="list-item"><a [routerLink]="['/familia/',estudiante.familia._id]" class="buttom is-stripted">
+                        <fa name="users" size='2x'></fa>{{estudiante.familia.codigo}} </a> 
+                    </li>
+                    <li *ngIf="estudiante.familia && estudiante.familia.padre" class="list-item"> PAPÁ: {{estudiante.familia.padre.nombre}} {{estudiante.familia.padre.apellidos}}  </li>
+                    <li *ngIf="estudiante.familia && estudiante.familia.madre" class="list-item"> MAMÁ: {{estudiante.familia.madre.nombre}} {{estudiante.familia.madre.apellidos}}  </li>
+                </ul>
+            </div>
+        </div>
+            
+    </div>
+    <!-- informacion-->
+    <div *ngIf="estudiante" class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title"> Informacion </p>
+                
+            </header>
+            <div class="card-content">
+                <ul class="list">
+                   
+                    <li class="list-item">DNI : {{estudiante.dni }} </li>
+                    <li class="list-item">Apellidos : {{estudiante.apellidos }} </li>
+                    <li class="list-item">Nombre : {{estudiante.nombre }} </li>
+                    <li class="list-item">Sexo : {{estudiante.sexo }} </li>
+                    <li class="list-item"> Estado : {{estudiante.estado }} </li>
+                    
+                    <li class="list-item"> Matricula: {{estudiante.matricula }} </li>
+                    <li class="list-item"> Seguro: {{estudiante.seguro }} </li>
+                    <li class="list-item">Siagie : {{estudiante.siagie }} </li>
+                </ul>
+            </div>
+            <footer class="card-footer">
+                
+              </footer>
+        </div>
+    </div>
+    <!-- Documentos -->
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title"> Documentos </p>
+            </header>
+            <div  class="card-content">
+                <ul *ngIf="estudiante.documentos && (   estudiante.documentos.folder ||  
+                                                        estudiante.documentos.copia_dni || 
+                                                        estudiante.documentos.partida_nacimiento ||
+                                                        estudiante.documentos.ficha_matricula ||
+                                                        estudiante.documentos.ficha_seguro ||
+                                                        estudiante.documentos.certificado_primaria)"
+                class="list">
+                    <li class="list-item" *ngIf ="estudiante.documentos.folder  " > Folder  
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.folder" > 
+                        <p class="notification is-danger" > No cuenta con folder
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
+
+                    <li class="list-item" *ngIf ="estudiante.documentos.copia_dni" > Copia Dni  
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.copia_dni" > 
+                        <p class="notification is-danger" >falta Copia de Dni
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
+
+                    <li class="list-item" *ngIf ="estudiante.documentos.partida_nacimiento" > Partida de Nacimiento 
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.partida_nacimiento" > 
+                        <p class="notification is-danger" > Falta Partida de Nacimiento
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
+
+                    <li class="list-item" *ngIf ="estudiante.documentos.ficha_matricula" > Ficha de Matricula
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.ficha_matricula" > 
+                        <p class="notification is-danger" > Falta Ficha de Matricula
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
+
+                    <li class="list-item" *ngIf ="estudiante.documentos.ficha_seguro" > Ficha de Seguro 
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.ficha_seguro" > 
+                        <p class="notification is-danger" > Falta Ficha de Seguro
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
+
+                    <li class="list-item" *ngIf ="estudiante.documentos.certificado_primaria" > Certificado de Primaria
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.certificado_primaria" > 
+                        <p class="notification is-danger" > Falta Certificado de primaria
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
+                </ul>
+                <p *ngIf="!estudiante.documentos || (   !estudiante.documentos.folder &&  
+                                                        !estudiante.documentos.copia_dni && 
+                                                        !estudiante.documentos.partida_nacimiento &&
+                                                        !estudiante.documentos.ficha_matricula &&
+                                                        !estudiante.documentos.ficha_seguro &&
+                                                        !estudiante.documentos.certificado_primaria)  " 
+                
+                class="notification is-danger">
+                    No cuenta con documentos
+                </p>
+            </div>
+      
+        </div>
+        
+        <!-- documentos de traslado -->
+        <div class="card" *ngIf="estudiante.matricula=='traslado' ">
+            <header class="card-header">
+                <p class="card-header-title"> Documentos de traslado</p>
+            </header>
+            <div class="card-content" *ngIf="estudiante.documentos">
+                <ul *ngIf="estudiante.documentos.traslado" class="list">
+                    <li class="list-item" *ngIf ="estudiante.documentos.traslado.certificado" > Certificado  
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.traslado.certificado" > 
+                        <p class="notification is-danger" > Falta Certificado visado
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
+
+                    <li class="list-item" *ngIf ="estudiante.documentos.traslado.resolucion" > Resolución directoral
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.traslado.resolucion" > 
+                        <p class="notification is-danger" > Falta resolucion directoral
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
+
+                    <li class="list-item" *ngIf ="estudiante.documentos.traslado.boleta_notas" > Boleta de notas
+                        <fa name="check"></fa> 
+                    </li>
+                    <li class="list-item " *ngIf ="!estudiante.documentos.traslado.boleta_notas" > 
+                        <p class="notification is-danger" > Falta boleta de notas
+                        <fa  name="times"> </fa> 
+                        </p>
+                    </li>
+                </ul>
+                
+            </div>
+            <div class="card-content" >   
+                <p *ngIf=" !estudiante.documentos || !estudiante.documentos.traslado " class="notification is-danger">
+                    No cuenta con documentos de traslado
+                </p>
+            </div>
+            <footer class="card-footer">
+                
+                
+            </footer>
+        </div>
+    </div>
+    <!-- documentos -->
+    <div class="column is-2">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    Acciones
+                </p>
+            </header>
+            <section class="card-content">
+                <div class="buttons">
+                    
+                    <a [routerLink] =  "['', {outlets: { 'popup':['asistencia','estudiante',estudiante._id]}}]" 
+                    class="button is-warning is-fullwidth"> <fa name="check"></fa> Asistencia </a> 
+                
+                </div>
+                
+            </section>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Referencia de estudiantes -->
+<estudiante-referencia> </estudiante-referencia>
