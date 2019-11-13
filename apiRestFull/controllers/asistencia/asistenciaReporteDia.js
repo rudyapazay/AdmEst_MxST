@@ -30,7 +30,7 @@ async function reporteEntradaGeneral(req, res){
   var prePrimero = await AsistenciaMdl.aggregate([
     {$match:{"fecha":fecha}},
     {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},
-    {$match: {"estudiante.referencia.primero.year":year.toString()}},
+    {$match: {"estudiante.referencia.primero.year":year.toString(), "estudiante.estado":"activo"}},
     {$group: {"_id": {"seccion": "$estudiante.referencia.primero.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
     {$sort:{"_id.seccion":+1}}
   ]);
@@ -38,7 +38,7 @@ async function reporteEntradaGeneral(req, res){
   var preSegundo = await AsistenciaMdl.aggregate([
     {$match:{"fecha":fecha}},
     {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},
-    {$match: {"estudiante.referencia.segundo.year":year.toString()}},
+    {$match: {"estudiante.referencia.segundo.year":year.toString(), "estudiante.estado":"activo"}},
     {$group: {"_id": {"seccion": "$estudiante.referencia.segundo.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
     {$sort:{"_id.seccion":+1}}
   ]);
@@ -46,7 +46,7 @@ async function reporteEntradaGeneral(req, res){
   var preTercero = await AsistenciaMdl.aggregate([
     {$match:{"fecha":fecha}},
     {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},
-    {$match: {"estudiante.referencia.tercero.year":year.toString()}},
+    {$match: {"estudiante.referencia.tercero.year":year.toString(), "estudiante.estado":"activo"}},
     {$group: {"_id": {"seccion": "$estudiante.referencia.tercero.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
     {$sort:{"_id.seccion":+1}}
   ]);
@@ -54,7 +54,7 @@ async function reporteEntradaGeneral(req, res){
   var preCuarto = await AsistenciaMdl.aggregate([
     {$match:{"fecha":fecha}},
     {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},
-    {$match: {"estudiante.referencia.cuarto.year":year.toString()}},
+    {$match: {"estudiante.referencia.cuarto.year":year.toString(),"estudiante.estado":"activo"}},
     {$group: {"_id": {"seccion": "$estudiante.referencia.cuarto.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
     {$sort:{"_id.seccion":+1}}
   ]);
@@ -62,7 +62,7 @@ async function reporteEntradaGeneral(req, res){
   var preQuinto = await AsistenciaMdl.aggregate([
     {$match:{"fecha":fecha}},
     {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},
-    {$match: {"estudiante.referencia.quinto.year":year.toString()}},
+    {$match: {"estudiante.referencia.quinto.year":year.toString(), "estudiante.estado":"activo"}},
     {$group: {"_id": {"seccion": "$estudiante.referencia.quinto.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
     {$sort:{"_id.seccion":+1}}
   ]);

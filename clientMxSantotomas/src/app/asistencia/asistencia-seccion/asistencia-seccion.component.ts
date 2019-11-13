@@ -55,7 +55,7 @@ export class AsistenciaSeccionComponent implements OnInit {
       this.seccion = params['seccion'];
       this._asistenciasService.entradaGradoSeccion(this.grado, this.seccion).subscribe(
         result=>{
-          console.log(result);
+          //console.log(result);
           this.puntual = [];
           this.tarde = [];
           this.falta =[];

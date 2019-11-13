@@ -9,17 +9,33 @@
     <section class="modal-card-body">
       <!-- Content ... 
       -->
-      <table class="table">
-        <tr *ngFor = "let asistencia of asistencias; let i= index">
-          <td>{{asistencia.fecha|date:'MMM - dd hh:mm' }} </td>
-          <td>{{asistencia.entrada |date:'hh:mm:ss'}}</td>
-          
-        </tr>
-      </table>
+      
+      <table class="table is-striped is-fullwidth is-hoverable ">
+          <thead>
+            <tr>
+              <th> N° </th>
+              <th> Fecha </th>
+              <th> Entrada </th>
+              <th> Almuerzo </th>
+              <th> Estado </th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr *ngFor = "let asistencia of asistencias; let i= index">
+            <td>{{i+1}} </td>
+            <td>{{asistencia.fecha|date:'MMM - dd ' }} </td>
+            <td *ngIf = "asistencia.entrada">{{asistencia.entrada |date:'hh:mm:ss'}}</td>
+            <td *ngIf = "!asistencia.entrada"> -- </td>
+            <td *ngIf ="asistencias.almuerzo && asistencia.almuerzo.entrada">{{asistencia.almuerzo.entrada}}</td>
+            <td *ngIf ="!asistencias.almuerzo ||  !asistencia.almuerzo.entrada"> -- </td>
+            <td > {{asistencia.resumen.reporte}}</td>
+          </tr>
+        </tbody>
+        </table>
     </section>
     <footer class="modal-card-foot">
-      
-      <button class="button" (click)="closepopup()">Cerrar</button>
+      <a class="button is-danger" (click)="closepopup()"> Cerrar </a>
+      <a class="button is-success" (click) = "verEstudiante()">Ver Estudiante</a>
     </footer>
   </div>
 </div>

@@ -33,6 +33,7 @@ export class EstudianteDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getEstudiante();
+    this._router.navigate([{outlets:{popup:null}}]);
   }
 
  

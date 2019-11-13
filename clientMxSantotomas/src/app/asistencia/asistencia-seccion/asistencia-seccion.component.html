@@ -32,7 +32,7 @@
           <ng-container *ngIf = "i%2==1">
             <ng-container *ngFor = "let est of [puntual[i-1], puntual[i]]; let j=index">
               <td > {{i+j}} </td>
-              <td> <a [routerLink] =  "['/estudiante/',est.estudiante[0]._id]"  >{{est.apellidos}}, {{est.nombre}} </a>
+              <td> <a [routerLink] =  "['', {outlets: { 'popup':['asistencia','estudiante',estudiante.estudiante[0]._id]}}]"  >{{est.apellidos}}, {{est.nombre}} </a>
               <p class="has-text-right ">{{est.entrada|date:"hh:mm:ss"}} </p></td>
             </ng-container>
           </ng-container>
@@ -47,7 +47,7 @@
       <tbody>
         <tr *ngFor = "let estudiante of tarde; let i=index">
           <td> {{i+1}}</td>
-          <td><a [routerLink] =  "['/estudiante/',estudiante.estudiante[0]._id]">{{estudiante.apellidos}}, {{estudiante.nombre}} </a>
+          <td><a [routerLink] =  "['', {outlets: { 'popup':['asistencia','estudiante',estudiante.estudiante[0]._id]}}]">{{estudiante.apellidos}}, {{estudiante.nombre}} </a>
             <p class="has-text-right ">{{estudiante.entrada|date:"hh:mm:ss"}} </p>
           </td>
         </tr>
@@ -61,7 +61,7 @@
       <tbody>
         <tr *ngFor = "let estudiante of falta; let i=index">
           <td> {{i+1}}</td>
-          <td><a [routerLink] =  "['/estudiante/',estudiante.estudiante[0]._id]">{{estudiante.apellidos}}, {{estudiante.nombre}} </a>
+          <td><a [routerLink] =  "['', {outlets: { 'popup':['asistencia','estudiante',estudiante.estudiante[0]._id]}}]" >{{estudiante.apellidos}}, {{estudiante.nombre}} </a>
             <p class="has-text-right ">{{estudiante.entrada|date:"hh:mm:ss"}} </p>
           </td>
         </tr>
