@@ -1,10 +1,30 @@
-<p>
-  asistencia-seccion works! 
-</p>
+<div class="tabs is-toggle is-centered  no-print-area">
+    <ul>
+      <li  class="{{is_active_grado('primero')}}"><a (click)="cambiarGrado('primero')" >PRIMERO</a></li>
+      <li class="{{is_active_grado('segundo')}}"><a (click)="cambiarGrado('segundo')">SEGUNDO</a></li>
+      <li class="{{is_active_grado('tercero')}}"><a (click)="cambiarGrado('tercero')">TERCERO</a></li>
+      <li class="{{is_active_grado('cuarto')}}"><a (click)="cambiarGrado('cuarto')">CUARTO</a></li>
+      <li class="{{is_active_grado('quinto')}}"><a (click)="cambiarGrado('quinto')">QUINTO</a></li>
+    </ul>
+  </div>
+  
+  <div class="tabs is-toggle is-centered no-print-area ">
+    <ul>
+      <li class="{{is_active_seccion('A')}}"><a (click)="cambiarSeccion('A')" > A </a></li>
+      <li class="{{is_active_seccion('B')}}"><a (click)="cambiarSeccion('B')" > B </a></li>
+      <li class="{{is_active_seccion('C')}}"><a (click)="cambiarSeccion('C')" > C </a></li>
+      <li class="{{is_active_seccion('D')}}"><a (click)="cambiarSeccion('D')" > D </a></li>
+      <li class="{{is_active_seccion('E')}}"><a (click)="cambiarSeccion('E')" > E </a></li>
+      <li class="{{is_active_seccion('F')}}"><a (click)="cambiarSeccion('F')" > F </a></li>
+      <li class="{{is_active_seccion('G')}}"><a (click)="cambiarSeccion('G')" > G </a></li>
+      <li class="{{is_active_seccion('H')}}"><a (click)="cambiarSeccion('H')" > H </a></li>
+    </ul>
+  </div>
 
 <div class="columns">
   <!--Temprano-->
-  <div class="column">
+  <div class="column no-print-area">
+    <h3 class="title"> PUNTUAL </h3>
     <table class="table">
       <tbody>
          
@@ -12,7 +32,7 @@
           <ng-container *ngIf = "i%2==1">
             <ng-container *ngFor = "let est of [puntual[i-1], puntual[i]]; let j=index">
               <td > {{i+j}} </td>
-              <td> {{est.apellidos}}, {{est.nombre}} 
+              <td> <a [routerLink] =  "['/estudiante/',est.estudiante[0]._id]"  >{{est.apellidos}}, {{est.nombre}} </a>
               <p class="has-text-right ">{{est.entrada|date:"hh:mm:ss"}} </p></td>
             </ng-container>
           </ng-container>
@@ -22,11 +42,12 @@
   </div>
 
   <div class="column">
+    <h1 class="title">TARDE</h1>
     <table class="table">
       <tbody>
         <tr *ngFor = "let estudiante of tarde; let i=index">
           <td> {{i+1}}</td>
-          <td>{{estudiante.apellidos}}, {{estudiante.nombre}} 
+          <td><a [routerLink] =  "['/estudiante/',estudiante.estudiante[0]._id]">{{estudiante.apellidos}}, {{estudiante.nombre}} </a>
             <p class="has-text-right ">{{estudiante.entrada|date:"hh:mm:ss"}} </p>
           </td>
         </tr>
@@ -35,11 +56,12 @@
   </div>
 
   <div class="column">
+    <h1 class="title">FALTA</h1>
     <table class="table">
       <tbody>
         <tr *ngFor = "let estudiante of falta; let i=index">
           <td> {{i+1}}</td>
-          <td>{{estudiante.apellidos}}, {{estudiante.nombre}} 
+          <td><a [routerLink] =  "['/estudiante/',estudiante.estudiante[0]._id]">{{estudiante.apellidos}}, {{estudiante.nombre}} </a>
             <p class="has-text-right ">{{estudiante.entrada|date:"hh:mm:ss"}} </p>
           </td>
         </tr>

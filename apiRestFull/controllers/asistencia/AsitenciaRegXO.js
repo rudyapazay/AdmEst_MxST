@@ -3,14 +3,15 @@ var AsistenciaMdl = require('../../models/asistencias.model');
 
 async function registrarAsistenciaXO (req,res){
   var est_id = req.params.id;
-  var fecha = new Date(new Date().getFullYear() +'-'+ (new Date().getMonth()+1) +'-' + new Date().getDate());
+  var fecha = new Date(new Date().getFullYear() +'-'+ (new Date().getMonth()+1) +'-' + (new Date().getDate()+1));
+  fecha.setHours('00');
   var hora = new Date();
   //buscar por fecha
   try{
     var asistEst= await AsistenciaMdl.findOne({estudiante:est_id, fecha:fecha});
     var asist_id = asistEst._id;
-    console.log(hora.getHours());
-    console.log(hora.getMinutes());
+    //console.log(hora.getHours());
+    //console.log(hora.getMinutes());
     switch (hora.getHours()) {
       case 7:
         asistEst.entrada = new Date();

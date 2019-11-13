@@ -26,13 +26,39 @@ export class AsistenciaSeccionComponent implements OnInit {
     this.getEstudiantes();
     
   }
+  cambiarGrado(g){
+    this.grado = g;
+    this._router.navigate(['/asistencia/seccion/'+this.grado+'/'+this.seccion]);
+    //console.log(this.grado);
+  }
+  cambiarSeccion(S){
+    this.seccion = S;
+    this._router.navigate(['/asistencia/seccion/'+this.grado+'/'+this.seccion]);
+  }
 
+  is_active_grado(elemet){
+    if(elemet == this.grado)
+      return 'is-active';
+    else
+      return '';
+  }
+
+  is_active_seccion(elemet){
+    if(elemet == this.seccion)
+      return 'is-active';
+    else
+      return '';
+  }
   getEstudiantes(){
     this._route.params.forEach((params:Params)=>{
       this.grado = params['grado'];
       this.seccion = params['seccion'];
       this._asistenciasService.entradaGradoSeccion(this.grado, this.seccion).subscribe(
         result=>{
+          console.log(result);
+          this.puntual = [];
+          this.tarde = [];
+          this.falta =[];
           result.forEach(estudiante => {
             switch (estudiante.resumen.reporte) {
               case "P":
@@ -49,7 +75,7 @@ export class AsistenciaSeccionComponent implements OnInit {
             }
           });
           this.estudiantes = result;
-          console.log(this.falta);
+          //console.log(this.tarde);
         },
         err=>{
           console.log("error en Peticion");

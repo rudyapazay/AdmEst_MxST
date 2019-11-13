@@ -205,7 +205,9 @@
                         class="button is-info is-fullwidth"> <fa name="cog"></fa>  Grado y Sección </a> 
                     <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','carne',estudiante._id] } }]"
                         class="button is-success is-fullwidth"> <fa name="print"></fa> Imprimir carné </a>
-                    
+                    <a [routerLink] =  "['', {outlets: { 'popup':['asistencia','estudiante',estudiante._id]}}]" 
+                    class="button is-warning is-fullwidth"> <fa name="check"></fa> Asistencia </a> 
+                
                 </div>
                 
             </section>

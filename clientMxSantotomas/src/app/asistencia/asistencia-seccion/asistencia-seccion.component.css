@@ -1,0 +1,18 @@
+@media print{
+  .no-print-area{
+    display:none;
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+    float: left;
+  }
+  
+  .columns{
+    margin-top:-100px;
+  }
+  .column{
+    float: left;
+  }
+}
+
+

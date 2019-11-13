@@ -31,7 +31,17 @@ mongoose.connect('mongodb://localhost:27017/appAdmEstMxST',{useNewUrlParser: tru
 });
 
 function updateAst(asistencia){
-  var nuevaFecha = new Date(asistencia.fecha)
+    let fechaCorregir =  new Date(asistencia.fecha);
+    var nuevaFecha;
+    if(fechaCorregir.getHours() == '00'){
+        nuevaFecha = fechaCorregir; 
+    }
+    else{
+
+        nuevaFecha = fechaCorregir ;
+        nuevaFecha.setDate(nuevaFecha.getDate()+1);
+        nuevaFecha.setHours("00");
+    }
   //estudiante.apellidos = estudiante.apellidos.toUpperCase();
   asistencia.fecha  = nuevaFecha;
   AsistenciaMDL.findOneAndUpdate({_id:asistencia._id},asistencia,{new:true},(err,estUpdate)=>{

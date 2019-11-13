@@ -29,4 +29,9 @@ export class AsistenciaService {
    entradaGradoSeccion(grado:any, seccion:any):Observable<any>{
     return this._http.get(this.url+'asistencia/reporte/entrada/seccion/'+grado+'/'+seccion);
    }
+
+   //asistencia de estudiantes
+   asistenciaEstudiante(id:any):Observable<any>{
+     return this._http.get(this.url+'asistencia/estudiante/'+id);
+   }
 }

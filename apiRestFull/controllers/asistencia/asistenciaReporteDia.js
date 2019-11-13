@@ -12,7 +12,8 @@ async  function reportFaltaDia(req, res){
 
 //generar el resumen general del dia
 async function resumenEntradaGeneral(req,res){
-  var fecha = new Date(new Date().getFullYear() +'-'+ (new Date().getMonth()+1) +'-' + new Date().getDate());
+  var fecha = new Date(new Date().getFullYear() +'-'+ (new Date().getMonth()+1) +'-' + (new Date().getDate()+1));
+  fecha.setHours('00');
   try{
     var resumen = await AsistenciaMdl.aggregate([{$match:{"fecha":fecha}},{$group:{ "_id":"$resumen.reporte" , "total":{$sum:1}}}]);
     res.status(200).send(resumen);
@@ -22,7 +23,8 @@ async function resumenEntradaGeneral(req,res){
 }
 //generar el reporte general del dia
 async function reporteEntradaGeneral(req, res){
-  var fecha = new Date(new Date().getFullYear() +'-'+ (new Date().getMonth()+1) +'-' + new Date().getDate());
+  var fecha = new Date(new Date().getFullYear() +'-'+ (new Date().getMonth()+1) +'-' + (new Date().getDate()+1));
+  fecha.setHours('00');
   var year  =new Date().getFullYear() ;
 
   var prePrimero = await AsistenciaMdl.aggregate([
@@ -32,7 +34,7 @@ async function reporteEntradaGeneral(req, res){
     {$group: {"_id": {"seccion": "$estudiante.referencia.primero.seccion", "asistencia": "$resumen.reporte"}, "total":{$sum:1}}},
     {$sort:{"_id.seccion":+1}}
   ]);
-  
+
   var preSegundo = await AsistenciaMdl.aggregate([
     {$match:{"fecha":fecha}},
     {$lookup:{from:"estudiantes",localField:"estudiante", foreignField:"_id", as:"estudiante" }},

@@ -7,6 +7,7 @@ var astRegXOCtrl = require("../controllers/asistencia/AsitenciaRegXO");
 var astAdmCtrl = require("../controllers/asistencia/asistenciaAdm");
 var astRptCtrl = require("../controllers/asistencia/asistenciaReporteDia");
 var astRptSecCtrl = require("../controllers/asistencia/asistenciaReporteSeccion");
+var astEstCtrl = require("../controllers/asistencia/asistenciaEstudiante");
 
 var asistenciaRtr = express.Router();
 //pruebas de la conexion
@@ -33,5 +34,6 @@ asistenciaRtr.route('/asistencia/admin/iniciar/').get(astAdmCtrl.iniciarDia);
 asistenciaRtr.route('/asistencia/resumen/entrada/general').get(astRptCtrl.resumenEntradaGeneral);
 asistenciaRtr.route('/asistencia/reporte/entrada/general').get(astRptCtrl.reporteEntradaGeneral);
 asistenciaRtr.route('/asistencia/reporte/entrada/seccion/:grado/:seccion').get(astRptSecCtrl.reporteEntradaSeccion);
+asistenciaRtr.route('/asistencia/estudiante/:id').get(astEstCtrl.asistenciaEstudiante);
 
 module.exports = asistenciaRtr ;

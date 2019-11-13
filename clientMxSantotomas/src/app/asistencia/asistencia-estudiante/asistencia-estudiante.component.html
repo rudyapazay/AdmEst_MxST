@@ -1,0 +1,25 @@
+
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title"> {{estudiante.apellidos}}, {{estudiante.nombre}}</p>
+      <button class="delete" aria-label="close" (click)="closepopup()" ></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... 
+      -->
+      <table class="table">
+        <tr *ngFor = "let asistencia of asistencias; let i= index">
+          <td>{{asistencia.fecha|date:'MMM - dd hh:mm' }} </td>
+          <td>{{asistencia.entrada |date:'hh:mm:ss'}}</td>
+          
+        </tr>
+      </table>
+    </section>
+    <footer class="modal-card-foot">
+      
+      <button class="button" (click)="closepopup()">Cerrar</button>
+    </footer>
+  </div>
+</div>
