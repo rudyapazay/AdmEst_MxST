@@ -2,6 +2,7 @@
 
 var EstudianteMdl = require('../models/estudiante.model');
 var FamiliaMdl =  require('../models/familia.model');
+var AsistenciaMdl = require('../models/asistencias.model');
 
 function getEstudiantes(req,res){
     EstudianteMdl.find({},{QRCode:0}).limit(20).sort({apellidos:+1}).exec((err,estudiantes)=>{
@@ -510,9 +511,14 @@ function cambiarGradoSeccion(req,res){
 }
 
 //eliminar un estudiante
-function delEstudiante(req,res){
+async function delEstudiante(req,res){
     var id = req.params.id;
-    EstudianteMdl.deleteOne({_id:id},(err)=>{
+    try{
+        await AsistenciaMdl.deleteMany({estudiante:id});
+    }catch(err){
+        console.log(err);
+    }
+    await  EstudianteMdl.deleteOne({_id:id},(err)=>{
         if(err){
             res.status(500).send({message:"error con la base de datos"});
         }else{

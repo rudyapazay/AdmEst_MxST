@@ -1,0 +1,49 @@
+<h1 class="title">
+  REGISTRO DE BOLETAS
+</h1>
+
+<table class="table is-striped is-fullwidth is-hoverable">
+  <thead> 
+    <tr>
+      <th>N°</th>
+      
+      <th>RECIBO</th>
+      <th>Padres de Familia</th>
+      <th>Estudiantes</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let recibo of recibos; let i= index">
+      <td > {{i+1}}</td>
+      <td class="boleta-td">
+        <p class="datos"> ({{recibo.fecha | date:"dd - MM - yyyy"}})</p>
+        <p class="boleta"> N°: {{recibo.boleta}}  </p>
+        <p class="monto">  S/. {{recibo.monto}}.00  </p>
+        
+      </td> 
+      
+      <td  > 
+        <p *ngIf="recibo.padre" class="nombre"> PADRE: {{recibo.padre.apellidos}}, {{recibo.padre.nombre}} <span class="datos"> -- CEL: {{recibo.padre.celular}}  </span> </p>
+        <p *ngIf="recibo.madre" class="nombre"> MADRE: {{recibo.madre.apellidos}}, {{recibo.madre.nombre}} <span class="datos"> -- CEL: {{recibo.madre.celular}} </span> </p>
+        <p *ngIf="recibo.apoderado" class="nombre">APODERADO: {{recibo.apoderado.apellidos}}, {{recibo.apoderado.nombre}} <span class="datos"> -- CEL: {{recibo.apoderado.celular}}</span> </p>
+      </td>
+             
+      <td *ngIf="recibo.estudiantes" > 
+        <p *ngFor = "let estudiante of recibo.estudiantes">
+           {{ estudiante.apellidos }},
+            {{ estudiante.nombre }}
+          <span class="nombre" *ngIf='estudiante.referencia.primero && estudiante.referencia.primero.year == "2019"'>( Primero - {{estudiante.referencia['primero'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.segundo && estudiante.referencia.segundo.year == "2019"'>( Segundo - {{estudiante.referencia['segundo'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.tercero && estudiante.referencia.tercero.year == "2019"'>( Tercero - {{estudiante.referencia['tercero'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.cuarto && estudiante.referencia.cuarto.year == "2019"'>( Cuarto - {{estudiante.referencia['cuarto'].seccion}} )</span>
+          <span  class="nombre" *ngIf='estudiante.referencia.quinto && estudiante.referencia.quinto.year == "2019"'>( Quinto - {{estudiante.referencia['quinto'].seccion}} )</span>
+          
+        </p>
+      </td>
+     
+      
+      
+    </tr>
+  </tbody>
+</table>

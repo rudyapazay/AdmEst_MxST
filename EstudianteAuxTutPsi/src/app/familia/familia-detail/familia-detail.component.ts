@@ -10,7 +10,7 @@ import { FamiliaMdl } from 'src/app/models/famlia-mdl';
   styleUrls: ['./familia-detail.component.css']
 })
 export class FamiliaDetailComponent implements OnInit {
-  public familia = FamiliaMdl;
+  public familia:any;
   constructor(
     private _route :ActivatedRoute,
     private _router:Router,

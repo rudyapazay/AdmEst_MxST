@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/IEE-ST-win32-x64
 # Only exists if Bazel was run
 /bazel-out
 

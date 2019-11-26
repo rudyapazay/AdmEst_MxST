@@ -34,7 +34,13 @@ async function finalizarDia(req,res){
 
 }
 
+//recuperar fechas laboradas
+async function fechasLaboradas(req,res){
+  var fechas = await asistencia.find({});
+}
+
 
 module.exports = {
-  iniciarDia
+  iniciarDia,
+  fechasLaboradas
 }

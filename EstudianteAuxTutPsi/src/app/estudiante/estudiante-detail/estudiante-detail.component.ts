@@ -15,7 +15,7 @@ export class EstudianteDetailComponent implements OnInit {
   //componente  hijo
   @ViewChild(EstudianteReferenciaComponent) referencia:EstudianteReferenciaComponent;
 
-  public estudiante = EstudianteMdl;
+  public estudiante : any;
   public carne :any;
 
   constructor(

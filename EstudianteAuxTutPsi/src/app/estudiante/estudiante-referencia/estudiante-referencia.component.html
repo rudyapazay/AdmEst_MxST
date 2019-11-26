@@ -1,5 +1,5 @@
 <h2 class="title"> Referencia de estudios en secundaria </h2>
-<div class="columns">
+<div *ngIf="estref" class="columns">
   <div *ngIf="estref.primero || estref.segundo || estref.tercero || estref.cuarto || estref.quinto" class="column "> 
     <div  class="card card-max-width">
       <header class="card-header">

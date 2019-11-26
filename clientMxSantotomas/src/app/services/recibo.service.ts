@@ -28,4 +28,11 @@ export class ReciboService {
     return this._http.get(this.url+"recibo/faltas/familias");
   }
 
+  getFamiliaEstudianteRecibo():Observable<any>{
+    return this._http.get(this.url+"recibo/familia/estudiante/recibo");
+  }
+
+  getRecibosReporte():Observable<any>{
+    return this._http.get(this.url+"recibos/reporte");
+  }
 }

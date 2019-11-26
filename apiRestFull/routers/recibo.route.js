@@ -9,5 +9,7 @@ const ReciboRtr = express.Router();
 ReciboRtr.route('/recibo/registrar/:familia').post(ReciboCtrl.saveRecibo);
 ReciboRtr.route('/recibos').get(ReciboCtrl.getRecibos);
 ReciboRtr.route('/recibo/faltas/familias').get(ReciboCtrl.getFamiliasFalta);
+ReciboRtr.route('/recibo/familia/estudiante/recibo').get(ReciboCtrl.getFamiliaEstudianteRecibo);
+ReciboRtr.route('/recibos/reporte').get(ReciboCtrl.getRecibosFamiliaEstudiante);
 
 module.exports = ReciboRtr;

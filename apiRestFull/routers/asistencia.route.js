@@ -36,4 +36,7 @@ asistenciaRtr.route('/asistencia/reporte/entrada/general').get(astRptCtrl.report
 asistenciaRtr.route('/asistencia/reporte/entrada/seccion/:grado/:seccion').get(astRptSecCtrl.reporteEntradaSeccion);
 asistenciaRtr.route('/asistencia/estudiante/:id').get(astEstCtrl.asistenciaEstudiante);
 
+//reporte de asistencia por estudiante
+asistenciaRtr.route('/asistencia/estudiante/:id/:fecha').get(astEstCtrl.asistenciaEstudianteDia);
+
 module.exports = asistenciaRtr ;

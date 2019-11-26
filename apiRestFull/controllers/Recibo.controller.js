@@ -47,9 +47,41 @@ async function getFamiliasFalta(req, res){
   res.send(familias);
 }
 
+async function getFamiliaEstudianteRecibo(req, res){
+  FamiliaMdl.find({estado:'Activo'}).populate({path:"estudiantes", select:['-QRCode','-documentos']})
+    .populate({path:"recibos"})
+    .sort({carpeta:+1}).exec((err,familias)=>{
+        if(err){
+            res.status(500).send({message:'error en la peticion'});
+        }
+        else{
+            if(!familias){
+                res.status(404).send({message:'No existe familias'});
+            }
+            else{
+                
+                res.status(200).send({familias});
+            }
+        }
+    });
+}
+
+async function getRecibosFamiliaEstudiante(req,res){
+ 
+  var recibos = await ReciboMdl.aggregate([
+    {$lookup:{from:"familias", localField:"familia",foreignField:"_id",as:"familia" }},
+    {$replaceRoot:{newRoot:{ $mergeObjects:[{$arrayElemAt:["$familia",0]}, "$$ROOT"] }}},
+    {$lookup:{from:"estudiantes", localField:"estudiantes", foreignField:"_id", as:"estudiantes"}},
+    {$project:{"estudiantes.QRCode":0, "familia":0, "estudiante.documentos":0, "documentos":0}},
+    {$sort:{boleta:+1}}
+  ]);
+  res.status(200).send(recibos);
+}
 module.exports ={
   saveRecibo,
   getRecibos,
-  getFamiliasFalta
+  getFamiliasFalta,
+  getFamiliaEstudianteRecibo,
+  getRecibosFamiliaEstudiante
 
 }

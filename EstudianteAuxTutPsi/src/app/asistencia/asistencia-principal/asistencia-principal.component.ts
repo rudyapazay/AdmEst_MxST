@@ -9,10 +9,10 @@ import { AsistenciaService } from 'src/app/services/asistencia.service';
 export class AsistenciaPrincipalComponent implements OnInit {
 
   public astGeneral = {
-    "presente":Number,
-    "tarde":Number,
-    "falta":Number,
-    "evasion":Number
+    "presente":0,
+    "tarde":0,
+    "falta":0,
+    "evasion":0
   };
   public fecha={
     "dia": new Date().getDate(),

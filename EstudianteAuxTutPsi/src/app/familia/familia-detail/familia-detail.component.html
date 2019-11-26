@@ -1,5 +1,5 @@
 
-<h2 class="title"> {{ familia.carpeta }}  ::  {{familia.codigo }}  </h2> 
+<h2 *ngIf="familia" class="title"> {{ familia.carpeta }}  ::  {{familia.codigo }}  </h2> 
 
 <div class="columns" *ngIf="familia">
   <!--  resumen de la familia-->
