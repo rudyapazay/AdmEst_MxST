@@ -38,6 +38,7 @@ export class AsistenciaEstudianteComponent implements OnInit {
           console.log(result);
         },
         err=>{
+          this._router.navigate(['/error/servidor']);
           console.log("error en el servidor");
         }
       )

@@ -38,6 +38,7 @@ export class PadreUpdateComponent implements OnInit {
           console.log(this.padre);
         },
         err =>{
+          this._router.navigate(['/error/servidor']);
           console.log('error con el servidor');
         }
       );
@@ -55,6 +56,7 @@ export class PadreUpdateComponent implements OnInit {
         this._router.navigate([{outlets:{popup:null}}]);
       },
       err=>{
+        this._router.navigate(['/error/servidor']);
         console.log('Error con el servidor');
       }
     );

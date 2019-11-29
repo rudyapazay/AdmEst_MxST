@@ -40,6 +40,7 @@ export class EstudianteByFamiliaComponent implements OnInit {
           //console.log(this.estudiantes);
         },  
         err=>{
+          this._router.navigate(['/error/servidor']);
           console.log("error en la peticion");
         }
       )

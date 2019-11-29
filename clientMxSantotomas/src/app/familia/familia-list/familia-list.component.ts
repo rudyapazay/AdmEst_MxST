@@ -44,6 +44,7 @@ export class FamiliaListComponent implements OnInit {
         
       },
       error=>{
+        this._router.navigate(['/error/servidor']);
         console.log("error en la peticion");
       }
     );
@@ -65,6 +66,7 @@ export class FamiliaListComponent implements OnInit {
           this.familias = result.familias;
         },
         error=>{
+          this._router.navigate(['/error/servidor']);
           console.log("error en la peticion");
         }
       );

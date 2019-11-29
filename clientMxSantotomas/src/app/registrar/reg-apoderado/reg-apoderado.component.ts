@@ -96,6 +96,7 @@ export class RegApoderadoComponent implements OnInit {
         this._router.navigate(['/registrar/'+this.ruta_registro+'/'+this.familia_id]);
       },
       err=>{
+        this._router.navigate(['/error/servidor']);
         console.log(err);
       }
 

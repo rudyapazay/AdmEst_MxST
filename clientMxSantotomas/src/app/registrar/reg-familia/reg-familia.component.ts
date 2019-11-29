@@ -51,6 +51,7 @@ export class RegFamiliaComponent implements OnInit {
         }
       },
       err=>{
+        this._router.navigate(['/error/servidor']);
         console.log(<any>err);
       }
       

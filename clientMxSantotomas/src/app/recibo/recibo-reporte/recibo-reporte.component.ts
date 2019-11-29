@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReciboService } from 'src/app/services/recibo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recibo-reporte',
@@ -10,6 +11,7 @@ export class ReciboReporteComponent implements OnInit {
   public recibos:any;
 
   constructor(
+    private _router:Router,
     private reciboService:ReciboService
   ){ }
 
@@ -24,6 +26,7 @@ export class ReciboReporteComponent implements OnInit {
         this.recibos = result;
       },
       err=>{
+        this._router.navigate(['/error/servidor']);
         console.log("Error Con el servidor");
       }
     )

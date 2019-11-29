@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
@@ -20,12 +20,15 @@ import { EstudianteEliminarModule } from './eliminar/estudiante-eliminar/estudia
 import { FamiliaEliminarModule } from './eliminar/familia-eliminar/familia-eliminar.module';
 import { AsistenciaModule } from './asistencia/asistencia.module';
 import { ReciboModule } from './recibo/recibo.module';
+import { ErrorServidorComponent } from './error-servidor/error-servidor.component';
+import { InterceptorService } from './services/interceptor.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BuildingComponent
+    BuildingComponent,
+    ErrorServidorComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,11 @@ import { ReciboModule } from './recibo/recibo.module';
     ReciboModule
     
   ],
-  providers: [FamiliaService, EstudianteService],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:InterceptorService,
+    multi:true
+  }],
   bootstrap: [AppComponent],
 
 })

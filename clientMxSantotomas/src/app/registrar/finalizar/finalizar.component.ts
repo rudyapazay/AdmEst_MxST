@@ -50,7 +50,9 @@ export class FinalizarComponent implements OnInit {
           //console.log(result);
           //console.log(this.estudiantes);
         },
-        err=>{console.log(err)}
+        err=>{
+          this._router.navigate(['/error/servidor']);
+          console.log(err)}
       )
     });
   }

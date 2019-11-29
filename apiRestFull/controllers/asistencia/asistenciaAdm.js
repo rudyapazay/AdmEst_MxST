@@ -12,7 +12,7 @@ async function iniciarDia (req, res){
     //console.log(fechaActual);
     //console.log(asistenciaTotal.length);
     if(asistenciaTotal.length != '0'){
-      res.status(200).send({message:"Registrado a los estudiantes Correctamente "});
+      res.status(200).send({message:"Registrado a"+await EstudianteMdl.count({estado:"activo"}) +" estudiantes Correctamente "});
     }else{
       for (estudiante of estudiantes) {
         var asistencia = new AsistenciaMdl();
@@ -22,7 +22,7 @@ async function iniciarDia (req, res){
         asistencia.almuerzo.estado = 'F' ;
         await asistencia.save();
       }
-      res.status(200).send({message:"Correct para " + await EstudianteMdl.count() + " estudiantes"});
+      res.status(200).send({message:"Correct para " + await EstudianteMdl.count({estado:"activo"}) + " estudiantes"});
     }
   }catch(err){
     console.log(err);
@@ -35,12 +35,13 @@ async function finalizarDia(req,res){
 }
 
 //recuperar fechas laboradas
-async function fechasLaboradas(req,res){
-  var fechas = await asistencia.find({});
+async function diasLaborados(req,res){
+  var fechas = await AsistenciaMdl.find().distinct("fecha");
+  res.status(200).send(fechas);
 }
 
 
 module.exports = {
   iniciarDia,
-  fechasLaboradas
+  diasLaborados
 }

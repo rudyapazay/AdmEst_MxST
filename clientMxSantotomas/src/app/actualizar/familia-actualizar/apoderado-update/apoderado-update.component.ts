@@ -38,6 +38,7 @@ export class ApoderadoUpdateComponent implements OnInit {
           }
         },
         err=>{
+          this._router.navigate(['/error/servidor']);
           console.log("erro en el servidor");
         }
       )
@@ -54,6 +55,7 @@ export class ApoderadoUpdateComponent implements OnInit {
         this._router.navigate([{outlets:{popup:null}}]);
       },
       err=>{
+        this._router.navigate(['/error/servidor']);
         console.log("error en el servidor");
       }
     );

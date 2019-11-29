@@ -32,6 +32,7 @@ export class DocumentosTrasladoDeleteComponent implements OnInit {
         this._router.navigate([{outlets:{popup:null}}]);
       },
       err=>{
+        this._router.navigate(['/error/servidor']);
         console.log("Error en la peticion");
       }
     );

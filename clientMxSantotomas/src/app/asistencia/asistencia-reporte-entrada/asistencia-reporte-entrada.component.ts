@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AsistenciaService } from 'src/app/services/asistencia.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,6 +12,7 @@ export class AsistenciaReporteEntradaComponent implements OnInit {
 
   public reporte:{};
   constructor(
+    private _router:Router,
     private AsistenciaService:AsistenciaService
   ) { }
 
@@ -26,6 +28,7 @@ export class AsistenciaReporteEntradaComponent implements OnInit {
         
       },
       err=>{
+        this._router.navigate(['/error/servidor']);
 
       }
     )

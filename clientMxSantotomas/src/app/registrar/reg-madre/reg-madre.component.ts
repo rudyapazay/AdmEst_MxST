@@ -80,6 +80,7 @@ export class RegMadreComponent implements OnInit {
           
         },
         err=>{
+          this._router.navigate(['/error/servidor']);
           console.log(err);
         }
       );

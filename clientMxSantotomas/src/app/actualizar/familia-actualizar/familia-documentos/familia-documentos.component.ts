@@ -39,6 +39,7 @@ export class FamiliaDocumentosComponent implements OnInit {
           }
         },
         err=>{
+          this._router.navigate(['/error/servidor']);
           console.log("error en el servidor");
         }
       );
@@ -55,6 +56,7 @@ export class FamiliaDocumentosComponent implements OnInit {
         this._router.navigate([{outlets:{popup:null}}]);
       },
       err=>{
+        this._router.navigate(['/error/servidor']);
         console.log("error con el servidor");
       }
     );

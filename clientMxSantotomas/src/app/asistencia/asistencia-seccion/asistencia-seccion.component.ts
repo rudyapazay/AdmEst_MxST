@@ -78,6 +78,7 @@ export class AsistenciaSeccionComponent implements OnInit {
           //console.log(this.tarde);
         },
         err=>{
+          this._router.navigate(['/error/servidor']);
           console.log("error en Peticion");
         }
       );

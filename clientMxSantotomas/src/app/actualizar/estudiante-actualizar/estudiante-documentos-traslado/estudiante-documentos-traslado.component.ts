@@ -46,6 +46,7 @@ export class EstudianteDocumentosTrasladoComponent implements OnInit {
         //console.log(this.estudiante);
       },
       err=>{
+        this._router.navigate(['/error/servidor']);
         console.log("error en la peticion");
       }
     );
@@ -59,6 +60,7 @@ export class EstudianteDocumentosTrasladoComponent implements OnInit {
         this._router.navigate([{outlets:{popup:null}}]);
       },
       err=>{
+        this._router.navigate(['/error/servidor']);
         console.log("error en el servidor");
       }
     );

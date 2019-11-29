@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AsistenciaService } from 'src/app/services/asistencia.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-asistencia-principal',
@@ -21,6 +22,7 @@ export class AsistenciaPrincipalComponent implements OnInit {
   }
 
   constructor(
+    private _router:Router,
     private _asistenciaService:AsistenciaService
   ) { }
 
@@ -47,6 +49,7 @@ export class AsistenciaPrincipalComponent implements OnInit {
         console.log(this.astGeneral);
       },
       err =>{
+        this._router.navigate(['/error/servidor']);
         console.log(err);
       }
     )  

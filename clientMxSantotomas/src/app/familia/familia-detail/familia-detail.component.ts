@@ -36,6 +36,7 @@ export class FamiliaDetailComponent implements OnInit {
           this.familia =result.familia;
         },
         err=>{  
+          this._router.navigate(['/error/servidor']);
           console.log('error en la peticion');
           //this._router.navigate(['/familias/']);
         }

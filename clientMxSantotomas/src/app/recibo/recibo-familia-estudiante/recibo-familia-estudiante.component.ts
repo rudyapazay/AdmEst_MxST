@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReciboService } from 'src/app/services/recibo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recibo-familia-estudiante',
@@ -9,6 +10,7 @@ import { ReciboService } from 'src/app/services/recibo.service';
 export class ReciboFamiliaEstudianteComponent implements OnInit {
   public familias:[];
   constructor(
+    private _router:Router,
     private _reciboService:ReciboService
   ) {}
 
@@ -23,7 +25,10 @@ export class ReciboFamiliaEstudianteComponent implements OnInit {
         console.log(result);
 
       },
-      err=>{}
+      err=>{
+        this._router.navigate(['/error/servidor']);
+        this._router.navigate(['/error/servidor']);
+      }
     )
   }
 }

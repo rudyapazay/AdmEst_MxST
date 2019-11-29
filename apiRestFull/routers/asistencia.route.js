@@ -39,4 +39,7 @@ asistenciaRtr.route('/asistencia/estudiante/:id').get(astEstCtrl.asistenciaEstud
 //reporte de asistencia por estudiante
 asistenciaRtr.route('/asistencia/estudiante/:id/:fecha').get(astEstCtrl.asistenciaEstudianteDia);
 
+//fechas laboradas
+asistenciaRtr.route('/asistencia/dias/laborados').get(astAdmCtrl.diasLaborados);
+
 module.exports = asistenciaRtr ;

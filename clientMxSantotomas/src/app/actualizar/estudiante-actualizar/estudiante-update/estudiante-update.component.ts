@@ -37,6 +37,7 @@ export class EstudianteUpdateComponent implements OnInit {
           
         },
         err=>{
+          this._router.navigate(['/error/servidor']);
           console.log("error en la peticion");
         }
         );
@@ -54,6 +55,7 @@ export class EstudianteUpdateComponent implements OnInit {
         this._router.navigate([{outlets:{popup:null}}]);
       },
       err=>{
+        this._router.navigate(['/error/servidor']);
         console.log("error en la peticion");
       });
   }
