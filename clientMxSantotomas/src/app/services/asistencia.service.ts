@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { GLOBAL } from './global';
+import { ThrowStmt } from '@angular/compiler';
 
 
 @Injectable({
@@ -33,5 +34,15 @@ export class AsistenciaService {
    //asistencia de estudiantes
    asistenciaEstudiante(id:any):Observable<any>{
      return this._http.get(this.url+'asistencia/estudiante/'+id);
+   }
+
+   //fechas laboradas por mes
+   asistenciaDiasLaborados(mes:any):Observable<any>{
+     return this._http.get(this.url+'asistencia/dias/laborados/'+mes);
+   }
+
+   //Mostrar asistencia de dia y estudiantes
+   asistenciasEstudianteDia(est:any, dia:any):Observable<any>{
+     return this._http.get(this.url+'asistencia/estudiante/'+est+'/'+dia);
    }
 }

@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { EstudianteService } from 'src/app/services/estudiante.service';
 import { EstudianteMdl } from 'src/app/models/estudiante-mdl';
-import { TouchSequence } from 'selenium-webdriver';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
 @Component({
   selector: 'app-estudiante-seccion',
@@ -11,7 +10,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./estudiante-seccion.component.css']
 })
 export class EstudianteSeccionComponent implements OnInit {
-  public estudiantes:EstudianteMdl;
+  public estudiantes:any;
   public grado:string;
   public seccion:string; 
 

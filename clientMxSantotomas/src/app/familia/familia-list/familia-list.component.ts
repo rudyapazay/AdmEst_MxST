@@ -15,7 +15,7 @@ export class FamiliaListComponent implements OnInit {
 
   public titulo:String;
   public familia_buscar:string;
-  public familias:FamiliaMdl;
+  public familias:any;
 
   constructor(
     private _router:Router,
@@ -37,15 +37,12 @@ export class FamiliaListComponent implements OnInit {
   verFamilias(){
     this._familiaService.getFamilias().subscribe(
       result=>{
-        // cuando trae de la base de datos trae con su indice
         this.familias = result.familias;
-
         //console.log(result.familias);
-        
       },
       error=>{
-        this._router.navigate(['/error/servidor']);
-        console.log("error en la peticion");
+        
+        //console.log("error en la peticion");
       }
     );
   }

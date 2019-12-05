@@ -36,7 +36,9 @@ async function finalizarDia(req,res){
 
 //recuperar fechas laboradas
 async function diasLaborados(req,res){
-  var fechas = await AsistenciaMdl.find().distinct("fecha");
+  var mes = req.params.mes;
+  var year = new Date().getFullYear();
+  var fechas = await AsistenciaMdl.find({fecha:{$gte:new Date(year,Number(mes)-1), $lt:new Date(year, mes)}}).distinct("fecha");
   res.status(200).send(fechas);
 }
 

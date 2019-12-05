@@ -13,7 +13,7 @@ export class CambiarGradoSeccionComponent implements OnInit {
   public nombre;
   public grado;
   public seccion;
-  public grados :Array<Object>=[ {'name':'primero'},{'name':'segundo'},{'name':'tercero'},{'name':'cuarto'}, {'name':'quinto'}];
+  public grados:Array<Object>=[ {'name':'primero'},{'name':'segundo'},{'name':'tercero'},{'name':'cuarto'}, {'name':'quinto'}];
   public secciones:Array<Object>=[{'name':'A'},{'name':'B'},{'name':'C'},{'name':'D'},{'name':'E'},{'name':'F'},{'name':'G'},{'name':'H'}];
 
   constructor(

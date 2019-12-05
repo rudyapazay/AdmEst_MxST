@@ -49,7 +49,7 @@ var FamiliaSchema = Schema({
 
     direccion:String,
     observaciones:String,
-    estado:String
+    estado:String  // Activo || matricula || archivo(Cuando tiene hijos matriculados);
 });
 
 module.exports = mongoose.model('Familia', FamiliaSchema);

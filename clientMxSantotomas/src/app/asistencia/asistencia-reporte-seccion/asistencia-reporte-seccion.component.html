@@ -1,0 +1,70 @@
+<div class="columns">
+  <div class="column">
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Grado: </label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select [(ngModel)] = "grado">
+                <option *ngFor="let grado of grados" [ngValue]="grado.name">{{grado.name|uppercase}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Sección: </label>
+      </div>
+      <div class="field-body">
+        <div class="field ">
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select [(ngModel)] = "seccion">
+                <option *ngFor="let seccion of secciones" [ngValue]="seccion.name">{{seccion.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Mes a buscar -->
+  <div class="column">
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Mes: </label>
+      </div>
+      <div class="field-body">
+        <div class="field ">
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select [(ngModel)] = "mes">
+                <option *ngFor="let mes of meses" [ngValue]="mes.value">{{mes.name|uppercase}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <a class="button is-fullwidth" (click)=buscar()> Buscar </a>
+  </div>
+</div>
+
+<table *ngIf = "estudiantes && fechas">
+  <tr *ngFor = "let estudiante of estudiantes">
+    <td>{{ estudiante.nombre }} </td>
+    <td *ngFor = "let fecha of fechas"> {{putElemento(estudiante._id, fecha)}}</td>
+  </tr>
+</table>
+
+<p *ngIf = "!estudiantes && !fechas" class="title"> SIN DATOS </p>
