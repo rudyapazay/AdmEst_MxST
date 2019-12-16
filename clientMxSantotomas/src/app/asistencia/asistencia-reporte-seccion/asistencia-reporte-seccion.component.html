@@ -56,14 +56,38 @@
     </div>
   </div>
   <div class="column">
-    <a class="button is-fullwidth" (click)=buscar()> Buscar </a>
+    <a class="button is-fullwidth" (click)=getAsistencia()> Buscar </a>
   </div>
 </div>
 
-<table *ngIf = "estudiantes && fechas">
-  <tr *ngFor = "let estudiante of estudiantes">
-    <td>{{ estudiante.nombre }} </td>
-    <td *ngFor = "let fecha of fechas"> {{putElemento(estudiante._id, fecha)}}</td>
+<table *ngIf = "asistencias" class="table is-fullwidth is-striped">
+  <thead>
+    <tr>
+      <th> N°</th>
+      <th> Apellidos y Nombres </th>
+      <th *ngFor = "let dia of fechas"> 
+        <p class="is-size-7 ">{{dia |date:"dd"}}</p>
+        <p class="is-size-7">{{returnDia(dia)}}</p>
+      </th>
+      <th>P</th>
+      <th>T</th>
+      <th>F</th>
+      <th>E</th>      
+      <th>L</th>
+    </tr>
+  </thead>
+
+  <tr *ngFor = "let estudiante of asistencias; let i = index">
+    <td>{{i+1}}</td>
+    <td class="is-size-7">{{estudiante.apellidos}}, {{ estudiante.nombre }} </td>
+    <td *ngFor = "let diaReport of estudiante.asistencias">
+       {{diaReport.resumen.reporte}}
+    </td>
+    <td class="tile">{{resumen[i][0]}}</td>
+    <td>{{resumen[i][1]}}</td>
+    <td>{{resumen[i][2]}}</td>
+    <td>{{resumen[i][3]}}</td>
+    <td>{{resumen[i][4]}}</td>
   </tr>
 </table>
 

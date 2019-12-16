@@ -45,4 +45,9 @@ export class AsistenciaService {
    asistenciasEstudianteDia(est:any, dia:any):Observable<any>{
      return this._http.get(this.url+'asistencia/estudiante/'+est+'/'+dia);
    }
+   //Recuperar asistencia por meses, grado y seccion
+   //asistencia/reporte/mensual/10/quinto/C
+   asistenciaMensualGradoSeccion(mes:any, grado:any, seccion:any):Observable<any>{
+     return this._http.get(this.url+'asistencia/reporte/mensual/'+mes+'/'+grado+'/'+seccion);
+   }
 }

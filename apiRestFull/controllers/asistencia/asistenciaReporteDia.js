@@ -284,7 +284,8 @@ async function reporteAlmuerzoGeneral(){
 
 module.exports ={
   reportFaltaDia,
-  resumenEntradaGeneral,  resumenAlmuerzoGeneral,
+  resumenEntradaGeneral, 
+  resumenAlmuerzoGeneral,
   reporteEntradaGeneral, 
   reporteAlmuerzoGeneral
 }

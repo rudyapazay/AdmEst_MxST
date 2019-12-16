@@ -25,8 +25,19 @@ export class AsistenciaReporteSeccionComponent implements OnInit {
       {'name':'abril','value':'4'},
       {'name':'marzo','value':'3'}
   ];
-
+  public dias=[
+    {'name':'domingo', 'sigla':'Dom'},
+    {'name':'lunes', 'sigla':'Lun'},
+    {'name':'martes', 'sigla':'Mar'},
+    {'name':'miercoles', 'sigla':'Mie'},
+    {'name':'jueves', 'sigla':'Jue'},
+    {'name':'viernes', 'sigla':'Vie'},
+    {'name':'sabado', 'sigla':'Sab'}
+  ]
+  
+  public asistencias: any;
   public estudiantes:any;
+  public resumen = [];
   public fechas:any;
   constructor(
     private _estudianteService:EstudianteService,
@@ -70,18 +81,58 @@ export class AsistenciaReporteSeccionComponent implements OnInit {
       }
     );
   }
+  //recuperar asistencia
+  getAsistencia(){
+    
+    if(this.mes && this.grado && this.seccion){
+      this.getFechas();  //recuperacion de fechas laboradas
 
-  putElemento(estudiante, dia){
-    this._asistenciaSevice.asistenciasEstudianteDia(estudiante,dia).subscribe(
-      result=>{
-        console.log(result);
-        return("a");
-      },
-      err=>{
-        console.log(err);
-        return ("e");
-      }
-    )
+      this._asistenciaSevice.asistenciaMensualGradoSeccion(this.mes, this.grado, this.seccion).subscribe(
+        result=>{
+          this.asistencias = result;
+          var i ;
+          this.resumen = [];
+          for(i=0; i<this.asistencias.length; i++){
+            var res = [0,0,0,0,0];  //presente, tarde, falta, evasion, licencia
+            this.resumen.push(res);
+          }
+          //console.log(this.resumen);
+          this.asistencias.forEach((estud, index) => {
+            estud.asistencias.forEach(dia => {
+               switch (dia.resumen.reporte) {
+                case 'P':
+                  this.resumen[index][0] += 1;  
+                  break;
+                case 'T':
+                  this.resumen[index][1] += 1;
+                  break;
+                case 'F':
+                  this.resumen[index][2]+=1;
+                  break;
+                case 'E':
+                  this.resumen[index][3]+=1;
+                  break;
+                case 'L':
+                  this.resumen[index][4]+=1;
+                  break;
+                default:
+                  break;
+               }
+            });
+          });
+          console.log(this.resumen);
+        },
+        err=>{
+          console.log(err);
+        }
+      );
+    }
   }
+
+  //
+  returnDia(d:any) {
+    var dia = new Date(d).getDay();
+    return this.dias[dia].sigla;
+ }
 
 }

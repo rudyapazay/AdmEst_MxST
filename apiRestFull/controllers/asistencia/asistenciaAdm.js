@@ -42,8 +42,150 @@ async function diasLaborados(req,res){
   res.status(200).send(fechas);
 }
 
+//recuperar resumen del dia laborado
+async function reporteMes(req, res){
+  var mes = req.params.mes;
+  var seccion = req.params.seccion;
+  var grado = req.params.grado;
+//  console.log(mes);
+  var year = new Date().getFullYear();
+  switch (grado) {
+    case 'primero':
+      var asistencia = await EstudianteMdl.aggregate([
+        {$match: {"referencia.primero.year":year.toString(),"referencia.primero.seccion":seccion ,"estado":"activo"}},
+        {$lookup:{
+          from:"asistencias",
+          let:{estud:"$_id"},
+          pipeline:[
+            {$match:
+              { $expr:
+                { $and:
+                  [
+                    { $eq: ["$estudiante","$$estud"]},
+                    { $gte:["$fecha",new Date(year,Number(mes)-1)]},
+                    { $lt:[ "$fecha", new Date(year, mes) ]}
+                  ]
+    
+                }
+              }
+            }
+          ],      
+          as:"asistencias"}
+        },
+        {$project:{"QRCode":0, "documentos":0}}
+      ]);    
+      break;
+    case 'segundo':
+        var asistencia = await EstudianteMdl.aggregate([
+          {$match: {"referencia.segundo.year":year.toString(),"referencia.segundo.seccion":seccion ,"estado":"activo"}},
+          {$lookup:{
+            from:"asistencias",
+            let:{estud:"$_id"},
+            pipeline:[
+              {$match:
+                { $expr:
+                  { $and:
+                    [
+                      { $eq: ["$estudiante","$$estud"]},
+                      { $gte:["$fecha",new Date(year,Number(mes)-1)]},
+                      { $lt:[ "$fecha", new Date(year, mes) ]}
+                    ]
+      
+                  }
+                }
+              }
+            ],      
+            as:"asistencias"}
+          },
+          {$project:{"QRCode":0, "documentos":0}}
+        ]);   
+      break;
+    case 'tercero':
+        var asistencia = await EstudianteMdl.aggregate([
+          {$match: {"referencia.tercero.year":year.toString(),"referencia.tercero.seccion":seccion ,"estado":"activo"}},
+          {$lookup:{
+            from:"asistencias",
+            let:{estud:"$_id"},
+            pipeline:[
+              {$match:
+                { $expr:
+                  { $and:
+                    [
+                      { $eq: ["$estudiante","$$estud"]},
+                      { $gte:["$fecha",new Date(year,Number(mes)-1)]},
+                      { $lt:[ "$fecha", new Date(year, mes) ]}
+                    ]
+      
+                  }
+                }
+              }
+            ],      
+            as:"asistencias"}
+          },
+          {$project:{"QRCode":0, "documentos":0}}
+        ]);   
+      break;
+    case 'cuarto':
+        var asistencia = await EstudianteMdl.aggregate([
+          {$match: {"referencia.cuarto.year":year.toString(),"referencia.cuarto.seccion":seccion ,"estado":"activo"}},
+          {$lookup:{
+            from:"asistencias",
+            let:{estud:"$_id"},
+            pipeline:[
+              {$match:
+                { $expr:
+                  { $and:
+                    [
+                      { $eq: ["$estudiante","$$estud"]},
+                      { $gte:["$fecha",new Date(year,Number(mes)-1)]},
+                      { $lt:[ "$fecha", new Date(year, mes) ]}
+                    ]
+      
+                  }
+                }
+              }
+            ],      
+            as:"asistencias"}
+          },
+          {$project:{"QRCode":0, "documentos":0}}
+        ]);   
+      break;
+    case 'quinto':
+        var asistencia = await EstudianteMdl.aggregate([
+          {$match: {"referencia.quinto.year":year.toString(),"referencia.quinto.seccion":seccion ,"estado":"activo"}},
+          {$lookup:{
+            from:"asistencias",
+            let:{estud:"$_id"},
+            pipeline:[
+              {$match:
+                { $expr:
+                  { $and:
+                    [
+                      { $eq: ["$estudiante","$$estud"]},
+                      { $gte:["$fecha",new Date(year,Number(mes)-1)]},
+                      { $lt:[ "$fecha", new Date(year, mes) ]}
+                    ]
+      
+                  }
+                }
+              }
+            ],      
+            as:"asistencias"}
+          },
+          {$project:{"QRCode":0, "documentos":0}}
+        ]);
+      break;
+    default:
+      var asistencia = [];
+      break;
+  }
+
+  res.status(200).send(asistencia);
+}
+
 
 module.exports = {
   iniciarDia,
-  diasLaborados
+  diasLaborados,
+  reporteMes
 }
