@@ -72,7 +72,8 @@ async function reporteMes(req, res){
           ],      
           as:"asistencias"}
         },
-        {$project:{"QRCode":0, "documentos":0}}
+        {$project:{"QRCode":0, "documentos":0}},
+        {$sort:{"apellidos":+1, "nombre":+1}}
       ]);    
       break;
     case 'segundo':
@@ -97,7 +98,8 @@ async function reporteMes(req, res){
             ],      
             as:"asistencias"}
           },
-          {$project:{"QRCode":0, "documentos":0}}
+          {$project:{"QRCode":0, "documentos":0}},
+          {$sort:{"apellidos":+1, "nombre":+1}}
         ]);   
       break;
     case 'tercero':
@@ -122,7 +124,8 @@ async function reporteMes(req, res){
             ],      
             as:"asistencias"}
           },
-          {$project:{"QRCode":0, "documentos":0}}
+          {$project:{"QRCode":0, "documentos":0}},
+          {$sort:{"apellidos":+1, "nombre":+1}}
         ]);   
       break;
     case 'cuarto':
@@ -147,7 +150,8 @@ async function reporteMes(req, res){
             ],      
             as:"asistencias"}
           },
-          {$project:{"QRCode":0, "documentos":0}}
+          {$project:{"QRCode":0, "documentos":0}},
+          {$sort:{"apellidos":+1, "nombre":+1}}
         ]);   
       break;
     case 'quinto':
@@ -172,7 +176,8 @@ async function reporteMes(req, res){
             ],      
             as:"asistencias"}
           },
-          {$project:{"QRCode":0, "documentos":0}}
+          {$project:{"QRCode":0, "documentos":0}},
+          {$sort:{"apellidos":+1, "nombre":+1}}
         ]);
       break;
     default:

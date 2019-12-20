@@ -26,13 +26,16 @@ import { InterceptorService } from './services/interceptor.service';
 
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { SistemaModule } from './sistema/sistema.module';
+
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [
     AppComponent,
     BuildingComponent,
-    ErrorServidorComponent
+    ErrorServidorComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ registerLocaleData(localeEs, 'es');
 
     AsistenciaModule,
     
-    ReciboModule
+    ReciboModule,
+    SistemaModule
     
   ],
   providers: [{

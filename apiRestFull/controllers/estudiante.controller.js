@@ -518,6 +518,7 @@ async function delEstudiante(req,res){
     }catch(err){
         console.log(err);
     }
+    
     await  EstudianteMdl.deleteOne({_id:id},(err)=>{
         if(err){
             res.status(500).send({message:"error con la base de datos"});

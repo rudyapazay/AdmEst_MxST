@@ -135,4 +135,19 @@ export class AsistenciaReporteSeccionComponent implements OnInit {
     return this.dias[dia].sigla;
  }
 
+
+ //cambiar color
+ is_color_reporte(e:any){
+   switch (e) {
+    case 'P':
+      return " has-text-info has-text-centered";
+    case 'F':
+      return "has-text-danger has-text-weight-bold has-text-centered";
+    case 'T':
+        return "has-text-tarde has-text-weight-bold has-text-centered";
+     default:
+       break;
+   }
+ }
+
 }

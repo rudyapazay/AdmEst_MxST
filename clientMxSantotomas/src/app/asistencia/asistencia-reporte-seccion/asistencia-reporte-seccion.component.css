@@ -5,3 +5,46 @@
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+
+.has-text-tarde {
+  color: #ff9900;
+}
+
+td{
+  border-bottom: 0.5px solid black;
+  border-top: 0.5px solid black;
+}
+
+.is-date{
+  font-size:9pt;
+}
+
+@media screen{
+  .is-small{
+    font-size: 9pt;
+  }
+}
+
+@media print{
+
+  
+  table, tr, td {
+    margin:1px;
+    padding: 1px;
+    font-size: 87%;
+    border-bottom: 1px solid black;
+  }
+
+  th{
+    margin:1px;
+    padding: 1px;
+    font-size: 87%;
+  }
+  table{
+    margin-top: -3.5cm;
+  }
+  
+  .no-print-area{
+    visibility: hidden;
+  }
+}

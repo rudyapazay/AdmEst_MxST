@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@media print {
+
+  .is-print-area{
+    height: 1cm;
+    width: 100%;
+    margin:1px;
+    padding: 1px;
+    margin-top: -0.9cm;
+  }
+}
