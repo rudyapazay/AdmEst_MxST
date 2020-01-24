@@ -5,7 +5,10 @@ var FamiliaMdl =  require('../models/familia.model');
 var AsistenciaMdl = require('../models/asistencias.model');
 
 function getEstudiantes(req,res){
-    EstudianteMdl.find({},{QRCode:0}).limit(20).sort({apellidos:+1}).exec((err,estudiantes)=>{
+    EstudianteMdl.find({$or:[{estado:"activo", estado:"pendiente"}]},{QRCode:0})
+        .limit(20)
+        .sort({apellidos:+1})
+        .exec((err,estudiantes)=>{
         if(err){
             res.status(500).send({message:'error en la peticion'});
         }
@@ -48,7 +51,8 @@ function getEstudiantesByFamilia(req, res){
 function saveEstudiante(req,res){
     var estudiante = new EstudianteMdl();
     var params = req.body;
-    
+    var yearActual = new Date().getFullYear();
+
     estudiante.dni = params.dni;
     estudiante.apellidos = params.apellidos;
     estudiante.nombre = params.nombre;
@@ -59,36 +63,36 @@ function saveEstudiante(req,res){
     //estudiante.traslado_anterior = params.traslado_anterior;
     //estudiante.partida_nacimiento =params.partida_nacimiento;
    // estudiante.ficha_matricula = params.ficha_matricula;
-    //estudiante.sis = params.sis;
+   //estudiante.sis = params.sis;
+    estudiante.estado = 'activo';
     estudiante.seguro = params.seguro;
-    estudiante.estado = params.estado;
     estudiante.matricula = params.matricula;
     estudiante.siagie = params.siagie;
     estudiante.observaciones = params.observaciones;
-    
+    estudiante.fnacimiento = params.fnacimiento;
     estudiante.grado_actual = params.grado;
 
     estudiante.imagen = null;
 
     switch (params.grado) {
         case 'primero':
-            estudiante.referencia.primero.year = '2019';
+            estudiante.referencia.primero.year = yearActual;
             estudiante.referencia.primero.seccion = params.seccion;
             break;
         case 'segundo':
-            estudiante.referencia.segundo.year = '2019';
+            estudiante.referencia.segundo.year = yearActual;
             estudiante.referencia.segundo.seccion = params.seccion;
         break;
         case 'tercero':
-            estudiante.referencia.tercero.year = '2019';
+            estudiante.referencia.tercero.year = yearActual;
             estudiante.referencia.tercero.seccion = params.seccion;
         break;
         case 'cuarto':
-            estudiante.referencia.cuarto.year = '2019';
+            estudiante.referencia.cuarto.year = yearActual;
             estudiante.referencia.cuarto.seccion = params.seccion;
         break;
         case 'quinto':
-            estudiante.referencia.quinto.year = '2019';
+            estudiante.referencia.quinto.year = yearActual;
             estudiante.referencia.quinto.seccion = params.seccion;
         break;
         
@@ -184,7 +188,8 @@ function updateEstudianteBasica(req,res){
                 res.status(404).send({message:'Estudiante no existe'});
             }else{
                 estudiante = req.body;
-
+                
+                //console.log(estudiante);
 
                 EstudianteMdl.findByIdAndUpdate(estudianteId, estudiante,{new:true},(err,estudianteUpdate)=>{
                     if(err){
@@ -288,6 +293,7 @@ function saveDocumentosTraslado(req,res){
     });
 }
 
+
 function updateReferencia(req,res){
     var estudianteId = req.params.id;
     var grado =req.params.grado;
@@ -363,14 +369,14 @@ function updateReferencia(req,res){
     });
 
 }
+
 //funcion para sacar estudiantes por grado y seccion
 function getEstudiantesGradoSeccion(req,res){
     var grado=req.params.grado;
     var seccion  =  req.params.seccion;
-    let year  = new Date().getFullYear(); 
+    let year  = new Date().getFullYear();  // año actual
     var query ;
 
-    // falta sacar el anio actual
     switch (grado) {
         case 'primero':
             query = EstudianteMdl.find({'referencia.primero.year':year, 
@@ -418,7 +424,6 @@ function getEstudiantesGradoSeccion(req,res){
             }
         }
     });
-
 }
 
 //funcion para cambiar el grado y seccion del estudiantes
@@ -426,8 +431,7 @@ function cambiarGradoSeccion(req,res){
     var id = req.params.id;
     var grado = req.params.grado;
     var seccion = req.params.seccion;
-    var query;
-    var yearActual = '2019';
+    var yearActual = new Date().getFullYear();
     
     EstudianteMdl.findById(id,(err,estudiante)=>{
         if(err){

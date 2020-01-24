@@ -15,8 +15,9 @@ export class EstudianteListComponent implements OnInit {
 
   //Estudiantes = EstudianteRegMdl;
   public estudiantes :EstudianteMdl;
-  public grado:string;
+  //public grado:string;
   public est_buscar:string;
+  public yearActual = new Date().getFullYear();
 
   constructor(
     private _estudianteService:EstudianteService,

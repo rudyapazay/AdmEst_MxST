@@ -79,11 +79,11 @@ var EstudianteSchema = Schema({
     QRCode:String,
     imagen:String,
     
-    fecha_nacimiento:Date,
-    seguro:String,  //sis || essalud || no tiene
+    fnacimiento:Date, //fecha de nacimiento
+    seguro:String,  // sis || essalud || no tiene
     estado: String,  // activo || pendiente || retirado || traslado || egresado(solo promociones)  ** se cambia en cada año 
     matricula:String,  //Situacion al 2019 ratificado || reciente   ** se cambiara en cada año
-    siagie:String,  // true - registrado Siagie|| false -falta registrar ** se cambiara en cada año 
+    siagie:Boolean,  // true - registrado Siagie || false -falta registrar ** se cambiara en cada año 
     observaciones:String
 
 });

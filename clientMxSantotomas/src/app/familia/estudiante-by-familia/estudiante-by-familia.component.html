@@ -15,11 +15,11 @@
           <li> DNI : {{estudiante.dni}} </li>
           <li> Apellidos: {{estudiante.apellidos}} </li>
           <li> Nombre(s): {{ estudiante.nombre }} </li>
-          <li *ngIf='estudiante.referencia.primero && estudiante.referencia.primero.year == "2019"'> Primero - {{estudiante.referencia['primero'].seccion}} </li>
-          <li *ngIf='estudiante.referencia.segundo && estudiante.referencia.segundo.year == "2019"'> Segundo - {{estudiante.referencia['segundo'].seccion}} </li>
-          <li *ngIf='estudiante.referencia.tercero && estudiante.referencia.tercero.year == "2019"'> Tercero - {{estudiante.referencia['tercero'].seccion}} </li>
-          <li *ngIf='estudiante.referencia.cuarto && estudiante.referencia.cuarto.year == "2019"'> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </li>
-          <li *ngIf='estudiante.referencia.quinto && estudiante.referencia.quinto.year == "2019"'> Quinto - {{estudiante.referencia['quinto'].seccion}} </li>
+          <li *ngIf='estudiante.referencia.primero && estudiante.referencia.primero.year == yearActual '> Primero - {{estudiante.referencia['primero'].seccion}} </li>
+          <li *ngIf='estudiante.referencia.segundo && estudiante.referencia.segundo.year == yearActual '> Segundo - {{estudiante.referencia['segundo'].seccion}} </li>
+          <li *ngIf='estudiante.referencia.tercero && estudiante.referencia.tercero.year == yearActual '> Tercero - {{estudiante.referencia['tercero'].seccion}} </li>
+          <li *ngIf='estudiante.referencia.cuarto && estudiante.referencia.cuarto.year == yearActual '> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </li>
+          <li *ngIf='estudiante.referencia.quinto && estudiante.referencia.quinto.year == yearActual'> Quinto - {{estudiante.referencia['quinto'].seccion}} </li>
         </ul>
       </div>
       <footer class="card-footer">

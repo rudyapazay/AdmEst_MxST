@@ -16,6 +16,7 @@ export class FamiliaListComponent implements OnInit {
   public titulo:String;
   public familia_buscar:string;
   public familias:any;
+  public yearActual = new Date().getFullYear();
 
   constructor(
     private _router:Router,
@@ -26,6 +27,7 @@ export class FamiliaListComponent implements OnInit {
     this.familia_buscar = "";
     this._router.events.subscribe((e:any)=>{
       this.verFamilias();
+      this.familia_buscar = "";
     });
   }
 

@@ -1,6 +1,6 @@
-<form  #EstudianteForm ="ngForm"   (ngSubmit)="updateEstudiante()">
+<form #EstudianteForm ="ngForm"   (ngSubmit)="updateEstudiante()">
 
-  <div class="modal is-active">
+  <div *ngIf="estudiante" class="modal is-active">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
@@ -133,12 +133,12 @@
               <div class="control">
                 <label class="radio">
                   <input type="radio" [(ngModel)]="estudiante.siagie" name="siagie" 
-                  #siagie ="ngModel" value="completo" >  
+                  #siagie ="ngModel" value="true" >  
                   Registrado
                 </label>
                 <label class="radio">
                   <input type="radio" [(ngModel)]="estudiante.siagie" name="siagie" 
-                    #siagie ="ngModel" value="falta"> 
+                    #siagie ="ngModel" value="false"> 
                     Sin registrar
                 </label>
               </div>
@@ -153,5 +153,5 @@
         <button class="button" (click)="closepopup()">Cancel</button>
       </footer>
     </div>
-  </div>
+  </div >
 </form>

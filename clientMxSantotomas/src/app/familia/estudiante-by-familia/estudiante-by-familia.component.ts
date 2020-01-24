@@ -12,6 +12,7 @@ export class EstudianteByFamiliaComponent implements OnInit {
 
   public estudiantes:EstudianteMdl;
   public familia_id:string;
+  public yearActual = new Date().getFullYear();
 
   constructor(
     private _route:ActivatedRoute,

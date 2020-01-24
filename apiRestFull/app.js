@@ -11,6 +11,8 @@ const buscarRtr = require('./routers/buscar.route');
 const ieducativaRtr = require('./routers/ieducativa.route');
 const asistenciaRtr = require('./routers/asistencia.route');
 const reciboRtr  = require('./routers/recibo.route');
+const imagenRtr = require('./routers/imagenes.route');
+const reporteRtr = require('./routers/reporte.route');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -33,5 +35,7 @@ app.use('/api/', buscarRtr);
 app.use('/api/',ieducativaRtr);
 app.use('/api/', asistenciaRtr);
 app.use('/api/',reciboRtr);
+app.use('/api/', imagenRtr);
+app.use('/api/', reporteRtr);
 
 module.exports = app;

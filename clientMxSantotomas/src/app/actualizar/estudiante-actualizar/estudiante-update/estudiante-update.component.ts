@@ -10,7 +10,7 @@ import { EstudianteMdl } from 'src/app/models/estudiante-mdl';
   styleUrls: ['./estudiante-update.component.css']
 })
 export class EstudianteUpdateComponent implements OnInit {
-  public estudiante = EstudianteMdl;
+  public estudiante:any;
   public id:string;
 
   
@@ -32,7 +32,6 @@ export class EstudianteUpdateComponent implements OnInit {
       this._estudianteService.getEstudiante(this.id).subscribe(
         result=>{
           this.estudiante = result.estudiante;
-          
           //console.log(this.estudiantebasico);
           
         },

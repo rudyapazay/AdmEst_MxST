@@ -42,7 +42,7 @@ async function diasLaborados(req,res){
   res.status(200).send(fechas);
 }
 
-//recuperar resumen del dia laborado
+//recuperar resumen del dia laborado, reporte mensual
 async function reporteMes(req, res){
   var mes = req.params.mes;
   var seccion = req.params.seccion;

@@ -3,8 +3,16 @@
 var FamiliaMdl =  require('../models/familia.model');
 var EstudianteMdl = require('../models/estudiante.model');
 
-function getFamilias(req,res){
-    FamiliaMdl.find({estado:'Activo'}).populate({path:"estudiantes", select:'-QRCode'}).limit(10).sort({carpeta:+1}).exec((err,familias)=>{
+ function getFamilias(req,res){
+    FamiliaMdl.aggregate([
+        {$match:{estado:'Activo'}},
+        {$sort:{carpeta:+1}},
+        {$limit:10},
+        {$lookup:{from:'estudiantes', localField:'_id',foreignField:'familia', as:'estudiantes'}},
+        {$project:{'estudiantes.QRCode':0}},
+    ])
+    //find({estado:'Activo'}).populate({path:"estudiantes", select:'-QRCode'}).limit(10).sort({carpeta:+1})
+    .exec((err,familias)=>{
         if(err){
             res.status(500).send({message:'error en la peticion'});
         }
@@ -13,7 +21,7 @@ function getFamilias(req,res){
                 res.status(404).send({message:'No existe familias'});
             }
             else{
-                
+               // console.log(familias);
                 res.status(200).send({familias});
             }
         }
