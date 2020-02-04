@@ -1,4 +1,46 @@
-<h2 class="title has-text-link"> <fa name="user" > </fa> {{estudiante.nombre }} {{estudiante.apellidos}} </h2>
+
+<div class="columns ">
+    <div class="column is-full-size">
+        <h2 class="title has-text-link"> <fa name="user" > </fa> {{estudiante.nombre }} {{estudiante.apellidos}} </h2>
+        <!-- funciones -->
+    </div>
+</div>
+<div class="columns">
+    <div class="column is-3"></div>
+    <div class="column ">
+        <div class="buttons" >
+            
+            <a [routerLink] =  "['', {outlets: { 'popup':['estudiante',estudiante._id, estudiante.nombre]}}]" 
+                class="button is-info "> 
+                <fa name="cog" ></fa>  Grado y Sección
+            </a> 
+            <a [routerLink] =  "['', {outlets: { 'popup':['asistencia','estudiante',estudiante._id]}}]" 
+                class="button is-warning  is-medium is-routed " > 
+                <fa-icon [icon]="faCalendarCheck" size="lg"></fa-icon> Asistencia 
+            </a> 
+
+            <a [routerLink]="['/familia/',estudiante.familia._id]"
+                class="button is-link is-outlined is-medium is-routed " >
+                <fa-icon [icon]="faUsers" size="lg"></fa-icon>
+            </a>
+            
+            <a class="button is-success is-outlined is-medium is-routed">
+                <fa name="birthday-cake" size="lg"></fa>  
+            </a> 
+            <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','carne',estudiante._id] } }]"
+                class="button is-link is-outlined is-medium is-routed " > <fa name="id-card" size="lg" ></fa> </a>
+            <a class="button is-success is-outlined is-medium is-routed " (click)="reportePdf()">
+                <fa name="print" size="lg"> </fa> 
+            </a>
+            <a  [routerLink] = "['', {outlets:{'popup':['estudiante','cambiar','estado',estudiante._id]}}]"
+                *ngIf = "estudiante.estado == 'pendiente' || !estudiante.estado" 
+                 class="button is-danger is-outlined is-medium is-routed" > 
+                <fa-icon [icon]="faUserCheck" size="lg"></fa-icon>
+            </a>
+        </div>
+    </div>
+    <div class="column is-2"></div>
+</div>
 
 <div class="columns">
     <div class="column">
@@ -8,15 +50,22 @@
             </header>
             <div class="card-content">
                 <ul class="list">
-                    <li *ngIf="estudiante.familia" class="list-item"><a [routerLink]="['/familia/',estudiante.familia._id]" class="buttom is-stripted">
+                    <li *ngIf="estudiante.familia" class="list-item">
+                        <a [routerLink]="['/familia/',estudiante.familia._id]" class="buttom is-stripted">
                         <fa name="users" size='2x'></fa>{{estudiante.familia.codigo}} </a> 
                     </li>
                     <li *ngIf="estudiante.familia && estudiante.familia.padre" class="list-item"> PAPÁ: {{estudiante.familia.padre.nombre}} {{estudiante.familia.padre.apellidos}}  </li>
                     <li *ngIf="estudiante.familia && estudiante.familia.madre" class="list-item"> MAMÁ: {{estudiante.familia.madre.nombre}} {{estudiante.familia.madre.apellidos}}  </li>
                 </ul>
             </div>
+            <div class="card-footer">
+                <a  [routerLink] = "['', {outlets:{'popup':['estudiante','cambiar','familia',estudiante._id]}}]"
+                    class="card-footer-item"  >
+                    <fa-icon [icon] = "faUsersCog" size="2x"> </fa-icon>
+                    Cambiar
+                </a>
+            </div>
         </div>
-            
     </div>
     <!-- informacion-->
     <div *ngIf="estudiante" class="column">
@@ -191,29 +240,7 @@
             </footer>
         </div>
     </div>
-    <!-- documentos -->
-    <div class="column is-2">
-        <div class="card">
-            <header class="card-header">
-                <p class="card-header-title">
-                    Acciones
-                </p>
-            </header>
-            <section class="card-content">
-                <div class="buttons">
-                    <a [routerLink] =  "['', {outlets: { 'popup':['estudiante',estudiante._id, estudiante.nombre]}}]" 
-                        class="button is-info is-fullwidth"> <fa name="cog"></fa>  Grado y Sección </a> 
-                    <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','carne',estudiante._id] } }]"
-                        class="button is-success is-fullwidth"> <fa name="print"></fa> Imprimir carné </a>
-                    <a [routerLink] =  "['', {outlets: { 'popup':['asistencia','estudiante',estudiante._id]}}]" 
-                    class="button is-warning is-fullwidth"> <fa name="check"></fa> Asistencia </a> 
-                
-                </div>
-                
-            </section>
-        </div>
-
-    </div>
+    
 </div>
 
 

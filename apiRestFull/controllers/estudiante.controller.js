@@ -574,6 +574,47 @@ function deleteDocumentosTraslado(req, res){
         }
     }); 
 }
+
+async function cambiarFamilia(req, res){
+    var id = req.params.id;
+    var familia = req.params.familia
+    var estudiante = await EstudianteMdl.findOne({_id:id});
+    estudiante.familia = familia;
+    if( await EstudianteMdl.findOneAndUpdate({_id:estudiante._id}, estudiante, {new:true})){
+        res.status(200).send({message:"Actualizacion Correcta"});
+    }
+    else{
+        res.status(500).send({message:"Error en la actualizacion"});
+    };
+}
+
+async function cambiarEstado(req, res){
+    var id = req.params.id;
+    var estActual = req.params.estado;
+    var estudiante = await EstudianteMdl.findOne({_id:id});
+    estudiante.estado = estActual;
+    //console.log(estudiante.estado);
+    
+    EstudianteMdl.findOneAndUpdate({_id:estudiante._id}, estudiante,{new:true}, (err, estupdate)=>{
+        if(err){
+            console.log( 'error 1');
+            res.status(500).send('Error en la actualizacion');
+        }
+        else{
+            if(!estupdate){
+                console.log('error 2');
+                res.status(404).send('Familia no actulizada');
+            }
+            else{
+                console.log(estupdate);
+                res.status(200).send(estupdate);
+            }
+        }
+    }); 
+    
+}
+
+
 module.exports ={
     getEstudiantes,
     getEstudiante,
@@ -590,5 +631,8 @@ module.exports ={
 
     //eliminar
     delEstudiante,
-    deleteDocumentos, deleteDocumentosTraslado
+    deleteDocumentos, deleteDocumentosTraslado,
+
+    //cambiar familiar
+    cambiarFamilia, cambiarEstado
 }

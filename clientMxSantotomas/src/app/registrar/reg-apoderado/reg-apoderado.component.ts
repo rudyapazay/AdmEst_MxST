@@ -29,7 +29,7 @@ export class RegApoderadoComponent implements OnInit {
     nota: string,
   }
 
-  @ViewChild(ResumenComponent) resumen:ResumenComponent;
+  @ViewChild(ResumenComponent, { static: true }) resumen:ResumenComponent;
 
   constructor(
     private _route :ActivatedRoute,

@@ -1,0 +1,70 @@
+
+<div  class="modal is-active" >
+    <div class="modal-background"></div>
+    <div class="modal-card" id="modal-cambiar-familia">
+    <header class="modal-card-head">
+        <p class="modal-card-title"> CAMBIAR FAMILIA A ESTUDIANTE </p>
+        <button class="delete" aria-label="close" (click)="closepopup()" ></button>
+    </header>
+    <section class="modal-card-body">
+        <!-- Content ... -->
+        <div  class="columns">
+            <div class="column is-half is-offset-one-quarter">
+                <div class="field is-horizontal">
+                    <div class="field-label ">
+                      <label class="label"> Buscar </label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control">
+                          <input class="input" type="text" [(ngModel)]="familia_buscar" name="familia_buscar" 
+                          (keyup)="buscarFamilia($event)" >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          
+        <!-- tabla de familias -->
+        <table *ngIf="familias" class="table is-striped is-fullwidth is-hoverable">
+            <thead> 
+              <tr>
+                <th>Fam/codigo </th>
+                <th>Padres</th>
+                <th> Estudiantes </th>
+                <th >Cambiar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let familia of familias; let i= index">
+                <td> 
+                    <p> {{familia.carpeta}} </p>
+                    <p> {{familia.codigo}}</p>
+                </td>
+                <td>
+                    <p *ngIf="familia.padre" > {{familia.padre.apellidos}}, {{familia.padre.nombre}} </p>
+                    <p *ngIf="familia.madre" > {{familia.madre.apellidos}}, {{familia.madre.nombre}} </p>
+                    <p *ngIf="familia.apoderado" > {{familia.apoderado.apellidos}}, {{familia.apoderado.nombre}} </p>
+                </td>     
+                <td *ngIf="familia.estudiantes" > 
+                  <p *ngFor = "let estudiante of familia.estudiantes">
+                      {{ estudiante.apellidos }},
+                      {{ estudiante.nombre }}
+                  </p>
+                </td>
+                <td>
+                  <a  (click) = cambiarFamilia(familia._id)  
+                    class="button is-danger">
+                    Cambiar 
+                  </a>
+                </td>
+            </tbody>
+          </table>
+    </section>
+    
+    <footer class="modal-card-foot">
+        <button class="button" (click)="closepopup()">Cancel</button>
+    </footer>
+    </div>
+</div >

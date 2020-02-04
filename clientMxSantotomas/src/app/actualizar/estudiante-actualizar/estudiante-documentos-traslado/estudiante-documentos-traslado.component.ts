@@ -10,7 +10,7 @@ import { EstudianteMdl } from 'src/app/models/estudiante-mdl';
 })
 export class EstudianteDocumentosTrasladoComponent implements OnInit {
   public id:string;
-  public estudiante=EstudianteMdl;
+  public estudiante:EstudianteMdl;
   public traslado:{
     certificado:string,
     resolucion:string,
@@ -23,6 +23,7 @@ export class EstudianteDocumentosTrasladoComponent implements OnInit {
     private _estudianteService:EstudianteService
   ) { 
     this.traslado = {certificado:"",resolucion:"",boleta_notas:""};
+    this.estudiante = new EstudianteMdl();
   }
 
 

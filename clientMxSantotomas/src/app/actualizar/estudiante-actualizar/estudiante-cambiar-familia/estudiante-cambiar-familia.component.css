@@ -1,0 +1,10 @@
+.modal{
+    min-width: 90%;
+    min-height: 600px;
+}
+
+#modal-cambiar-familia{
+    position: absolute;
+    width: 80%;
+    height: 90%;
+}

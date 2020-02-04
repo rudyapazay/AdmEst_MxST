@@ -11,7 +11,7 @@ import { EstudianteDocumentosMdl } from 'src/app/models/estudiante-mdl/estudiant
   styleUrls: ['./estudiante-documentos.component.css']
 })
 export class EstudianteDocumentosComponent implements OnInit {
-  public estudiante = EstudianteMdl;
+  public estudiante : EstudianteMdl;
   public documentos:EstudianteDocumentosMdl;
   public id:string;
 
@@ -24,7 +24,8 @@ export class EstudianteDocumentosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getEstudiante()
+    this.getEstudiante();
+    this.estudiante = new EstudianteMdl();
   }
 
   getEstudiante(){

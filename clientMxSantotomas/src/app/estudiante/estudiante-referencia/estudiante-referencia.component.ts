@@ -8,7 +8,7 @@ import { EstReferenciaMdl } from 'src/app/models/estudiante-mdl/est-referencia-m
 })
 export class EstudianteReferenciaComponent implements OnInit {
 
-  public estref = EstReferenciaMdl;
+  public estref : any;
 
   constructor() { }
 

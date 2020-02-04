@@ -41,7 +41,7 @@ export class RegEstudianteComponent implements OnInit {
     this.getFamilia();
   }
 
-  @ViewChild(ResumenComponent) resumen:ResumenComponent;
+  @ViewChild(ResumenComponent, { static: true }) resumen:ResumenComponent;
   
   getFamilia(){
     this._route.params.forEach((params:Params)=>{

@@ -8,6 +8,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { FamiliaDetailComponent } from './familia-detail/familia-detail.component';
 import { EstudianteByFamiliaComponent } from './estudiante-by-familia/estudiante-by-familia.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -15,12 +16,14 @@ import { EstudianteByFamiliaComponent } from './estudiante-by-familia/estudiante
     FamiliaListComponent,
     FamiliaDetailComponent, 
     EstudianteByFamiliaComponent
+
   ],
   imports: [
     CommonModule,
     FamiliaRoutingModule,
     FormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    FontAwesomeModule
   ]
 })
 export class FamiliaModule { }

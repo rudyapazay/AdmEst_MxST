@@ -13,6 +13,7 @@ const asistenciaRtr = require('./routers/asistencia.route');
 const reciboRtr  = require('./routers/recibo.route');
 const imagenRtr = require('./routers/imagenes.route');
 const reporteRtr = require('./routers/reporte.route');
+const administracionRtr = require('./routers/adminitracion.route');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -37,5 +38,6 @@ app.use('/api/', asistenciaRtr);
 app.use('/api/',reciboRtr);
 app.use('/api/', imagenRtr);
 app.use('/api/', reporteRtr);
+app.use('/api/', administracionRtr);
 
 module.exports = app;

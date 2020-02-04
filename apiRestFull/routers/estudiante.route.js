@@ -38,4 +38,8 @@ estudiante_router.route('/estudiante/delete/:id').delete(estudiante_ctrl.delEstu
 estudiante_router.route('/estudiante/documentos/:id').delete(estudiante_ctrl.deleteDocumentos);
 estudiante_router.route('/estudiante/documentostraslado/:id').delete(estudiante_ctrl.deleteDocumentosTraslado);
 
+//cambiar familia y estado
+estudiante_router.route('/estudiante/cambiar/familia/:id/:familia').get(estudiante_ctrl.cambiarFamilia);
+estudiante_router.route('/estudiante/cambiar/estado/:id/:estado').get(estudiante_ctrl.cambiarEstado);
+
 module.exports = estudiante_router;

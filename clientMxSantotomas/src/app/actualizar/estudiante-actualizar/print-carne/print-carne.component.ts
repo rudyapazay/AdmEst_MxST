@@ -10,7 +10,7 @@ import { EstudianteMdl } from 'src/app/models/estudiante-mdl';
 })
 export class PrintCarneComponent implements OnInit {
   public id:string;
-  public estudiante = EstudianteMdl;
+  public estudiante : EstudianteMdl;
   public bodyCarne:any; 
   public year = new Date().getFullYear();
   public imagenFondo = "http://localhost:3700/api/imagenes/sistema/carneEstudiante.png";
@@ -44,6 +44,7 @@ export class PrintCarneComponent implements OnInit {
 
   ngOnInit() {
     this.getEstudiante();
+    this.estudiante = new EstudianteMdl();
   }
 
   getEstudiante(){

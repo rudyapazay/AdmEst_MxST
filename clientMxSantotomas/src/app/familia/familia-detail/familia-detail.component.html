@@ -1,5 +1,16 @@
 
-<h2 class="title"> {{ familia.carpeta }}  ::  {{familia.codigo }}  </h2> 
+<h2 class="title has-text-link" ><fa-icon [icon]="faUsers" > </fa-icon>  {{ familia.carpeta }}  ::  {{familia.codigo }}  </h2> 
+<div class="columns">
+  <div class="column is-5"></div>
+  <div class="column">
+    <div class="buttons">
+      <a class="button is-success is-outlined is-medium is-routed " (click)="reportePdf()">
+        <fa-icon [icon] = "faPrint"> </fa-icon> 
+    </a>
+    </div>
+  </div>
+  
+</div>
 
 <div class="columns" *ngIf="familia">
   <!--  resumen de la familia-->

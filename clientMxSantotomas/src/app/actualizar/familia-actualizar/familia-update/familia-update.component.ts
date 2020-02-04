@@ -9,7 +9,7 @@ import { FamiliaMdl } from 'src/app/models/famlia-mdl';
   styleUrls: ['./familia-update.component.css']
 })
 export class FamiliaUpdateComponent implements OnInit {
-  public familia = FamiliaMdl;
+  public familia:FamiliaMdl;
   public id :string = "";
 
   constructor(
@@ -20,6 +20,7 @@ export class FamiliaUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.getFamilia();
+    this.familia = new FamiliaMdl();
   }
 
   getFamilia(){

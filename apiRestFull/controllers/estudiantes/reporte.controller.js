@@ -8,18 +8,18 @@ const path = require('path');
 async function pdfEstudianteByGrado(req,res){
     var yearActual = new Date().getFullYear().toString();
 
-    var estudiantes = await estudianteMDL.find({'referencia.primero.year':yearActual})
+    var estudiantes = await estudianteMDL.find({'referencia.segundo.year':yearActual})
         .sort({'referencia.primero.seccion':+1, 'apellidos':+1, 'nombre':+1});
 
     var reporte = new pdf.Document();
     const table = reporte.table({
         widths: [30, 20, 100, 200,200],
-        borderWidth: 0,
+        borderWidth: 1,
     });
     estudiantes.forEach((estudiante, i)=>{
         const row = table.row();
-        row.cell(" " + i );
-        row.cell(estudiante.referencia.primero.seccion);
+        row.cell(" " + i );  
+        row.cell(estudiante.referencia.segundo.seccion);
         row.cell(estudiante.dni);
         row.cell(" " + estudiante.nombre);
         row.cell(" " +estudiante.apellidos);
@@ -27,6 +27,8 @@ async function pdfEstudianteByGrado(req,res){
     });
 
     reporte.pipe(fs.createWriteStream('./temp/reporte.pdf'));  
+    //reporte.pipe(fs.close());
+
     await reporte.end().then(()=>{
         fs.exists('./temp/reporte.pdf', (exists)=>{
             res.sendFile(path.resolve('./temp/reporte.pdf'));

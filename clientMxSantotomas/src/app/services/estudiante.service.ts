@@ -103,4 +103,11 @@ export class EstudianteService {
     return this._http.delete(this.url+'estudiante/documentostraslado/'+id);
   }
 
+  estudianteCambiarEstado(id, estado):Observable<any>{
+    return this._http.get(this.url+'estudiante/cambiar/estado/'+id+'/'+estado);
+  }
+
+  estudianteCambiarFamilia(id, familia):Observable<any>{
+    return this._http.get(this.url+'estudiante/cambiar/familia/'+id+'/'+familia);
+  }
 }
