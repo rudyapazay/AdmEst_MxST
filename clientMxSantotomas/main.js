@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require('electron')
-
+require('electron-debug')({showDevTools: true});
 let win;
 
 function createWindow () {
@@ -12,7 +12,8 @@ function createWindow () {
   })
 
 
-  win.loadURL(`file://${__dirname}/dist/index.html`)
+  //win.loadURL(`file://${__dirname}/dist/index.html`)
+  win.loadURL(`file://${__dirname}/src/index.html`)
 
   // Event when the window is closed.
   win.on('closed', function () {

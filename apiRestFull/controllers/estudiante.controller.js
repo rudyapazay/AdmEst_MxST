@@ -293,7 +293,7 @@ function saveDocumentosTraslado(req,res){
     });
 }
 
-
+// actulizacion de referencias de estudiantes
 function updateReferencia(req,res){
     var estudianteId = req.params.id;
     var grado =req.params.grado;

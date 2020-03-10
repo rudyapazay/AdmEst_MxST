@@ -1,7 +1,7 @@
 
 <div class="columns ">
     <div class="column is-full-size">
-        <h2 class="title has-text-link"> <fa name="user" > </fa> {{estudiante.nombre }} {{estudiante.apellidos}} </h2>
+        <h2 class="title has-text-link" > <fa name="user" > </fa> {{estudiante.nombre }} {{estudiante.apellidos}} </h2>
         <!-- funciones -->
     </div>
 </div>
@@ -11,25 +11,32 @@
         <div class="buttons" >
             
             <a [routerLink] =  "['', {outlets: { 'popup':['estudiante',estudiante._id, estudiante.nombre]}}]" 
-                class="button is-info "> 
-                <fa name="cog" ></fa>  Grado y Sección
+                class="button is-info is-outlined is-medium is-routed has-tooltip-bottom " 
+                data-tooltip="Cambiar grado y seccion"> 
+                <fa-icon [icon]="faUserCog" size="lg"> </fa-icon> 
             </a> 
             <a [routerLink] =  "['', {outlets: { 'popup':['asistencia','estudiante',estudiante._id]}}]" 
-                class="button is-warning  is-medium is-routed " > 
-                <fa-icon [icon]="faCalendarCheck" size="lg"></fa-icon> Asistencia 
+                class="button is-warning  is-outlined is-medium is-routed has-tooltip-bottom" 
+                data-tooltip="Reporte de asistencia"  > 
+                <fa-icon [icon]="faCalendarCheck" size="lg"></fa-icon> 
             </a> 
 
             <a [routerLink]="['/familia/',estudiante.familia._id]"
-                class="button is-link is-outlined is-medium is-routed " >
+                class="button is-link is-outlined is-medium is-routed has-tooltip-bottom" 
+                data-tooltip="Familia"  >
                 <fa-icon [icon]="faUsers" size="lg"></fa-icon>
             </a>
             
-            <a class="button is-success is-outlined is-medium is-routed">
+            <a class="button is-success is-outlined is-medium is-routed has-tooltip-bottom">
                 <fa name="birthday-cake" size="lg"></fa>  
             </a> 
             <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','carne',estudiante._id] } }]"
-                class="button is-link is-outlined is-medium is-routed " > <fa name="id-card" size="lg" ></fa> </a>
-            <a class="button is-success is-outlined is-medium is-routed " (click)="reportePdf()">
+                class="button is-link is-outlined is-medium is-routed has-tooltip-bottom" 
+                data-tooltip="Imprimir carne de estudiante" > 
+                <fa name="id-card" size="lg" ></fa> </a>
+            <a class="button is-success is-outlined is-medium is-routed has-tooltip-bottom"
+                (click)="reportePdf()"
+                data-tooltip="Imprimir reporte de estudiante">
                 <fa name="print" size="lg"> </fa> 
             </a>
             <a  [routerLink] = "['', {outlets:{'popup':['estudiante','cambiar','estado',estudiante._id]}}]"
@@ -62,7 +69,7 @@
                 <a  [routerLink] = "['', {outlets:{'popup':['estudiante','cambiar','familia',estudiante._id]}}]"
                     class="card-footer-item"  >
                     <fa-icon [icon] = "faUsersCog" size="2x"> </fa-icon>
-                    Cambiar
+                    Cambiar familia
                 </a>
             </div>
         </div>

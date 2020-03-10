@@ -3,23 +3,33 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 import { EstudianteService } from 'src/app/services/estudiante.service';
 import { EstudianteMdl } from 'src/app/models/estudiante-mdl';
 
+import {GLOBAL} from 'src/app/services/global';
+import { GlobalService } from 'src/app/services/global.service';
+import { ImagenService } from 'src/app/services/imagen.service';
+
+
+
 @Component({
   selector: 'app-print-carne',
   templateUrl: './print-carne.component.html',
   styleUrls: ['./print-carne.component.css']
 })
+
 export class PrintCarneComponent implements OnInit {
   public id:string;
   public estudiante : EstudianteMdl;
   public bodyCarne:any; 
   public year = new Date().getFullYear();
-  public imagenFondo = "http://localhost:3700/api/imagenes/sistema/carneEstudiante.png";
+  public imagenFondo:String;
+  //public imagenFondo = "http://192.168.1.5:3700/api/imagenes/sistema/carneEstudiante.png";
 
   constructor(
     private _route:ActivatedRoute,
     private _router:Router,
-    private _estudianteService:EstudianteService
+    private _estudianteService:EstudianteService,
+    private _imagenService:ImagenService
   ) {
+    this.imagenFondo = this._imagenService.getImagenFondoCarnet();
     this.bodyCarne = `<html><head>
       <style>
         *{margin:0px; padding:0px;}
@@ -61,7 +71,7 @@ export class PrintCarneComponent implements OnInit {
           this.bodyCarne += "</head>";
 
           this.bodyCarne += '<img id="fondo" src ="';
-            this.bodyCarne += this.imagenFondo;
+          this.bodyCarne += this.imagenFondo;
             this.bodyCarne += '">';
             
             this.bodyCarne += '<div id="idCard">';

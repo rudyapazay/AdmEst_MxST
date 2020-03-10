@@ -56,8 +56,8 @@
         
       
         <td> {{estudiante.sexo}} </td>
-        <td *ngIf='estudiante.estado =="activo" ' > <fa name="check"></fa>  </td>
-        <td *ngIf='estudiante.estado =="pendiente" ' > <fa name="trash" size="2x"></fa>  </td>
+        
+        
         <td> <a [routerLink] =  "['/estudiante/',estudiante._id]" >
           <fa name="user" size='2x'></fa></a> 
         </td>

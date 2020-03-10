@@ -10,7 +10,7 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-import { faUserCheck, faUsersCog, faCalendarCheck, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faUserCheck, faUsersCog, faCalendarCheck, faUsers, faUserCog } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -22,7 +22,8 @@ export class EstudianteDetailComponent implements OnInit {
   //componente  hijo
   faUserCheck = faUserCheck; faUsersCog = faUsersCog; 
   faCalendarCheck = faCalendarCheck; faUsers = faUsers;
-
+  faUserCog = faUserCog; 
+  
   @ViewChild(EstudianteReferenciaComponent, { static: true }) referencia:EstudianteReferenciaComponent;
 
   public estudiante : EstudianteMdl;
