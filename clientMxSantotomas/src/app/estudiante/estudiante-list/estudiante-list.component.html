@@ -25,11 +25,13 @@
     <tr *ngFor = "let estudiante of estudiantes">
       <td> {{estudiante.familia.codigo }}</td>
       <td> {{estudiante.dni}} </td>
-      <td *ngIf='estudiante.referencia.primero && estudiante.referencia.primero.year == yearActual'> Primero - {{estudiante.referencia['primero'].seccion}} </td>
-      <td *ngIf='estudiante.referencia.segundo && estudiante.referencia.segundo.year == yearActual'> Segundo - {{estudiante.referencia['segundo'].seccion}} </td>
-      <td *ngIf='estudiante.referencia.tercero && estudiante.referencia.tercero.year == yearActual'> Tercero - {{estudiante.referencia['tercero'].seccion}} </td>
-      <td *ngIf='estudiante.referencia.cuarto && estudiante.referencia.cuarto.year == yearActual'> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </td>
-      <td *ngIf='estudiante.referencia.quinto && estudiante.referencia.quinto.year == yearActual'> Quinto - {{estudiante.referencia['quinto'].seccion}} </td>
+      <td>
+        <p *ngIf='estudiante.referencia.primero && estudiante.referencia.primero.year == yearActual'> Primero - {{estudiante.referencia['primero'].seccion}} </p>
+        <p *ngIf='estudiante.referencia.segundo && estudiante.referencia.segundo.year == yearActual'> Segundo - {{estudiante.referencia['segundo'].seccion}} </p>
+        <p *ngIf='estudiante.referencia.tercero && estudiante.referencia.tercero.year == yearActual'> Tercero - {{estudiante.referencia['tercero'].seccion}} </p>
+        <p *ngIf='estudiante.referencia.cuarto && estudiante.referencia.cuarto.year == yearActual'> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </p>
+        <p *ngIf='estudiante.referencia.quinto && estudiante.referencia.quinto.year == yearActual'> Quinto - {{estudiante.referencia['quinto'].seccion}} </p>
+      </td>
       <td> {{estudiante.apellidos}}, {{estudiante.nombre}} </td>
       
       <td> {{estudiante.sexo}} </td>

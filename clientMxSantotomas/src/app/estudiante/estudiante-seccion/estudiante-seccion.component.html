@@ -22,63 +22,70 @@
   </ul>
 </div>
 
+<div  class="columns">
+  <div class="column is-half is-offset-one-quarter">
+
+    <div class="buttons" > 
+      <a (click) = "print_relacion_estudiantes()"
+          class="button is-info is-outlined is-medium is-routed has-tooltip-bottom " 
+          data-tooltip="Imprimir relacion"> 
+          <fa-icon [icon]="faPrint"></fa-icon>
+      </a> 
+      <a 
+          class="button is-info is-outlined is-medium is-routed has-tooltip-bottom " 
+          data-tooltip="Reporte de asistencia"> 
+          <fa-icon [icon]="faCalendarCheck"></fa-icon>
+      </a>
+
+    </div>
+  </div>
+</div>
 
 <table *ngIf = "estudiantes" class="table is-striped is-fullwidth is-hoverable">
-    <thead>
+    <thead class="thead">
       <td> N° </td>
       <td>Codigo</td>
       <td>DNI N°</td>
       <td>Estudiante</td>
-      <td>Padre</td>
-      <td>Madre</td>
+      <td>Padres</td>
+      <td colspan="6"> Acciones </td>
     </thead>
     <tbody>
       <tr *ngFor = "let estudiante of estudiantes; let i=index">
         <td>{{i+1}} </td>
         <td> {{estudiante.familia.codigo }}</td>
         <td> {{estudiante.dni}} </td>
-        <td> {{estudiante.apellidos}}, {{estudiante.nombre}} </td>
-        <!--
-        <td>
-          <p *ngIf ="estudiante.familia.padre">  {{estudiante.familia.padre.apellidos}}, {{estudiante.familia.padre.nombre}}  </p>
-          <p *ngIf ="estudiante.familia.madre" > {{estudiante.familia.madre.apellidos}}, {{estudiante.familia.madre.nombre}} </p>
-          <p *ngIf ="estudiante.familia.apoderado" > {{estudiante.familia.apoderado.apellidos}}, {{estudiante.familia.apoderado.nombre}} </p>
+        <td> 
+            <p> 
+              <fa-icon [icon]="faMale" *ngIf = "estudiante.sexo == 'masculino'" ></fa-icon>
+              <fa-icon [icon]="faFemale" *ngIf = "estudiante.sexo == 'femenino'"></fa-icon>
+               {{estudiante.apellidos}}, </p> 
+            <p> {{estudiante.nombre}}  </p>
         </td>
-        -->
-         
         
-          <td *ngIf ="estudiante.familia.padre">  {{estudiante.familia.padre.apellidos}}, {{estudiante.familia.padre.nombre}}  </td>
-          <td *ngIf ="estudiante.familia.madre" > {{estudiante.familia.madre.apellidos}}, {{estudiante.familia.madre.nombre}} </td>
-          <td *ngIf ="estudiante.familia.apoderado" > {{estudiante.familia.apoderado.apellidos}}, {{estudiante.familia.apoderado.nombre}} </td>
-          <td *ngIf ="!estudiante.familia.padre">    </td>
-          <td *ngIf ="!estudiante.familia.madre">    </td>
-          <td *ngIf ="!estudiante.familia.apoderado">    </td>
-        
-      
-        <td> {{estudiante.sexo}} </td>
-        
-        
+        <td>
+          <p *ngIf ="estudiante.familia.padre"> {{estudiante.familia.padre.apellidos}}, {{estudiante.familia.padre.nombre}}  </p>
+          <p *ngIf ="estudiante.familia.madre" > {{estudiante.familia.madre.apellidos}}, {{estudiante.familia.madre.nombre}} </p>
+          <p *ngIf ="estudiante.familia.apoderado" > {{estudiante.familia.apoderado.apellidos}}, {{estudiante.familia.apoderado.nombre}} </p>  
+        </td>   
+        <!-- acciones de usuarios -->
         <td> <a [routerLink] =  "['/estudiante/',estudiante._id]" >
-          <fa name="user" size='2x'></fa></a> 
+          <fa-icon [icon]="faUser" size="lg"> </fa-icon> </a> 
         </td>
         <td> <a [routerLink] =  "['/familia/',estudiante.familia._id]" >
-          <fa name="users" size='2x'></fa></a> 
+          <fa-icon [icon]="faUsers" size="lg"> </fa-icon> </a> 
         </td>
-        <td>
-            <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','carne',estudiante._id] } }]"
-              > <fa name="print" size="2x"></fa>  </a>
+        <td> <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','carne',estudiante._id] } }]" > 
+          <fa-icon [icon]="faIdCard" size="lg"></fa-icon>  </a>
         </td>
         <td> <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','editar',estudiante._id] } }]" >
-            <fa name="edit" size='2x'></fa></a> 
-          </td>
-        <td>
-          <a [routerLink] =  "['', {outlets: { 'popup':['estudiante',estudiante._id, estudiante.nombre]}}]" 
-            > <fa name="cog" size="2x"></fa></a> 
+          <fa-icon [icon]="faUserEdit" size="lg"> </fa-icon> </a> 
         </td>
-        
-        <td>
-          <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','eliminar',estudiante._id,estudiante.nombre]}}]"
-            > <fa name="trash" size='2x'></fa>  </a>
+        <td> <a [routerLink] =  "['', {outlets: { 'popup':['estudiante',estudiante._id, estudiante.nombre]}}]"> 
+          <fa-icon [icon]="faUserCog" size="lg"> </fa-icon>  </a> 
+        </td>
+        <td> <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','eliminar',estudiante._id,estudiante.nombre]}}]" >   
+          <fa-icon [icon]="faTrash" size="lg"></fa-icon> </a>
         </td>
                
           
