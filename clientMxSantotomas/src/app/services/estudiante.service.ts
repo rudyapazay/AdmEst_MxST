@@ -103,10 +103,12 @@ export class EstudianteService {
     return this._http.delete(this.url+'estudiante/documentostraslado/'+id);
   }
 
+  //cambiar estado del estudiante, ademas se usa para las matricula
   estudianteCambiarEstado(id, estado):Observable<any>{
     return this._http.get(this.url+'estudiante/cambiar/estado/'+id+'/'+estado);
   }
 
+  //cambiar a la familia que pertenece cada familia
   estudianteCambiarFamilia(id, familia):Observable<any>{
     return this._http.get(this.url+'estudiante/cambiar/familia/'+id+'/'+familia);
   }

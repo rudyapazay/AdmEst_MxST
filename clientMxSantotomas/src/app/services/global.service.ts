@@ -54,20 +54,42 @@ export class GlobalService {
             
         }]
       ]},
-
       {
-        text:'_________________________________________________________________________________________________',
-        alignment:'center'
-      }
+        text:' ',
+        fontSize: 6
 
+      },
+      {
+        canvas:[{
+            type: 'line',
+            x1: 0, y1: 0,
+            x2: 900, y2: 0,
+            lineWidth: 1,
+        }]
+      },
+      {
+        text:' ',
+        fontSize:6
+      }
     ]
   }
 
   getFooterReport(){
     return [
       {
-        text:"_______________________________________________________________________________________________________",
-        alignment:"center"
+        text:' '
+      },
+      {
+        canvas:[{
+            type: 'line',
+            x1: 0, y1: 0,
+            x2: 900, y2: 0,
+            lineWidth: 1,
+        }]
+      },
+      {
+        text:" ",
+        fontSize:6
       },
       {
         columns:[

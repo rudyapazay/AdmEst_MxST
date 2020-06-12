@@ -84,8 +84,16 @@ var EstudianteSchema = Schema({
     estado: String,  // activo || pendiente || retirado || traslado || egresado(solo promociones)  ** se cambia en cada año 
     matricula:String,  //Situacion al 2019 ratificado || reciente   ** se cambiara en cada año
     siagie:Boolean,  // true - registrado Siagie || false -falta registrar ** se cambiara en cada año 
-    observaciones:String
+    observaciones:String,
 
+    resumen:{
+        nivel:String,   //nivel de estudios en la actulidad
+        grade:String,   //grado de estudios en numeros
+        grado:String,   //grado que se encuentra en la actulidad
+        seccion:String,  //seccion que se cuenta
+        jornada: String,  //tipo de jornada que se encuentra
+        turno: String   // turno de estudios del estudiante
+    }
 });
 
 module.exports = mongoose.model('Estudiante', EstudianteSchema);

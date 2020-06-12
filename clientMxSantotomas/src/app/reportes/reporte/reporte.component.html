@@ -1,0 +1,19 @@
+
+<h1 class="title" > REPORTES MULTIPLES</h1>
+
+<table class="table">
+    <tr>
+        <td> Item </td>
+        <td> Descripción </td>
+        <td> Generar </td>
+        <td> Descargar</td>
+    </tr>
+    <tr > 
+        <td> 01 </td>
+        <td> Padron de padres de familia de Institucion Educativa</td>
+        <td> <a class="buttom" (click)="generarPadronFamilia()"> Generar</a> </td>
+        <td> <a [routerLink] =  "['', {outlets: { 'popup':['reportes','padron','familias']}}]" > Descargar </a> </td>
+        <td> <a href="http://localhost:3700/api/reporte/descargar/familias/padron" target="_blank">  demo </a> </td>
+    </tr>
+
+</table> 

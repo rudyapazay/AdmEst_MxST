@@ -24,6 +24,7 @@ import { InterceptorService } from './services/interceptor.service';
 
 import { SistemaModule } from './sistema/sistema.module';
 import { faUsersCog, faUser, faUserEdit, faUsers, faBirthdayCake, faEdit, faTrash, faPrint, faUserCheck } from '@fortawesome/free-solid-svg-icons';
+import { ReportesModule } from './reportes/reportes.module';
 
 //registerLocaleData(localeEs, 'es');
 
@@ -33,7 +34,6 @@ import { faUsersCog, faUser, faUserEdit, faUsers, faBirthdayCake, faEdit, faTras
     AppComponent,
     BuildingComponent,
     ErrorServidorComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -41,6 +41,7 @@ import { faUsersCog, faUser, faUserEdit, faUsers, faBirthdayCake, faEdit, faTras
     HttpClientModule,
     FontAwesomeModule,
     AngularFontAwesomeModule,
+
 
     // modulos propios 
     AppRoutingModule,
@@ -57,7 +58,9 @@ import { faUsersCog, faUser, faUserEdit, faUsers, faBirthdayCake, faEdit, faTras
     AsistenciaModule,
     
     ReciboModule,
-    SistemaModule
+    SistemaModule,
+
+    ReportesModule
     
   ],
   providers: [ ],

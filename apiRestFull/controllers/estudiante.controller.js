@@ -115,7 +115,6 @@ function saveEstudiante(req,res){
 
 }
 
-
 //considerar no hacer un populate para estudiantes
 function getEstudiante(req,res){
     var estudianteId =  req.params.id;
@@ -575,6 +574,7 @@ function deleteDocumentosTraslado(req, res){
     }); 
 }
 
+//cambio de la familia del estudiante 
 async function cambiarFamilia(req, res){
     var id = req.params.id;
     var familia = req.params.familia
@@ -588,6 +588,8 @@ async function cambiarFamilia(req, res){
     };
 }
 
+// cambiar estado del estudiante, se puede cambiar a otros estados
+// se utiliza para la ratificacion de matricula de los estudiantes.
 async function cambiarEstado(req, res){
     var id = req.params.id;
     var estActual = req.params.estado;
@@ -606,7 +608,7 @@ async function cambiarEstado(req, res){
                 res.status(404).send('Familia no actulizada');
             }
             else{
-                console.log(estupdate);
+                //console.log(estupdate);
                 res.status(200).send(estupdate);
             }
         }
@@ -633,6 +635,8 @@ module.exports ={
     delEstudiante,
     deleteDocumentos, deleteDocumentosTraslado,
 
-    //cambiar familiar
-    cambiarFamilia, cambiarEstado
+    //cambiar familia de cada estudiantes
+    cambiarFamilia, 
+    // cambiar estado del estudiante, se utiliza para la ratificacion de matricula
+    cambiarEstado
 }
