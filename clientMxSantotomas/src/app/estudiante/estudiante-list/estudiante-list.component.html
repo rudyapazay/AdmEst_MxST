@@ -23,8 +23,9 @@
 <table class="table is-striped is-fullwidth is-hoverable">
   <tbody>
     <tr *ngFor = "let estudiante of estudiantes">
-      <td> {{estudiante.familia.codigo }}</td>
-      <td> {{estudiante.dni}} </td>
+      <td>  <p> {{estudiante.familia.codigo }}</p>
+            <p> {{estudiante.dni }}</p>
+      </td>
       <td>
         <p *ngIf='estudiante.referencia.primero && estudiante.referencia.primero.year == yearActual'> Primero - {{estudiante.referencia['primero'].seccion}} </p>
         <p *ngIf='estudiante.referencia.segundo && estudiante.referencia.segundo.year == yearActual'> Segundo - {{estudiante.referencia['segundo'].seccion}} </p>
@@ -32,11 +33,10 @@
         <p *ngIf='estudiante.referencia.cuarto && estudiante.referencia.cuarto.year == yearActual'> Cuarto - {{estudiante.referencia['cuarto'].seccion}} </p>
         <p *ngIf='estudiante.referencia.quinto && estudiante.referencia.quinto.year == yearActual'> Quinto - {{estudiante.referencia['quinto'].seccion}} </p>
       </td>
+      <td>  <p> {{estudiante.celular }}</p>
+            <p> {{estudiante.residencia }}</p>
+      </td>
       <td> {{estudiante.apellidos}}, {{estudiante.nombre}} </td>
-      
-      <td> {{estudiante.sexo}} </td>
-      
-      
       
       <td> <a [routerLink] =  "['', {outlets: { 'popup':['estudiante','editar',estudiante._id] } }]" >
         <fa name="edit" size='2x'></fa></a> 

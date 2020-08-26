@@ -33,13 +33,18 @@
       </a> 
       <a (click) = "print_relacion_estudiantes_familia()"
           class="button is-info is-outlined is-medium is-routed has-tooltip-bottom " 
-          data-tooltip="Imprimir relacion"> 
+          data-tooltip="Relacion de padres de familia"> 
           <fa-icon [icon]="faUserPlus"></fa-icon>
       </a>
       <a 
           class="button is-info is-outlined is-medium is-routed has-tooltip-bottom " 
           data-tooltip="Reporte de asistencia"> 
           <fa-icon [icon]="faCalendarCheck"></fa-icon>
+      </a>
+      <a (click) = "print_formato_entrega_alimentos()"
+        class="button is-info is-outlined is-medium is-routed has-tooltip-bottom"
+        data-tooltip="Formato Qaliwarma">
+        <fa-icon [icon]="faDrumstickBite"></fa-icon>
       </a>
 
     </div>
@@ -49,8 +54,8 @@
 <table *ngIf = "estudiantes" class="table is-striped is-fullwidth is-hoverable">
     <thead class="thead">
       <td> N° </td>
-      <td>Codigo</td>
-      <td>DNI N°</td>
+      <td>Codigo / DNI</td>
+      <td> Celular/Direccion </td>
       <td>Estudiante</td>
       <td>Padres</td>
       <td colspan="6"> Acciones </td>
@@ -58,8 +63,13 @@
     <tbody>
       <tr *ngFor = "let estudiante of estudiantes; let i=index">
         <td>{{i+1}} </td>
-        <td> {{estudiante.familia.codigo }}</td>
-        <td> {{estudiante.dni}} </td>
+        <td><p> {{estudiante.familia.codigo }}</p>
+            <p> {{estudiante.dni }}</p>
+        </td>
+        <td>  <p> {{estudiante.celular }}</p>
+              <p> {{estudiante.residencia }}</p>
+        </td>
+        
         <td> 
             <p> 
               <fa-icon [icon]="faMale" *ngIf = "estudiante.sexo == 'masculino'" ></fa-icon>

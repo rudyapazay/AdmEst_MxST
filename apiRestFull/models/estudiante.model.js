@@ -9,6 +9,9 @@ var EstudianteSchema = Schema({
     nombre:String,
     sexo:String,
 
+    celular:String, // numero celular del estudiantes
+    residencia:String,  // residencia actual para los estudiantes
+
     //Referencias para los estudiantes
     referencia:{
         primero:{
@@ -86,6 +89,8 @@ var EstudianteSchema = Schema({
     siagie:Boolean,  // true - registrado Siagie || false -falta registrar ** se cambiara en cada año 
     observaciones:String,
 
+    //informacion anual del estudiantes
+    //se cambia anualmente
     resumen:{
         nivel:String,   //nivel de estudios en la actulidad
         grade:String,   //grado de estudios en numeros
@@ -94,6 +99,8 @@ var EstudianteSchema = Schema({
         jornada: String,  //tipo de jornada que se encuentra
         turno: String   // turno de estudios del estudiante
     }
+
+    
 });
 
 module.exports = mongoose.model('Estudiante', EstudianteSchema);

@@ -13,14 +13,14 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "connect-multiparty": "^2.0.0",
-    "crypto-js": "^3.1.9-1",
+    "crypto-js": "^3.3.0",
     "express": "^4.17.1",
-    "mongoose": "^5.6.7",
-    "pdfjs": "^2.3.3",
-    "pdfmake": "^0.1.65",
-    "qrcode": "^1.4.1"
+    "mongoose": "^5.10.0",
+    "pdfjs": "^2.4.1",
+    "pdfmake": "^0.1.68",
+    "qrcode": "^1.4.4"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.4"
   }
 }
